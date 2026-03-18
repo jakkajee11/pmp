@@ -1,0 +1,29 @@
+Performance Management System
+เป็นระบบสำหรับประเมินผลงานของพนักงาน เพื่อวัดคุณภาพการทำงานประจำปี และคำนวนการจ่ายโบนัส และการขึ้นเงินเดือน
+
+features:
+- Admin/HR กำหนด Company objectives และ weight, min & max objectives
+	- Individual KPIs	(80%)
+	- Core values/Organisation Culture	(20%)
+- Admin/HR กำหนด การตั้งค่าต่างๆ เช่นวันเริ่ม สิ้นสุด approval hierarchy, ลำดับขั้นการ approval, notification
+- Manager แต่ละทีม กำหนดและจัดการ objectives ของทีม เพิ่ม ลบ
+- Manager review & rate & privide feedback to direct report
+	
+- Employee ใส่คะแนนประเมินของแต่ละ objective
+- Employee ใส่ comment ของแต่ละ objective
+- Employee upload เอกสารใส่ใน objective ได้ เช่น certificate (optional)
+
+เก็บบันทึกการเปลี่ยนแปลงทั้งหมด audit logs
+
+Constraint:
+- Employee เห็นข้อมูลเฉพาะของตัวเองเท่านั้น
+- Manager เห็นข้อมูลเฉพาะของตัวเองและลูกทีมเท่านั้น
+- Admin/HR เห็นข้อมูลของทุกคน
+
+Integrations:
+- Email
+- SMS
+- Ms Team
+
+Example:
+FY2026_Team_Objectives.docx

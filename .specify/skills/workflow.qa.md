@@ -20,7 +20,32 @@
    - T095: [Task title] - Approved for testing
    ```
 
-3. **Testing Process**
+3. **Verify Test Existence (MANDATORY)**
+
+   a. Identify Changed Files
+      ```bash
+      git diff --name-only HEAD~1 HEAD
+      ```
+
+   b. Check Test Coverage
+      For each changed source file, verify at least one test file exists:
+      - Check patterns: `*.test.ts`, `*.test.tsx`, `*.spec.ts`, `*.spec.tsx`
+      - Check locations: same directory, `tests/` mirror, `__tests__/`
+
+   c. Apply Exemptions
+      No tests required for:
+      - Type definitions: `*.d.ts`, `types.ts`, `*-types.ts`
+      - Config files: `*.config.ts`, `*.config.js`
+      - Migrations: `migrations/**`
+      - Index files: `index.ts`
+      - Styling: `*.css`, `*.scss`, `*.module.css`
+      - Static: `*.json`, `*.md`, `*.txt`
+
+   d. Decision
+      - ALL files exempt → Proceed to testing
+      - ANY non-exempt file missing tests → FAIL immediately
+
+4. **Testing Process**
    For each task in queue:
    - Load task requirements from tasks.md
    - Identify test scenarios from acceptance criteria
@@ -29,7 +54,7 @@
      - Integration tests: `npm run test:integration` (if available)
      - E2E tests: `npm run test:e2e` (if available)
 
-4. **QA Checklist**
+5. **QA Checklist**
    - Feature works as specified
    - No regressions in existing functionality
    - Edge cases handled correctly
@@ -37,7 +62,7 @@
    - Accessibility requirements met (if applicable)
    - Cross-browser/device testing (if applicable)
 
-5. **Decision Actions**
+6. **Decision Actions**
 
    **PASS:**
    ```json
@@ -66,6 +91,29 @@
    - Move task back to `in_development`
    - Remove from `in_qa` queue
    - Notify: "Task failed QA. Returned to development."
+
+   **FAIL (No Tests):**
+   ```json
+   {
+     "stage": "in_development",
+     "assignedRole": "dev",
+     "qaFailedAt": "ISO timestamp",
+     "qaFailureReason": "No test files found for changed source files",
+     "qaNotes": "Tests are REQUIRED before QA approval.",
+     "missingTests": [
+       {
+         "sourceFile": "src/components/Feature.tsx",
+         "expectedTestPatterns": [
+           "src/components/Feature.test.tsx",
+           "tests/components/Feature.test.tsx"
+         ]
+       }
+     ]
+   }
+   ```
+   - Move task back to `in_development`
+   - Remove from `in_qa` queue
+   - Notify: "Task failed QA: No tests found. Returned to development."
 
 ## Test Execution
 

@@ -1,6 +1,6 @@
 {
   "lastScanned": "2026-03-19T23:00:00Z",
-  "skillCount": 24,
+  "skillCount": 26,
   "skills": {
     "nextjs-backend": {
       "name": "nextjs-backend",
@@ -217,6 +217,24 @@
       "pattern": "workflow",
       "description": "Initialize the workflow suite in the current project.",
       "triggers": ["/workflow.init"]
+    },
+    "workflow.autoReview": {
+      "name": "workflow.autoReview",
+      "framework": "any",
+      "role": "reviewer",
+      "category": "workflow",
+      "pattern": "workflow",
+      "description": "Automated code review agent for tasks in review queue. Checks lint errors and security patterns.",
+      "triggers": ["/workflow.autoReview", "auto review", "check security"]
+    },
+    "workflow.autoQA": {
+      "name": "workflow.autoQA",
+      "framework": "any",
+      "role": "qa",
+      "category": "workflow",
+      "pattern": "workflow",
+      "description": "Automated QA testing agent for tasks in QA queue. Runs affected tests only.",
+      "triggers": ["/workflow.autoQA", "auto qa", "run tests"]
     }
   },
   "byFramework": {
@@ -233,8 +251,8 @@
   },
   "byRole": {
     "dev": ["nextjs-backend", "ui-ux-pro-max", "mcp-builder", "claude-api", "pdf", "docx", "skill-creator", "xlsx", "pptx", "brand-guidelines", "doc-coauthoring", "google-play-deploy", "portfolio-marketing", "vercel-react-best-practices", "workflow.dev"],
-    "reviewer": ["backend-reviewer", "react-reviewer", "workflow.reviewer"],
-    "qa": ["webapp-testing", "workflow.qa"]
+    "reviewer": ["backend-reviewer", "react-reviewer", "workflow.reviewer", "workflow.autoReview"],
+    "qa": ["webapp-testing", "workflow.qa", "workflow.autoQA"]
   },
   "byCategory": {
     "backend": ["nextjs-backend", "backend-reviewer"],
@@ -246,6 +264,6 @@
     "documentation": ["doc-coauthoring"],
     "deployment": ["google-play-deploy"],
     "marketing": ["portfolio-marketing"],
-    "workflow": ["workflow.dev", "workflow.reviewer", "workflow.qa", "workflow.status", "workflow.handoff", "workflow.switch", "workflow.init"]
+    "workflow": ["workflow.dev", "workflow.reviewer", "workflow.qa", "workflow.status", "workflow.handoff", "workflow.switch", "workflow.init", "workflow.autoReview", "workflow.autoQA"]
   }
 }

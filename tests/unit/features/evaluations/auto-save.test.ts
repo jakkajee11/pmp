@@ -89,11 +89,14 @@ describe("useAutoSave Hook", () => {
 
       expect(result.current.state).toBe("pending");
 
-      // Fast-forward debounce timer
-      act(() => {
+      // Fast-forward debounce timer and flush pending promises
+      await act(async () => {
         jest.advanceTimersByTime(30000);
+        // Flush microtasks
+        await Promise.resolve();
       });
 
+      // Wait for the save to complete
       await waitFor(() => {
         expect(mockOnSave).toHaveBeenCalledWith({
           selfRating: 4,
@@ -106,32 +109,34 @@ describe("useAutoSave Hook", () => {
       expect(result.current.lastSavedAt).not.toBeNull();
     });
 
-    it("should reset debounce timer on each change", () => {
+    it("should reset debounce timer on each change", async () => {
       const { rerender } = renderHook(
         ({ data }) => useAutoSave({ ...defaultOptions, data }),
         { initialProps: { data: defaultOptions.data } }
       );
 
-      // First change
-      act(() => {
-        rerender({ data: { selfRating: 4, selfComments: "First" } });
-        jest.advanceTimersByTime(15000); // Half of debounce time
-      });
-
-      // Second change - should reset timer
-      act(() => {
-        rerender({ data: { selfRating: 5, selfComments: "Second" } });
-        jest.advanceTimersByTime(15000); // Another half
-      });
-
-      // Should not have saved yet
-      expect(mockOnSave).not.toHaveBeenCalled();
-
-      // Advance remaining time
-      act(() => {
+      // First change - advance 15s (half debounce)
+      rerender({ data: { selfRating: 4, selfComments: "First" } });
+      await act(async () => {
         jest.advanceTimersByTime(15000);
       });
 
+      // Second change - should reset timer, advance 15s (still half)
+      rerender({ data: { selfRating: 5, selfComments: "Second" } });
+      await act(async () => {
+        jest.advanceTimersByTime(15000);
+      });
+
+      // Should not have saved yet (only 15s since last change)
+      expect(mockOnSave).not.toHaveBeenCalled();
+
+      // Advance remaining 15s to complete debounce
+      await act(async () => {
+        jest.advanceTimersByTime(15000);
+        await Promise.resolve();
+      });
+
+      // Now should have saved
       expect(mockOnSave).toHaveBeenCalledWith({
         selfRating: 5,
         selfComments: "Second",

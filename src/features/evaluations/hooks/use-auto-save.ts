@@ -115,6 +115,7 @@ export function useAutoSave<T>({
         err instanceof Error ? err.message : "Failed to save";
       setError(errorMessage);
       setState("error");
+      setIsDirty(true); // Keep dirty flag since save failed
     } finally {
       isSavingRef.current = false;
     }
@@ -182,7 +183,8 @@ export function useAutoSave<T>({
     setIsDirty(false);
     setState("idle");
     setError(null);
-  }, [evaluationId, data]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [evaluationId]); // Only run when evaluationId changes, not when data changes
 
   return {
     state,

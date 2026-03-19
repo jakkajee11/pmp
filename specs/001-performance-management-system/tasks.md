@@ -370,14 +370,14 @@
 
 ### Implementation for User Story 11
 
-- [ ] T169 [P] [US11] Create src/features/documents/types.ts with Document types
-- [ ] T170 [US11] Implement S3 presigned URL handlers in src/features/documents/api/handlers.ts
-- [ ] T171 [US11] Implement S3 service in src/features/documents/api/s3-service.ts
-- [ ] T172 [P] [US11] [UI/UX] Create FileUpload component in src/features/documents/components/file-upload.tsx
-- [ ] T173 [P] [US11] [UI/UX] Create FileList component in src/features/documents/components/file-list.tsx
-- [ ] T174 [P] [US11] Create useFileUpload hook in src/features/documents/hooks/use-file-upload.ts
-- [ ] T175 [US11] Create src/features/documents/index.ts and src/app/api/documents/route.ts
-- [ ] T176 [US11] Integrate document upload into self-evaluation form
+- [X] T169 [P] [US11] Create src/features/documents/types.ts with Document types
+- [X] T170 [US11] Implement S3 presigned URL handlers in src/features/documents/api/handlers.ts
+- [X] T171 [US11] Implement S3 service in src/features/documents/api/s3-service.ts
+- [X] T172 [P] [US11] [UI/UX] Create FileUpload component in src/features/documents/components/file-upload.tsx
+- [X] T173 [P] [US11] [UI/UX] Create FileList component in src/features/documents/components/file-list.tsx
+- [X] T174 [P] [US11] Create useFileUpload hook in src/features/documents/hooks/use-file-upload.ts
+- [X] T175 [US11] Create src/features/documents/index.ts and src/app/api/documents/route.ts
+- [X] T176 [US11] Integrate document upload into self-evaluation form
 
 ---
 
@@ -387,14 +387,14 @@
 
 ### Implementation for User Story 12
 
-- [ ] T177 [P] [US12] Complete all UI translations in messages/en.json
-- [ ] T178 [P] [US12] Complete all UI translations in messages/th.json
-- [ ] T179 [US12] Create src/features/settings/types.ts with Settings types
-- [ ] T180 [US12] Implement settings handlers in src/features/settings/api/handlers.ts
-- [ ] T181 [P] [US12] [UI/UX] Create LanguageSelector in src/features/settings/components/language-selector.tsx
-- [ ] T182 [P] [US12] Create useSettings hook in src/features/settings/hooks/use-settings.ts
-- [ ] T183 [US12] Create src/features/settings/index.ts and src/app/(auth)/settings/page.tsx
-- [ ] T184 [US12] Configure next-intl middleware in src/middleware.ts
+- [x] T177 [P] [US12] Complete all UI translations in messages/en.json
+- [x] T178 [P] [US12] Complete all UI translations in messages/th.json
+- [X] T179 [US12] Create src/features/settings/types.ts with Settings types
+- [X] T180 [US12] Implement settings handlers in src/features/settings/api/handlers.ts
+- [X] T181 [P] [US12] [UI/UX] Create LanguageSelector in src/features/settings/components/language-selector.tsx
+- [X] T182 [P] [US12] Create useSettings hook in src/features/settings/hooks/use-settings.ts
+- [X] T183 [US12] Create src/features/settings/index.ts and src/app/(auth)/settings/page.tsx
+- [X] T184 [US12] Configure next-intl middleware in src/middleware.ts
 
 ---
 

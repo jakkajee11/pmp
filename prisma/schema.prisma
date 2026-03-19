@@ -80,29 +80,30 @@ enum NotificationStatus {
 // ============================================================================
 
 model User {
-  id           String       @id @default(uuid())
-  email        String       @unique
-  name         String
-  nameTh       String?
-  role         Role         @default(EMPLOYEE)
-  managerId    String?
-  manager      User?        @relation("ManagerReports", fields: [managerId], references: [id], onDelete: NoAction, onUpdate: NoAction)
+  id            String      @id @default(uuid())
+  email         String      @unique
+  name          String
+  nameTh        String?
+  role          Role        @default(EMPLOYEE)
+  managerId     String?
+  manager       User?       @relation("ManagerReports", fields: [managerId], references: [id], onDelete: NoAction, onUpdate: NoAction)
   directReports User[]      @relation("ManagerReports")
-  departmentId String?
-  department   Department?  @relation(fields: [departmentId], references: [id])
-  language     String       @default("en")
-  isActive     Boolean      @default(true)
-  createdAt    DateTime     @default(now())
-  updatedAt    DateTime     @updatedAt
+  departmentId  String?
+  department    Department? @relation(fields: [departmentId], references: [id])
+  language      String      @default("en")
+  isActive      Boolean     @default(true)
+  createdAt     DateTime    @default(now())
+  updatedAt     DateTime    @updatedAt
 
-  objectivesAssigned  Objective[]       @relation("ObjectiveAssignee")
-  objectivesCreated   Objective[]       @relation("ObjectiveCreator")
-  employeeEvaluations Evaluation[]      @relation("EmployeeEvaluations")
-  managerEvaluations  Evaluation[]      @relation("ManagerEvaluations")
-  documents           Document[]
+  objectivesAssigned  Objective[]         @relation("ObjectiveAssignee")
+  objectivesCreated   Objective[]         @relation("ObjectiveCreator")
+  employeeEvaluations Evaluation[]        @relation("EmployeeEvaluations")
+  managerEvaluations  Evaluation[]        @relation("ManagerEvaluations")
+  documents           Document[]          @relation("UserDocuments")
   auditLogs           AuditLog[]
   notifications       Notification[]
   evaluationSummaries EvaluationSummary[]
+  settings            UserSettings?
 
   @@index([managerId])
   @@index([departmentId])
@@ -125,21 +126,22 @@ model Department {
 }
 
 model ReviewCycle {
-  id                    String       @id @default(uuid())
+  id                    String      @id @default(uuid())
   name                  String
   type                  CycleType
-  startDate             DateTime     @db.Date
-  endDate               DateTime     @db.Date
-  selfEvalDeadline      DateTime     @db.Date
-  managerReviewDeadline DateTime     @db.Date
-  gracePeriodDays       Int          @default(0)
-  status                CycleStatus  @default(DRAFT)
+  startDate             DateTime    @db.Date
+  endDate               DateTime    @db.Date
+  selfEvalDeadline      DateTime    @db.Date
+  managerReviewDeadline DateTime    @db.Date
+  gracePeriodDays       Int         @default(0)
+  status                CycleStatus @default(DRAFT)
   weightsConfig         Json
-  createdAt             DateTime     @default(now())
-  updatedAt             DateTime     @updatedAt
+  createdAt             DateTime    @default(now())
+  updatedAt             DateTime    @updatedAt
 
-  objectives  Objective[]
-  evaluations Evaluation[]
+  objectives          Objective[]
+  evaluations         Evaluation[]
+  evaluationSummaries EvaluationSummary[]
 
   @@index([status])
   @@index([startDate, endDate])
@@ -147,27 +149,27 @@ model ReviewCycle {
 }
 
 model Objective {
-  id             String             @id @default(uuid())
-  title          String             @db.VarChar(500)
-  description    String             @db.Text
-  keyResults     String?            @db.Text
-  category       ObjectiveCategory
-  timeline       String             @db.VarChar(100)
-  rating1Desc    String             @db.Text
-  rating2Desc    String             @db.Text
-  rating3Desc    String             @db.Text
-  rating4Desc    String             @db.Text
-  rating5Desc    String             @db.Text
-  assignedTo     String
-  employee       User               @relation("ObjectiveAssignee", fields: [assignedTo], references: [id])
-  cycleId        String
-  cycle          ReviewCycle        @relation(fields: [cycleId], references: [id])
-  createdBy      String
-  creator        User               @relation("ObjectiveCreator", fields: [createdBy], references: [id])
-  documents      Document[]
-  evaluations    Evaluation[]
-  createdAt      DateTime           @default(now())
-  updatedAt      DateTime           @updatedAt
+  id          String            @id @default(uuid())
+  title       String            @db.VarChar(500)
+  description String            @db.Text
+  keyResults  String?           @db.Text
+  category    ObjectiveCategory
+  timeline    String            @db.VarChar(100)
+  rating1Desc String            @db.Text
+  rating2Desc String            @db.Text
+  rating3Desc String            @db.Text
+  rating4Desc String            @db.Text
+  rating5Desc String            @db.Text
+  assignedTo  String
+  employee    User              @relation("ObjectiveAssignee", fields: [assignedTo], references: [id])
+  cycleId     String
+  cycle       ReviewCycle       @relation(fields: [cycleId], references: [id])
+  createdBy   String
+  creator     User              @relation("ObjectiveCreator", fields: [createdBy], references: [id])
+  documents   Document[]
+  evaluations Evaluation[]
+  createdAt   DateTime          @default(now())
+  updatedAt   DateTime          @updatedAt
 
   @@index([assignedTo])
   @@index([cycleId])
@@ -176,20 +178,20 @@ model Objective {
 }
 
 model CoreValue {
-  id            String        @id @default(uuid())
-  name          String
-  nameTh        String?
-  description   String        @db.Text
-  rating1Desc   String        @db.Text
-  rating2Desc   String        @db.Text
-  rating3Desc   String        @db.Text
-  rating4Desc   String        @db.Text
-  rating5Desc   String        @db.Text
-  displayOrder  Int
-  isActive      Boolean       @default(true)
-  evaluations   Evaluation[]
-  createdAt     DateTime      @default(now())
-  updatedAt     DateTime      @updatedAt
+  id           String       @id @default(uuid())
+  name         String
+  nameTh       String?
+  description  String       @db.Text
+  rating1Desc  String       @db.Text
+  rating2Desc  String       @db.Text
+  rating3Desc  String       @db.Text
+  rating4Desc  String       @db.Text
+  rating5Desc  String       @db.Text
+  displayOrder Int
+  isActive     Boolean      @default(true)
+  evaluations  Evaluation[]
+  createdAt    DateTime     @default(now())
+  updatedAt    DateTime     @updatedAt
 
   @@index([displayOrder])
   @@map("core_values")
@@ -219,45 +221,46 @@ model Evaluation {
   createdAt         DateTime         @default(now())
   updatedAt         DateTime         @updatedAt
 
+  @@unique([employeeId, cycleId, objectiveId])
+  @@unique([employeeId, cycleId, coreValueId])
   @@index([employeeId])
   @@index([managerId])
   @@index([cycleId])
-  @@unique([employeeId, cycleId, objectiveId])
-  @@unique([employeeId, cycleId, coreValueId])
   @@map("evaluations")
 }
 
 model EvaluationSummary {
-  id                  String     @id @default(uuid())
+  id                  String      @id @default(uuid())
   employeeId          String
-  employee            User       @relation(fields: [employeeId], references: [id])
+  employee            User        @relation(fields: [employeeId], references: [id])
   cycleId             String
   cycle               ReviewCycle @relation(fields: [cycleId], references: [id])
-  overallComments     String?    @db.Text
-  kpiScore            Decimal?   @db.Decimal(5, 2)
-  coreValuesScore     Decimal?   @db.Decimal(5, 2)
-  finalScore          Decimal?   @db.Decimal(5, 2)
-  bonusRecommendation String?    @db.VarChar(100)
-  salaryAdjustment    String?    @db.VarChar(100)
-  status              String     @default("in_progress")
+  overallComments     String?     @db.Text
+  kpiScore            Decimal?    @db.Decimal(5, 2)
+  coreValuesScore     Decimal?    @db.Decimal(5, 2)
+  finalScore          Decimal?    @db.Decimal(5, 2)
+  bonusRecommendation String?     @db.VarChar(100)
+  salaryAdjustment    String?     @db.VarChar(100)
+  status              String      @default("in_progress")
   finalizedAt         DateTime?
-  createdAt           DateTime   @default(now())
-  updatedAt           DateTime   @updatedAt
+  createdAt           DateTime    @default(now())
+  updatedAt           DateTime    @updatedAt
 
   @@unique([employeeId, cycleId])
   @@map("evaluation_summaries")
 }
 
 model Document {
-  id          String   @id @default(uuid())
+  id          String    @id @default(uuid())
   objectiveId String
   objective   Objective @relation(fields: [objectiveId], references: [id], onDelete: Cascade)
   employeeId  String
-  fileName    String   @db.VarChar(255)
-  fileKey     String   @db.VarChar(500)
+  employee    User      @relation("UserDocuments", fields: [employeeId], references: [id], onDelete: Cascade)
+  fileName    String    @db.VarChar(255)
+  fileKey     String    @db.VarChar(500)
   fileSize    Int
-  mimeType    String   @db.VarChar(100)
-  uploadedAt  DateTime @default(now())
+  mimeType    String    @db.VarChar(100)
+  uploadedAt  DateTime  @default(now())
 
   @@index([objectiveId])
   @@index([employeeId])
@@ -284,21 +287,42 @@ model AuditLog {
 }
 
 model Notification {
-  id           String             @id @default(uuid())
+  id           String              @id @default(uuid())
   userId       String
-  user         User               @relation(fields: [userId], references: [id])
+  user         User                @relation(fields: [userId], references: [id])
   type         NotificationType
   channel      NotificationChannel
-  subject      String             @db.VarChar(500)
-  message      String             @db.Text
-  status       NotificationStatus @default(PENDING)
+  subject      String              @db.VarChar(500)
+  message      String              @db.Text
+  status       NotificationStatus  @default(PENDING)
   sentAt       DateTime?
-  retryCount   Int                @default(0)
-  errorMessage String?            @db.Text
-  createdAt    DateTime           @default(now())
+  retryCount   Int                 @default(0)
+  errorMessage String?             @db.Text
+  createdAt    DateTime            @default(now())
 
   @@index([userId])
   @@index([status])
   @@index([createdAt])
   @@map("notifications")
+}
+
+model UserSettings {
+  id                 String   @id @default(uuid())
+  userId             String   @unique
+  user               User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  locale             String   @default("en")
+  theme              String   @default("system")
+  dateFormat         String   @default("DD/MM/YYYY")
+  timezone           String   @default("Asia/Bangkok")
+  emailNotifications Boolean  @default(true)
+  smsNotifications   Boolean  @default(false)
+  teamsNotifications Boolean  @default(true)
+  reminderDaysBefore Int      @default(3)
+  autoSaveInterval   Int      @default(30)
+  compactMode        Boolean  @default(false)
+  showHelpTips       Boolean  @default(true)
+  createdAt          DateTime @default(now())
+  updatedAt          DateTime @updatedAt
+
+  @@map("user_settings")
 }

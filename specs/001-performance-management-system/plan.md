@@ -371,15 +371,32 @@ features/[feature-name]/
 ## UI/UX Design Guidelines
 
 **Skill**: Use `ui-ux-pro-max` skill for all UI/UX design tasks.
+**Design Style**: **Professional Corporate** - Enterprise-grade, trustworthy, and polished.
 
-When implementing UI components, dashboards, forms, and visual elements, leverage the `ui-ux-pro-max` skill which provides:
-- 50 design styles and 21 color palettes
-- 50 font pairings and 20 chart types
-- Support for React, Next.js, Tailwind, and shadcn/ui
+When implementing UI components, dashboards, forms, and visual elements, leverage the `ui-ux-pro-max` skill with the following professional corporate style specifications:
+
+### Professional Corporate Style Specification
+
+| Attribute | Specification |
+|-----------|---------------|
+| **Color Palette** | Navy blue primary (#1e3a5f), slate gray accents, white backgrounds, subtle gradients |
+| **Typography** | Clean sans-serif (Inter, system-ui), clear hierarchy, professional tone |
+| **Layout** | Generous whitespace, clear sections, card-based organization |
+| **Components** | Subtle shadows, rounded corners (sm/md), refined borders |
+| **Interactions** | Smooth transitions, clear hover states, professional animations |
+| **Data Density** | Balanced - readable tables, scannable dashboards |
+| **Branding** | Subtle corporate identity, consistent iconography |
+
+### Visual Characteristics
+
+- **Trustworthy**: Professional color scheme conveying reliability and competence
+- **Clean**: Minimal clutter, purposeful white space, organized information
+- **Accessible**: High contrast ratios, clear visual hierarchy
+- **Enterprise-Ready**: Suitable for corporate environment, stakeholder presentations
 
 ### Tasks Using UI/UX Design Skill
 
-The following task categories should use the `ui-ux-pro-max` skill:
+The following task categories should use the `ui-ux-pro-max` skill with **Professional Corporate** style:
 
 | Category | Example Tasks |
 |----------|---------------|
@@ -399,6 +416,7 @@ The following task categories should use the `ui-ux-pro-max` skill:
 3. **Responsiveness**: Mobile-first design, tested at 320px-1920px viewports
 4. **Performance**: Lazy loading for heavy components (charts, org tree)
 5. **Internationalization**: All text externalized to messages/en.json and messages/th.json
+6. **Professional Polish**: Refined micro-interactions, consistent spacing, corporate aesthetics
 
 ## Complexity Tracking
 

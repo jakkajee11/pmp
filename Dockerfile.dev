@@ -1,0 +1,15 @@
+FROM node:24-alpine
+WORKDIR /app
+
+RUN apk add --no-cache libc6-compat openssl
+
+COPY package.json package-lock.json* ./
+RUN npm ci
+
+COPY . .
+
+EXPOSE 13300
+ENV PORT=13300
+ENV HOSTNAME="0.0.0.0"
+
+CMD ["npm", "run", "dev"]

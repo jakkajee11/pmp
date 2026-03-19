@@ -1,0 +1,304 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+// ============================================================================
+// ENUMS
+// ============================================================================
+
+enum Role {
+  SUPER_ADMIN
+  HR_ADMIN
+  HR_STAFF
+  SENIOR_MANAGER
+  LINE_MANAGER
+  EMPLOYEE
+}
+
+enum CycleType {
+  MID_YEAR
+  YEAR_END
+}
+
+enum CycleStatus {
+  DRAFT
+  ACTIVE
+  CLOSED
+}
+
+enum ObjectiveCategory {
+  DELIVERY
+  INNOVATION
+  QUALITY
+  CULTURE
+}
+
+enum EvaluationType {
+  KPI
+  CORE_VALUE
+}
+
+enum EvaluationStatus {
+  NOT_STARTED
+  SELF_IN_PROGRESS
+  SELF_SUBMITTED
+  MANAGER_IN_PROGRESS
+  COMPLETED
+  RETURNED
+}
+
+enum NotificationType {
+  CYCLE_START
+  DEADLINE_REMINDER
+  SUBMISSION_CONFIRM
+  FEEDBACK_AVAILABLE
+  ESCALATION
+}
+
+enum NotificationChannel {
+  EMAIL
+  SMS
+  TEAMS
+}
+
+enum NotificationStatus {
+  PENDING
+  SENT
+  FAILED
+}
+
+// ============================================================================
+// MODELS
+// ============================================================================
+
+model User {
+  id           String       @id @default(uuid())
+  email        String       @unique
+  name         String
+  nameTh       String?
+  role         Role         @default(EMPLOYEE)
+  managerId    String?
+  manager      User?        @relation("ManagerReports", fields: [managerId], references: [id], onDelete: NoAction, onUpdate: NoAction)
+  directReports User[]      @relation("ManagerReports")
+  departmentId String?
+  department   Department?  @relation(fields: [departmentId], references: [id])
+  language     String       @default("en")
+  isActive     Boolean      @default(true)
+  createdAt    DateTime     @default(now())
+  updatedAt    DateTime     @updatedAt
+
+  objectivesAssigned  Objective[]       @relation("ObjectiveAssignee")
+  objectivesCreated   Objective[]       @relation("ObjectiveCreator")
+  employeeEvaluations Evaluation[]      @relation("EmployeeEvaluations")
+  managerEvaluations  Evaluation[]      @relation("ManagerEvaluations")
+  documents           Document[]
+  auditLogs           AuditLog[]
+  notifications       Notification[]
+  evaluationSummaries EvaluationSummary[]
+
+  @@index([managerId])
+  @@index([departmentId])
+  @@map("users")
+}
+
+model Department {
+  id        String       @id @default(uuid())
+  name      String
+  nameTh    String?
+  parentId  String?
+  parent    Department?  @relation("DeptHierarchy", fields: [parentId], references: [id], onDelete: NoAction, onUpdate: NoAction)
+  children  Department[] @relation("DeptHierarchy")
+  users     User[]
+  createdAt DateTime     @default(now())
+  updatedAt DateTime     @updatedAt
+
+  @@index([parentId])
+  @@map("departments")
+}
+
+model ReviewCycle {
+  id                    String       @id @default(uuid())
+  name                  String
+  type                  CycleType
+  startDate             DateTime     @db.Date
+  endDate               DateTime     @db.Date
+  selfEvalDeadline      DateTime     @db.Date
+  managerReviewDeadline DateTime     @db.Date
+  gracePeriodDays       Int          @default(0)
+  status                CycleStatus  @default(DRAFT)
+  weightsConfig         Json
+  createdAt             DateTime     @default(now())
+  updatedAt             DateTime     @updatedAt
+
+  objectives  Objective[]
+  evaluations Evaluation[]
+
+  @@index([status])
+  @@index([startDate, endDate])
+  @@map("review_cycles")
+}
+
+model Objective {
+  id             String             @id @default(uuid())
+  title          String             @db.VarChar(500)
+  description    String             @db.Text
+  keyResults     String?            @db.Text
+  category       ObjectiveCategory
+  timeline       String             @db.VarChar(100)
+  rating1Desc    String             @db.Text
+  rating2Desc    String             @db.Text
+  rating3Desc    String             @db.Text
+  rating4Desc    String             @db.Text
+  rating5Desc    String             @db.Text
+  assignedTo     String
+  employee       User               @relation("ObjectiveAssignee", fields: [assignedTo], references: [id])
+  cycleId        String
+  cycle          ReviewCycle        @relation(fields: [cycleId], references: [id])
+  createdBy      String
+  creator        User               @relation("ObjectiveCreator", fields: [createdBy], references: [id])
+  documents      Document[]
+  evaluations    Evaluation[]
+  createdAt      DateTime           @default(now())
+  updatedAt      DateTime           @updatedAt
+
+  @@index([assignedTo])
+  @@index([cycleId])
+  @@index([createdBy])
+  @@map("objectives")
+}
+
+model CoreValue {
+  id            String        @id @default(uuid())
+  name          String
+  nameTh        String?
+  description   String        @db.Text
+  rating1Desc   String        @db.Text
+  rating2Desc   String        @db.Text
+  rating3Desc   String        @db.Text
+  rating4Desc   String        @db.Text
+  rating5Desc   String        @db.Text
+  displayOrder  Int
+  isActive      Boolean       @default(true)
+  evaluations   Evaluation[]
+  createdAt     DateTime      @default(now())
+  updatedAt     DateTime      @updatedAt
+
+  @@index([displayOrder])
+  @@map("core_values")
+}
+
+model Evaluation {
+  id                String           @id @default(uuid())
+  employeeId        String
+  employee          User             @relation("EmployeeEvaluations", fields: [employeeId], references: [id])
+  managerId         String
+  manager           User             @relation("ManagerEvaluations", fields: [managerId], references: [id])
+  cycleId           String
+  cycle             ReviewCycle      @relation(fields: [cycleId], references: [id])
+  objectiveId       String?
+  objective         Objective?       @relation(fields: [objectiveId], references: [id])
+  coreValueId       String?
+  coreValue         CoreValue?       @relation(fields: [coreValueId], references: [id])
+  evaluationType    EvaluationType
+  selfRating        Int?
+  selfComments      String?          @db.Text
+  selfSubmittedAt   DateTime?
+  managerRating     Int?
+  managerFeedback   String?          @db.Text
+  managerReviewedAt DateTime?
+  status            EvaluationStatus @default(NOT_STARTED)
+  version           Int              @default(1)
+  createdAt         DateTime         @default(now())
+  updatedAt         DateTime         @updatedAt
+
+  @@index([employeeId])
+  @@index([managerId])
+  @@index([cycleId])
+  @@unique([employeeId, cycleId, objectiveId])
+  @@unique([employeeId, cycleId, coreValueId])
+  @@map("evaluations")
+}
+
+model EvaluationSummary {
+  id                  String     @id @default(uuid())
+  employeeId          String
+  employee            User       @relation(fields: [employeeId], references: [id])
+  cycleId             String
+  cycle               ReviewCycle @relation(fields: [cycleId], references: [id])
+  overallComments     String?    @db.Text
+  kpiScore            Decimal?   @db.Decimal(5, 2)
+  coreValuesScore     Decimal?   @db.Decimal(5, 2)
+  finalScore          Decimal?   @db.Decimal(5, 2)
+  bonusRecommendation String?    @db.VarChar(100)
+  salaryAdjustment    String?    @db.VarChar(100)
+  status              String     @default("in_progress")
+  finalizedAt         DateTime?
+  createdAt           DateTime   @default(now())
+  updatedAt           DateTime   @updatedAt
+
+  @@unique([employeeId, cycleId])
+  @@map("evaluation_summaries")
+}
+
+model Document {
+  id          String   @id @default(uuid())
+  objectiveId String
+  objective   Objective @relation(fields: [objectiveId], references: [id], onDelete: Cascade)
+  employeeId  String
+  fileName    String   @db.VarChar(255)
+  fileKey     String   @db.VarChar(500)
+  fileSize    Int
+  mimeType    String   @db.VarChar(100)
+  uploadedAt  DateTime @default(now())
+
+  @@index([objectiveId])
+  @@index([employeeId])
+  @@map("documents")
+}
+
+model AuditLog {
+  id         String   @id @default(uuid())
+  userId     String
+  user       User     @relation(fields: [userId], references: [id])
+  action     String   @db.VarChar(50)
+  entityType String   @db.VarChar(100)
+  entityId   String
+  oldValues  Json?
+  newValues  Json?
+  ipAddress  String   @db.VarChar(45)
+  userAgent  String?  @db.VarChar(500)
+  createdAt  DateTime @default(now())
+
+  @@index([userId])
+  @@index([entityType, entityId])
+  @@index([createdAt])
+  @@map("audit_logs")
+}
+
+model Notification {
+  id           String             @id @default(uuid())
+  userId       String
+  user         User               @relation(fields: [userId], references: [id])
+  type         NotificationType
+  channel      NotificationChannel
+  subject      String             @db.VarChar(500)
+  message      String             @db.Text
+  status       NotificationStatus @default(PENDING)
+  sentAt       DateTime?
+  retryCount   Int                @default(0)
+  errorMessage String?            @db.Text
+  createdAt    DateTime           @default(now())
+
+  @@index([userId])
+  @@index([status])
+  @@index([createdAt])
+  @@map("notifications")
+}

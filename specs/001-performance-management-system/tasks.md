@@ -10,7 +10,7 @@
 |--------|---------|
 | `[P]` | Parallelizable - can run concurrently with other [P] tasks |
 | `[US#]` | User Story reference (e.g., [US1], [US2]) |
-| `[UI/UX]` | **Use `ui-ux-pro-max` skill** - UI/UX design task requiring design intelligence |
+| `[UI/UX]` | **Use `ui-ux-pro-max` skill with Professional Corporate style** - Navy blue (#1e3a5f), slate gray accents, clean sans-serif typography, enterprise-grade aesthetics |
 
 ## Summary
 
@@ -21,6 +21,7 @@
 - **Setup + Foundational**: 36 tasks
 - **Polish**: 14 tasks
 - **Parallel Opportunities**: High within each user story phase
+- **UI/UX Style**: Professional Corporate (navy blue primary, clean typography, enterprise-grade)
 
 ---
 
@@ -30,20 +31,20 @@
 
 ### Tasks
 
-- [ ] T001 Initialize Next.js 14 project with App Router and TypeScript in repository root
-- [ ] T002 Configure TypeScript strict mode in tsconfig.json
-- [ ] T003 [P] Install and configure ESLint with recommended rules
-- [ ] T004 [P] Install and configure Prettier with project formatting rules
-- [ ] T005 [P] Create .env.local template with all required environment variables
-- [ ] T006 [P] [UI/UX] Create src/app/layout.tsx with root layout and metadata
-- [ ] T007 [P] [UI/UX] Create src/app/globals.css with base styles
-- [ ] T008 [P] [UI/UX] Install and initialize shadcn/ui in src/shared/components/ui/
-- [ ] T009 Configure Jest for unit testing with TypeScript support
-- [ ] T010 Configure Playwright for E2E testing
-- [ ] T011 Create src/middleware.ts skeleton for auth and i18n
-- [ ] T012 Create src/env.ts with Zod validation for environment variables
-- [ ] T013 [P] Create messages/en.json with initial English translations
-- [ ] T014 [P] Create messages/th.json with initial Thai translations
+- [x] T001 Initialize Next.js 14 project with App Router and TypeScript in repository root
+- [x] T002 Configure TypeScript strict mode in tsconfig.json
+- [x] T003 [P] Install and configure ESLint with recommended rules
+- [x] T004 [P] Install and configure Prettier with project formatting rules
+- [x] T005 [P] Create .env.local template with all required environment variables
+- [x] T006 [P] [UI/UX] Create src/app/layout.tsx with root layout and metadata (Professional Corporate: Inter font, SEO metadata, semantic structure)
+- [x] T007 [P] [UI/UX] Create src/app/globals.css with base styles (Professional Corporate: Navy #1e3a5f primary, slate accents, status colors)
+- [x] T008 [P] [UI/UX] Install and initialize shadcn/ui in src/shared/components/ui/ (Professional Corporate: button, card, badge, input, label, separator, skeleton)
+- [x] T009 Configure Jest for unit testing with TypeScript support
+- [x] T010 Configure Playwright for E2E testing
+- [x] T011 Create src/middleware.ts skeleton for auth and i18n
+- [x] T012 Create src/env.ts with Zod validation for environment variables
+- [x] T013 [P] Create messages/en.json with initial English translations
+- [x] T014 [P] Create messages/th.json with initial Thai translations
 
 ---
 
@@ -53,37 +54,37 @@
 
 ### Database & Shared Libraries
 
-- [ ] T015 Create prisma/schema.prisma with all entities from data-model.md
-- [ ] T016 Run initial Prisma migration to create database tables
-- [ ] T017 Create src/shared/lib/db.ts with Prisma client singleton
-- [ ] T018 [P] Create src/shared/lib/logger.ts with Pino structured logging
-- [ ] T019 [P] Create src/shared/lib/audit.ts with audit logging utility
-- [ ] T020 [P] Create src/shared/lib/i18n.ts with next-intl configuration
+- [x] T015 Create prisma/schema.prisma with all entities from data-model.md
+- [x] T016 Run initial Prisma migration to create database tables
+- [x] T017 Create src/shared/lib/db.ts with Prisma client singleton
+- [x] T018 [P] Create src/shared/lib/logger.ts with Pino structured logging
+- [x] T019 [P] Create src/shared/lib/audit.ts with audit logging utility
+- [x] T020 [P] Create src/shared/lib/i18n.ts with next-intl configuration
 
 ### Shared API Utilities
 
-- [ ] T021 Create src/shared/api/response.ts with success/error response helpers
-- [ ] T022 [P] Create src/shared/api/errors.ts with error classes and codes
-- [ ] T023 Create src/shared/api/middleware.ts with auth, RBAC, and logging middleware
-- [ ] T024 [P] Create src/shared/types/common.ts with Pagination and common types
-- [ ] T025 [P] Create src/shared/types/api.ts with API response types
+- [x] T021 Create src/shared/api/response.ts with success/error response helpers
+- [x] T022 [P] Create src/shared/api/errors.ts with error classes and codes
+- [x] T023 Create src/shared/api/middleware.ts with auth, RBAC, and logging middleware
+- [x] T024 [P] Create src/shared/types/common.ts with Pagination and common types
+- [x] T025 [P] Create src/shared/types/api.ts with API response types
 
 ### Shared Hooks & Utils
 
-- [ ] T026 [P] Create src/shared/hooks/use-debounce.ts with lodash.debounce wrapper
-- [ ] T027 [P] Create src/shared/hooks/use-local-storage.ts for offline draft storage
-- [ ] T028 [P] Create src/shared/utils/date.ts with date formatting utilities
-- [ ] T029 [P] Create src/shared/utils/validation.ts with common Zod schemas
-- [ ] T030 [P] Create src/shared/utils/constants.ts with app-wide constants
+- [x] T026 [P] Create src/shared/hooks/use-debounce.ts with lodash.debounce wrapper
+- [x] T027 [P] Create src/shared/hooks/use-local-storage.ts for offline draft storage
+- [x] T028 [P] Create src/shared/utils/date.ts with date formatting utilities
+- [x] T029 [P] Create src/shared/utils/validation.ts with common Zod schemas
+- [x] T030 [P] Create src/shared/utils/constants.ts with app-wide constants
 
 ### Authentication Feature
 
-- [ ] T031 Create src/features/auth/types.ts with session and user types
-- [ ] T032 Implement OIDC provider configuration in src/features/auth/api/session.ts
-- [ ] T033 Create src/features/auth/components/session-provider.tsx for client components
-- [ ] T034 Create src/features/auth/hooks/use-session.ts for session access
-- [ ] T035 Create src/features/auth/index.ts with public exports
-- [ ] T036 Create src/app/api/auth/[...nextauth]/route.ts re-exporting from auth feature
+- [x] T031 Create src/features/auth/types.ts with session and user types
+- [x] T032 Implement OIDC provider configuration in src/features/auth/api/session.ts
+- [x] T033 Create src/features/auth/components/session-provider.tsx for client components
+- [x] T034 Create src/features/auth/hooks/use-session.ts for session access
+- [x] T035 Create src/features/auth/index.ts with public exports
+- [x] T036 Create src/app/api/auth/[...nextauth]/route.ts re-exporting from auth feature
 
 ---
 
@@ -534,7 +535,7 @@ T102, T103, T104, T105, T106, T107, T108
 ✅ Task IDs are sequential (T001-T198)
 ✅ [P] markers indicate parallelizable tasks
 ✅ [US#] labels map to user stories from spec.md
-✅ [UI/UX] markers indicate tasks requiring `ui-ux-pro-max` skill for design intelligence
+✅ [UI/UX] markers indicate tasks requiring `ui-ux-pro-max` skill with **Professional Corporate** style
 ✅ File paths use feature-based structure from plan.md
 
 ---

@@ -1,0 +1,15 @@
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile.dev
+    volumes:
+      - .:/app
+      - /app/node_modules
+      - /app/.next
+    environment:
+      - NODE_ENV=development
+      - DATABASE_URL=postgresql://pmp:pmp_password@db:5432/pmp?schema=public
+      - NEXTAUTH_URL=http://localhost:13300
+      - NEXTAUTH_SECRET=dev-secret-key-min-32-characters-long
+    command: npm run dev

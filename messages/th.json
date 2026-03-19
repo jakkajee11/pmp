@@ -1,0 +1,54 @@
+{
+  "common": {
+    "appName": "ระบบประเมินผลการปฏิบัติงาน",
+    "loading": "กำลังโหลด...",
+    "save": "บันทึก",
+    "cancel": "ยกเลิก",
+    "submit": "ส่ง",
+    "delete": "ลบ",
+    "edit": "แก้ไข",
+    "create": "สร้าง",
+    "search": "ค้นหา",
+    "filter": "กรอง",
+    "noResults": "ไม่พบข้อมูล",
+    "error": "เกิดข้อผิดพลาด",
+    "success": "ดำเนินการสำเร็จ"
+  },
+  "auth": {
+    "login": "เข้าสู่ระบบ",
+    "logout": "ออกจากระบบ",
+    "profile": "โปรไฟล์"
+  },
+  "dashboard": {
+    "title": "แดชบอร์ด",
+    "welcome": "ยินดีต้อนรับ, {name}"
+  },
+  "navigation": {
+    "dashboard": "แดชบอร์ด",
+    "evaluations": "การประเมินของฉัน",
+    "objectives": "เป้าหมาย",
+    "team": "ทีมของฉัน",
+    "cycles": "รอบการประเมิน",
+    "users": "ผู้ใช้งาน",
+    "reports": "รายงาน",
+    "settings": "การตั้งค่า"
+  },
+  "evaluation": {
+    "selfEvaluation": "การประเมินตนเอง",
+    "managerReview": "การประเมินโดยผู้จัดการ",
+    "rating": "คะแนน",
+    "comments": "ความคิดเห็น",
+    "status": {
+      "notStarted": "ยังไม่เริ่ม",
+      "inProgress": "กำลังดำเนินการ",
+      "submitted": "ส่งแล้ว",
+      "completed": "เสร็จสิ้น"
+    }
+  },
+  "objective": {
+    "title": "เป้าหมาย",
+    "description": "รายละเอียด",
+    "category": "หมวดหมู่",
+    "timeline": "ไทม์ไลน์"
+  }
+}

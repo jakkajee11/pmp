@@ -1,0 +1,54 @@
+{
+  "common": {
+    "appName": "Performance Metrics Portal",
+    "loading": "Loading...",
+    "save": "Save",
+    "cancel": "Cancel",
+    "submit": "Submit",
+    "delete": "Delete",
+    "edit": "Edit",
+    "create": "Create",
+    "search": "Search",
+    "filter": "Filter",
+    "noResults": "No results found",
+    "error": "An error occurred",
+    "success": "Operation successful"
+  },
+  "auth": {
+    "login": "Login",
+    "logout": "Logout",
+    "profile": "Profile"
+  },
+  "dashboard": {
+    "title": "Dashboard",
+    "welcome": "Welcome, {name}"
+  },
+  "navigation": {
+    "dashboard": "Dashboard",
+    "evaluations": "My Evaluations",
+    "objectives": "Objectives",
+    "team": "My Team",
+    "cycles": "Review Cycles",
+    "users": "Users",
+    "reports": "Reports",
+    "settings": "Settings"
+  },
+  "evaluation": {
+    "selfEvaluation": "Self Evaluation",
+    "managerReview": "Manager Review",
+    "rating": "Rating",
+    "comments": "Comments",
+    "status": {
+      "notStarted": "Not Started",
+      "inProgress": "In Progress",
+      "submitted": "Submitted",
+      "completed": "Completed"
+    }
+  },
+  "objective": {
+    "title": "Objective",
+    "description": "Description",
+    "category": "Category",
+    "timeline": "Timeline"
+  }
+}

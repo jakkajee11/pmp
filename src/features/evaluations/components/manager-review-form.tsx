@@ -18,12 +18,25 @@ import { RatingSlider, RatingBadge } from "./rating-slider";
 import { AutoSaveIndicator } from "./auto-save-indicator";
 import { EvaluationStatusBadge } from "./evaluation-status";
 import { useAutoSave } from "../hooks/use-auto-save";
+import {
+  CoreValueRating,
+  type CoreValueRating as CoreValueRatingType,
+} from "@/features/core-values";
+import { useCoreValues } from "@/features/core-values";
 
 export interface ManagerReviewFormProps {
   evaluation: EvaluationWithRelations;
-  onSubmit: (data: { managerRating: number; managerFeedback: string }) => Promise<void>;
+  onSubmit: (data: {
+    managerRating: number;
+    managerFeedback: string;
+    coreValueRatings?: { coreValueId: string; rating: number; comments?: string }[];
+  }) => Promise<void>;
   onReturn?: (reason: string) => Promise<void>;
-  onAutoSave?: (data: { managerRating: number; managerFeedback: string }) => Promise<void>;
+  onAutoSave?: (data: {
+    managerRating: number;
+    managerFeedback: string;
+    coreValueRatings?: { coreValueId: string; rating: number; comments?: string }[];
+  }) => Promise<void>;
   isSubmitting?: boolean;
   className?: string;
 }
@@ -42,13 +55,30 @@ export function ManagerReviewForm({
   const [returnReason, setReturnReason] = React.useState("");
   const [showConfirmDialog, setShowConfirmDialog] = React.useState(false);
 
+  // Core Values state
+  const { coreValues, isLoading: isLoadingCoreValues } = useCoreValues({ autoFetch: true });
+  const [coreValueRatings, setCoreValueRatings] = React.useState<
+    Record<string, { rating: number; comments: string }>
+  >({});
+
   // Auto-save setup
   const autoSave = useAutoSave({
     evaluationId: evaluation.id,
-    data: { managerRating, managerFeedback },
+    data: { managerRating, managerFeedback, coreValueRatings },
     onSave: async (data) => {
       if (onAutoSave) {
-        await onAutoSave(data);
+        const coreValueRatingsArray = Object.entries(data.coreValueRatings || {}).map(
+          ([coreValueId, ratingData]) => ({
+            coreValueId,
+            rating: ratingData.rating,
+            comments: ratingData.comments || undefined,
+          })
+        );
+        await onAutoSave({
+          managerRating: data.managerRating,
+          managerFeedback: data.managerFeedback,
+          coreValueRatings: coreValueRatingsArray,
+        });
       }
     },
     debounceMs: 30000,
@@ -67,7 +97,18 @@ export function ManagerReviewForm({
   }, [evaluation.managerRating, evaluation.managerFeedback]);
 
   const handleSubmit = async () => {
-    await onSubmit({ managerRating, managerFeedback });
+    const coreValueRatingsArray = Object.entries(coreValueRatings).map(
+      ([coreValueId, data]) => ({
+        coreValueId,
+        rating: data.rating,
+        comments: data.comments || undefined,
+      })
+    );
+    await onSubmit({
+      managerRating,
+      managerFeedback,
+      coreValueRatings: coreValueRatingsArray,
+    });
     setShowConfirmDialog(false);
   };
 
@@ -156,6 +197,63 @@ export function ManagerReviewForm({
           {RATING_LABELS[managerRating]}
         </p>
       </div>
+
+      {/* Core Values Assessment */}
+      {coreValues.length > 0 && (
+        <div className="space-y-4">
+          <div className="flex items-center justify-between">
+            <h3 className="text-sm font-medium text-slate-700">
+              Core Values Assessment
+            </h3>
+            <span className="text-xs text-slate-500">
+              Weight: 20% of final score
+            </span>
+          </div>
+          {isLoadingCoreValues ? (
+            <div className="space-y-4 animate-pulse">
+              {[1, 2, 3].map((i) => (
+                <div key={i} className="h-32 bg-slate-200 rounded" />
+              ))}
+            </div>
+          ) : (
+            <div className="space-y-4">
+              {coreValues
+                .filter((cv) => cv.isActive)
+                .sort((a, b) => a.displayOrder - b.displayOrder)
+                .map((coreValue) => (
+                  <CoreValueRating
+                    key={coreValue.id}
+                    coreValue={{
+                      coreValueId: coreValue.id,
+                      coreValueName: coreValue.name,
+                      rating: coreValueRatings[coreValue.id]?.rating ?? null,
+                      rating1Desc: coreValue.rating1Desc,
+                      rating2Desc: coreValue.rating2Desc,
+                      rating3Desc: coreValue.rating3Desc,
+                      rating4Desc: coreValue.rating4Desc,
+                      rating5Desc: coreValue.rating5Desc,
+                      comments: coreValueRatings[coreValue.id]?.comments ?? null,
+                    }}
+                    onRatingChange={(id, rating) =>
+                      setCoreValueRatings((prev) => ({
+                        ...prev,
+                        [id]: { ...prev[id], rating, comments: prev[id]?.comments ?? "" },
+                      }))
+                    }
+                    onCommentsChange={(id, comments) =>
+                      setCoreValueRatings((prev) => ({
+                        ...prev,
+                        [id]: { ...prev[id], comments },
+                      }))
+                    }
+                    readOnly={!canEdit}
+                    showRatingDescriptions={false}
+                  />
+                ))}
+            </div>
+          )}
+        </div>
+      )}
 
       {/* Manager Feedback */}
       <div className="space-y-2">

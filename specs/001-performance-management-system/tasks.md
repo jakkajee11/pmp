@@ -267,14 +267,14 @@
 
 ### Implementation for User Story 6
 
-- [ ] T125 [P] [US6] Create src/features/core-values/types.ts with CoreValue types
-- [ ] T126 [US6] Implement core value CRUD handlers in src/features/core-values/api/handlers.ts
-- [ ] T127 [P] [US6] [UI/UX] Create CoreValueForm in src/features/core-values/components/core-value-form.tsx
-- [ ] T128 [P] [US6] [UI/UX] Create CoreValueRating in src/features/core-values/components/core-value-rating.tsx
-- [ ] T129 [P] [US6] [UI/UX] Create CoreValueList in src/features/core-values/components/core-value-list.tsx
-- [ ] T130 [P] [US6] Create useCoreValues hook in src/features/core-values/hooks/use-core-values.ts
-- [ ] T131 [US6] Create src/features/core-values/index.ts with public exports
-- [ ] T132 [US6] Integrate core values into manager review form
+- [x] T125 [P] [US6] Create src/features/core-values/types.ts with CoreValue types
+- [x] T126 [US6] Implement core value CRUD handlers in src/features/core-values/api/handlers.ts
+- [x] T127 [P] [US6] [UI/UX] Create CoreValueForm in src/features/core-values/components/core-value-form.tsx
+- [x] T128 [P] [US6] [UI/UX] Create CoreValueRating in src/features/core-values/components/core-value-rating.tsx
+- [x] T129 [P] [US6] [UI/UX] Create CoreValueList in src/features/core-values/components/core-value-list.tsx
+- [x] T130 [P] [US6] Create useCoreValues hook in src/features/core-values/hooks/use-core-values.ts
+- [x] T131 [US6] Create src/features/core-values/index.ts with public exports
+- [x] T132 [US6] Integrate core values into manager review form
 
 **Checkpoint**: User Story 6 complete - core values assessment functional
 

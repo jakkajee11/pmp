@@ -8,6 +8,29 @@ description: Code review workflow agent. TRIGGER when: user says "review code", 
 
 **Purpose:** Review completed development work and approve/reject for QA testing.
 
+## Dynamic Skill Resolution
+
+Before reviewing, resolve appropriate reviewer skills:
+
+1. **Check Project Context**
+   - Load project-context.json for detected frameworks
+   - If stale/missing, invoke `/workflow.detectProject`
+
+2. **Resolve Reviewer Skills**
+   - Load skill-mappings.json
+   - Get skills for `reviewer` role based on task type
+   - Display resolved skills:
+   ```
+   === REVIEWER SKILL RESOLUTION ===
+   🔧 Project: nextjs-app
+   🔧 Task type: Backend
+   🔧 Resolved: backend-reviewer
+   ```
+
+3. **Load Reviewer Skill**
+   - Auto-load resolved reviewer skill
+   - Apply skill-specific review criteria
+
 ## Workflow
 
 1. **Load State**
@@ -72,6 +95,15 @@ description: Code review workflow agent. TRIGGER when: user says "review code", 
 6. **Handoff**
    - On approval → Task moves to QA queue
    - Next step: `/workflow.switch qa` then `/workflow.qa`
+
+## Reviewer Skill Resolution
+
+| Project Type | Backend Task | Frontend Task | Fullstack |
+|--------------|-------------|---------------|-----------|
+| nextjs | backend-reviewer | react-reviewer | backend-reviewer, react-reviewer |
+| dotnet | dotnet-reviewer | dotnet-reviewer | dotnet-reviewer |
+| go | go-reviewer | - | go-reviewer |
+| python | python-reviewer | - | python-reviewer |
 
 ## Commands
 

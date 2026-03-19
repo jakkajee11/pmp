@@ -1,8 +1,33 @@
 {
-  "schema": "1.0",
-  "version": "2.0.0",
+  "schema": "1.2",
+  "version": "3.0.0",
   "lastUpdated": "2026-03-19T15:00:00Z",
   "currentRole": "dev",
+  "projectContext": {
+    "type": "nextjs-app",
+    "frameworks": ["nextjs", "react"],
+    "languages": ["typescript"],
+    "databases": ["prisma", "postgresql"],
+    "detectedAt": "2026-03-19T15:00:00Z",
+    "confidence": 0.98
+  },
+  "resolvedMappings": {
+    "dev": {
+      "backend": ["nextjs-backend"],
+      "frontend": ["ui-ux-pro-max"],
+      "fullstack": ["nextjs-backend", "ui-ux-pro-max"]
+    },
+    "reviewer": {
+      "backend": ["backend-reviewer"],
+      "frontend": ["react-reviewer"],
+      "fullstack": ["backend-reviewer", "react-reviewer"]
+    },
+    "qa": {}
+  },
+  "skillRegistry": {
+    "lastScanned": "2026-03-19T15:00:00Z",
+    "skillCount": 10
+  },
   "automation": {
     "enabled": true,
     "reviewMode": "balanced",
@@ -17,6 +42,24 @@
       "evalUsage": "eval\\s*\\(",
       "commandInjection": "exec\\s*\\(\\s*['\"]"
     }
+  },
+  "taskSchema": {
+    "type": "object",
+    "properties": {
+      "stage": { "type": "string" },
+      "assignedRole": { "type": "string" },
+      "startedAt": { "type": "string" },
+      "notes": { "type": "string" },
+      "source": { "type": "string" },
+      "type": { "enum": ["backend", "frontend", "fullstack", "unknown"] },
+      "skills": { "type": "array", "items": { "type": "string" } },
+      "resolvedFrom": { "type": "string", "description": "Source of skill resolution: dynamic|fallback|hardcoded" }
+    }
+  },
+  "skillMapping": {
+    "backend": ["nextjs-backend"],
+    "frontend": ["ui-ux-pro-max"],
+    "fullstack": ["nextjs-backend", "ui-ux-pro-max"]
   },
   "tasks": {},
   "queues": {
@@ -45,6 +88,11 @@
       "action": "tasks_completed",
       "taskId": "T179-T184",
       "details": "Phase 14 completed - Settings feature with language selector, API handlers, and next-intl middleware configuration"
+    },
+    {
+      "timestamp": "2026-03-19T15:30:00Z",
+      "action": "dynamic_skill_detection_enabled",
+      "details": "Upgraded to v3.0.0 with dynamic skill detection and project-aware skill resolution"
     }
   ]
 }

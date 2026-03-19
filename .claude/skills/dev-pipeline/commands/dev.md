@@ -54,16 +54,140 @@ This skill integrates with `/speckit.implement` via the `.specify/extensions.yml
      - Record `startedAt` timestamp
      - Update workflow-state.json
 
-5. **Implementation Guidelines**
+5. **Dynamic Skill Resolution**
+
+   a. **Check Project Context**
+      - Read `.claude/skills/dev-pipeline/project-context.json`
+      - If missing or stale (>24h), invoke `/workflow.detectProject`
+      - Detection sources: CLAUDE.md, package.json, *.csproj, go.mod
+
+   b. **Check Skill Registry**
+      - Read `.claude/skills/dev-pipeline/skill-registry.json`
+      - If missing or stale (>24h), invoke `/workflow.discoverSkills`
+      - Scan: ~/.claude/skills/
+
+   c. **Resolve Skills**
+      - Read `.claude/skills/dev-pipeline/skill-mappings.json`
+      - Match project frameworks to skill mappings
+      - Filter by task type (backend/frontend/fullstack)
+      - Verify skills exist in registry
+      - Priority: framework-specific → default → hardcoded fallback
+
+   d. **Display Resolution**
+      ```
+      === SKILL RESOLUTION ===
+      🔧 Project: Next.js 14.x (App Router)
+      🔧 Detected frameworks: nextjs, react
+      🔧 Task type: Backend
+      🔧 Resolved: nextjs-backend (from framework mapping)
+      🔧 Resolution source: dynamic
+
+      → Auto-loading nextjs-backend skill
+      → Skill provides: API route patterns, server actions, middleware, auth, DB integration
+      ```
+
+6. **Task Type Detection**
+   - Analyze task description for type indicators
+   - Detect task type and update task metadata:
+
+   **Backend Indicators:**
+   - Contains "api/", "route.ts", "handlers.ts"
+   - Contains "server action", "actions.ts"
+   - Contains "prisma", "db.ts", "database", "schema"
+   - Contains "middleware"
+   - Contains "integration test" for API endpoints
+   - Contains "CRUD", "endpoint", "API"
+
+   **Frontend Indicators:**
+   - Has [UI/UX] marker
+   - Contains "component", "page.tsx"
+   - Contains "hook" (client-side)
+   - Contains "styling", "CSS", "tailwind"
+
+   **Fullstack:**
+   - Contains both backend and frontend indicators
+
+   **Auto-Load Actions:**
+   ```
+   🔧 Backend task detected - auto-loading nextjs-backend skill
+   → Skill provides: API route patterns, server actions, middleware, auth, DB integration
+   ```
+   OR
+   ```
+   🎨 Frontend task detected - auto-loading ui-ux-pro-max skill
+   → Skill provides: Component patterns, styling, UX best practices
+   ```
+   OR
+   ```
+   🔄 Fullstack task detected - loading both skills
+   → Combined guidance for end-to-end implementation
+   ```
+
+7. **Implementation Guidelines**
    - Follow TDD: Write test first, then implement
    - Reference task context from tasks.md
    - Run tests frequently
    - Commit small, focused changes
+   - Apply skill-specific patterns from auto-loaded skill
 
-6. **Completion Actions**
+8. **Completion Actions**
    - Run full test suite: `npm test`
    - If PASS → Mark task for handoff, invoke `/workflow.handoff <taskId>`
    - If FAIL → Display failures, continue development
+
+## Skill Resolution Algorithm
+
+```markdown
+## resolveSkills(role, taskType, frameworks)
+
+1. Load project-context.json
+2. Load skill-registry.json
+3. Load skill-mappings.json
+
+4. For each framework in detected frameworks:
+   a. Check mappings.frameworkMappings[framework][role][taskType]
+   b. If found, verify skills exist in registry
+   c. Add to resolved list
+
+5. If no skills found:
+   a. Check mappings.defaultMapping[role][taskType]
+   b. Verify skills exist in registry
+   c. Add to resolved list
+
+6. If still no skills:
+   a. Use hardcoded fallback from workflow-state.json skillMapping
+
+7. Return resolved skills with resolution source
+```
+
+## Task Type Detection Logic
+
+When analyzing a task, use these patterns:
+
+```markdown
+**Backend Keywords:**
+- api/route, api/handler, route.ts, handlers.ts
+- server action, actions.ts
+- prisma, db.ts, database, schema, migration
+- middleware, auth, authentication
+- integration test (for API), crud, endpoint
+- POST, GET, PUT, DELETE, REST
+
+**Frontend Keywords:**
+- [UI/UX] marker
+- component, page.tsx, layout.tsx
+- hook (client-side), useState, useEffect
+- styling, CSS, tailwind, animation
+- form, input, button, modal
+- accessibility, aria
+
+**Detection Priority:**
+1. Explicit [UI/UX] marker → Frontend
+2. Multiple backend indicators → Backend
+3. Multiple frontend indicators → Frontend
+4. Mixed indicators → Fullstack
+5. No clear indicators → Ask user
+```
 
 ## State Updates
 
@@ -74,7 +198,10 @@ This skill integrates with `/speckit.implement` via the `.specify/extensions.yml
     "assignedRole": "dev",
     "startedAt": "ISO timestamp",
     "notes": "Implementation notes",
-    "source": "tasks.md"
+    "source": "tasks.md",
+    "type": "backend" | "frontend" | "fullstack",
+    "skills": ["nextjs-backend"],
+    "resolvedFrom": "dynamic" | "fallback" | "hardcoded"
   }
 }
 ```
@@ -87,6 +214,8 @@ This skill integrates with `/speckit.implement` via the `.specify/extensions.yml
 | `/workflow.status` | View all queues |
 | `/workflow.handoff <id>` | Move task to review |
 | `/workflow.switch reviewer` | Switch to reviewer role |
+| `/workflow.discoverSkills` | Re-scan available skills |
+| `/workflow.detectProject` | Re-detect project type |
 
 ## Hook Execution Flow
 
@@ -101,12 +230,14 @@ speckit.implement
 │ /workflow.dev           │
 │ - Sync tasks from       │
 │   tasks.md              │
+│ - Detect project type   │
+│ - Resolve skills        │
 │ - Set current role      │
 │ - Track task progress   │
 └─────────────────────────┘
        │
        ▼
-[Implementation proceeds]
+[Implementation proceeds with resolved skills]
        │
        ▼
 ┌─────────────────────────┐
@@ -123,3 +254,12 @@ speckit.implement
 - If task not found in tasks.md, prompt user for clarification
 - If tests fail, provide detailed failure output and suggested fixes
 - If hook mode but no tasks.md, proceed with manual task entry
+- If skill resolution fails, fall back to hardcoded skillMapping
+
+## Fallback Behavior
+
+When dynamic resolution fails:
+1. Log warning: "Dynamic skill resolution failed, using fallback"
+2. Use skillMapping from workflow-state.json
+3. Set `resolvedFrom: "hardcoded"` in task metadata
+4. Continue with implementation

@@ -1,0 +1,110 @@
+{
+  "lastScanned": "2026-03-19T15:00:00Z",
+  "skillCount": 10,
+  "skills": {
+    "nextjs-backend": {
+      "name": "nextjs-backend",
+      "framework": "nextjs",
+      "role": "dev",
+      "category": "backend",
+      "pattern": "framework-role",
+      "description": "Next.js backend development specialist",
+      "triggers": ["api route", "server action", "middleware", "prisma"]
+    },
+    "ui-ux-pro-max": {
+      "name": "ui-ux-pro-max",
+      "framework": "any",
+      "role": "dev",
+      "category": "frontend",
+      "pattern": "generic",
+      "description": "UI/UX design intelligence for frontend",
+      "triggers": ["component", "page", "styling", "CSS", "tailwind"]
+    },
+    "backend-reviewer": {
+      "name": "backend-reviewer",
+      "framework": "any",
+      "role": "reviewer",
+      "category": "backend",
+      "pattern": "role-type",
+      "description": "Backend code reviewer for security, performance",
+      "triggers": ["review code", "check security", "code quality"]
+    },
+    "react-reviewer": {
+      "name": "react-reviewer",
+      "framework": "react",
+      "role": "reviewer",
+      "category": "frontend",
+      "pattern": "framework-role",
+      "description": "React.js frontend code reviewer",
+      "triggers": ["review component", "react review"]
+    },
+    "webapp-testing": {
+      "name": "webapp-testing",
+      "framework": "any",
+      "role": "qa",
+      "category": "testing",
+      "pattern": "generic",
+      "description": "Toolkit for testing local web applications",
+      "triggers": ["test app", "e2e test", "playwright"]
+    },
+    "mcp-builder": {
+      "name": "mcp-builder",
+      "framework": "any",
+      "role": "dev",
+      "category": "tools",
+      "pattern": "generic",
+      "description": "Guide for creating MCP servers",
+      "triggers": ["mcp server", "create mcp"]
+    },
+    "claude-api": {
+      "name": "claude-api",
+      "framework": "any",
+      "role": "dev",
+      "category": "api",
+      "pattern": "generic",
+      "description": "Build apps with Claude API",
+      "triggers": ["claude api", "anthropic sdk"]
+    },
+    "pdf": {
+      "name": "pdf",
+      "framework": "any",
+      "role": "dev",
+      "category": "tools",
+      "pattern": "generic",
+      "description": "PDF file manipulation",
+      "triggers": ["pdf", "create pdf"]
+    },
+    "docx": {
+      "name": "docx",
+      "framework": "any",
+      "role": "dev",
+      "category": "tools",
+      "pattern": "generic",
+      "description": "Word document manipulation",
+      "triggers": ["word doc", "docx"]
+    },
+    "skill-creator": {
+      "name": "skill-creator",
+      "framework": "any",
+      "role": "dev",
+      "category": "tools",
+      "pattern": "generic",
+      "description": "Create new Claude skills",
+      "triggers": ["create skill", "new skill"]
+    }
+  },
+  "byFramework": {
+    "nextjs": ["nextjs-backend"],
+    "react": ["react-reviewer"],
+    "dotnet": [],
+    "go": [],
+    "python": [],
+    "rust": [],
+    "any": ["ui-ux-pro-max", "backend-reviewer", "webapp-testing", "mcp-builder", "claude-api", "pdf", "docx", "skill-creator"]
+  },
+  "byRole": {
+    "dev": ["nextjs-backend", "ui-ux-pro-max", "mcp-builder", "claude-api", "pdf", "docx", "skill-creator"],
+    "reviewer": ["backend-reviewer", "react-reviewer"],
+    "qa": ["webapp-testing"]
+  }
+}

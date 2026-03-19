@@ -8,6 +8,29 @@ description: QA testing workflow agent. TRIGGER when: user says "run QA", "test 
 
 **Purpose:** Test approved features through integration and E2E testing before marking complete.
 
+## Dynamic Skill Resolution
+
+Before QA testing, resolve appropriate QA skills:
+
+1. **Check Project Context**
+   - Load project-context.json for detected frameworks
+   - If stale/missing, invoke `/workflow.detectProject`
+
+2. **Resolve QA Skills**
+   - Load skill-mappings.json
+   - Get skills for `qa` role based on task type
+   - Display resolved skills:
+   ```
+   === QA SKILL RESOLUTION ===
+   🔧 Project: nextjs-app
+   🔧 Task type: Backend
+   🔧 Resolved: webapp-testing (generic)
+   ```
+
+3. **Load QA Skill**
+   - Auto-load resolved QA skill (e.g., webapp-testing)
+   - Apply skill-specific testing patterns
+
 ## Workflow
 
 1. **Load State**
@@ -118,6 +141,15 @@ description: QA testing workflow agent. TRIGGER when: user says "run QA", "test 
    - Move task back to `in_development`
    - Remove from `in_qa` queue
    - Notify: "Task failed QA: No tests found. Returned to development."
+
+## QA Skill Resolution
+
+| Project Type | Backend Task | Frontend Task | Fullstack |
+|--------------|-------------|---------------|-----------|
+| nextjs | webapp-testing | webapp-testing | webapp-testing |
+| dotnet | dotnet-qa | dotnet-qa | dotnet-qa |
+| go | go-qa | - | go-qa |
+| generic | webapp-testing | webapp-testing | webapp-testing |
 
 ## Test Execution
 

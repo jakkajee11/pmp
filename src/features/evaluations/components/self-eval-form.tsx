@@ -19,8 +19,10 @@ import { useAutoSave } from "../hooks/use-auto-save";
 import {
   EvaluationWithRelations,
   UpdateSelfEvalRequest,
-  EvaluationStatus,
 } from "../types";
+import { FileUpload } from "@/features/documents/components/file-upload";
+import { FileList } from "@/features/documents/components/file-list";
+import { useFileUpload } from "@/features/documents/hooks/use-file-upload";
 
 export interface SelfEvalFormProps {
   /** Evaluation data */
@@ -33,6 +35,77 @@ export interface SelfEvalFormProps {
   className?: string;
   /** Whether the form is read-only */
   readOnly?: boolean;
+}
+
+/**
+ * Self-Eval Documents Component
+ *
+ * Manages document upload and display within the self-evaluation form.
+ */
+function SelfEvalDocuments({
+  objectiveId,
+  readOnly,
+}: {
+  objectiveId: string;
+  readOnly: boolean;
+}) {
+  const {
+    documents,
+    isUploading,
+    error,
+    deleteDocument,
+    clearError,
+    refreshDocuments,
+  } = useFileUpload({
+    objectiveId,
+    onUploadComplete: (doc) => {
+      console.log("Document uploaded:", doc.fileName);
+    },
+    onUploadError: (fileName, err) => {
+      console.error("Upload error:", fileName, err);
+    },
+  });
+
+  // Fetch existing documents on mount
+  React.useEffect(() => {
+    refreshDocuments();
+  }, [refreshDocuments]);
+
+  return (
+    <div className="space-y-4">
+      {/* Existing Documents */}
+      {documents.length > 0 && (
+        <FileList
+          documents={documents}
+          onDelete={readOnly ? undefined : deleteDocument}
+          readOnly={readOnly}
+        />
+      )}
+
+      {/* Upload Area */}
+      {!readOnly && (
+        <FileUpload
+          objectiveId={objectiveId}
+          disabled={isUploading}
+          maxFiles={5}
+        />
+      )}
+
+      {/* Error Display */}
+      {error && (
+        <div className="flex items-center justify-between p-3 bg-destructive/10 text-destructive rounded-lg text-sm">
+          <span>{error}</span>
+          <button
+            type="button"
+            onClick={clearError}
+            className="text-xs underline hover:no-underline"
+          >
+            Dismiss
+          </button>
+        </div>
+      )}
+    </div>
+  );
 }
 
 /**
@@ -185,6 +258,22 @@ export function SelfEvalForm({
           <AutoSaveIndicator status={autoSaveStatus} compact />
         </div>
       </div>
+
+      {/* Supporting Documents Section */}
+      {evaluation.objective && (
+        <div className="space-y-3">
+          <h3 className="text-sm font-medium text-slate-700">
+            Supporting Documents
+          </h3>
+          <p className="text-xs text-slate-500">
+            Upload supporting documents for this objective (PDF, Word, Excel, or images)
+          </p>
+          <SelfEvalDocuments
+            objectiveId={evaluation.objective.id}
+            readOnly={!isEditable}
+          />
+        </div>
+      )}
 
       {/* Submit Section */}
       {isEditable && (

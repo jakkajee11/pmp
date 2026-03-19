@@ -12,16 +12,37 @@
     "filter": "Filter",
     "noResults": "No results found",
     "error": "An error occurred",
-    "success": "Operation successful"
+    "success": "Operation successful",
+    "confirm": "Confirm",
+    "dismiss": "Dismiss",
+    "close": "Close",
+    "back": "Back",
+    "next": "Next",
+    "previous": "Previous",
+    "view": "View",
+    "viewAll": "View All",
+    "viewDetails": "View Details",
+    "actions": "Actions",
+    "status": "Status",
+    "active": "Active",
+    "inactive": "Inactive",
+    "all": "All",
+    "yes": "Yes",
+    "no": "No",
+    "required": "Required",
+    "optional": "Optional",
+    "showing": "Showing {from} to {to} of {total}",
+    "page": "Page {current} of {total}",
+    "characters": "{count} characters",
+    "maxFiles": "Maximum {count} files allowed"
   },
   "auth": {
     "login": "Login",
     "logout": "Logout",
-    "profile": "Profile"
-  },
-  "dashboard": {
-    "title": "Dashboard",
-    "welcome": "Welcome, {name}"
+    "profile": "Profile",
+    "signIn": "Sign In",
+    "signOut": "Sign Out",
+    "welcomeBack": "Welcome back"
   },
   "navigation": {
     "dashboard": "Dashboard",
@@ -31,24 +52,483 @@
     "cycles": "Review Cycles",
     "users": "Users",
     "reports": "Reports",
-    "settings": "Settings"
+    "settings": "Settings",
+    "auditLogs": "Audit Logs",
+    "orgChart": "Organization Chart",
+    "notifications": "Notifications",
+    "coreValues": "Core Values"
   },
-  "evaluation": {
-    "selfEvaluation": "Self Evaluation",
-    "managerReview": "Manager Review",
-    "rating": "Rating",
-    "comments": "Comments",
-    "status": {
-      "notStarted": "Not Started",
-      "inProgress": "In Progress",
-      "submitted": "Submitted",
-      "completed": "Completed"
+  "dashboard": {
+    "title": "Dashboard",
+    "welcome": "Welcome, {name}",
+    "overview": "Overview",
+    "myEvaluations": "My Evaluations",
+    "teamReviews": "Team Reviews",
+    "pendingReviews": "Pending Reviews",
+    "completedReviews": "Completed Reviews",
+    "totalEmployees": "Total Employees",
+    "selfEvalComplete": "Self-Evaluation Complete",
+    "managerReviewComplete": "Manager Review Complete",
+    "completionRate": "Completion Rate",
+    "statusSummary": "Status Summary",
+    "recentActivity": "Recent Activity",
+    "quickActions": "Quick Actions",
+    "startSelfEval": "Start Self-Evaluation",
+    "reviewTeam": "Review Team",
+    "viewReports": "View Reports",
+    "employeeDashboard": "Employee Dashboard",
+    "managerDashboard": "Manager Dashboard",
+    "hrDashboard": "HR Dashboard"
+  },
+  "users": {
+    "title": "User Management",
+    "addUser": "Add User",
+    "editUser": "Edit User",
+    "createUser": "Create User",
+    "updateUser": "Update User",
+    "deactivateUser": "Deactivate User",
+    "reactivateUser": "Reactivate User",
+    "deactivateConfirm": "Are you sure you want to deactivate this user?",
+    "importUsers": "Import Users",
+    "exportUsers": "Export Users",
+    "searchPlaceholder": "Search by name or email...",
+    "filterByRole": "Filter by role",
+    "filterByStatus": "Filter by status",
+    "allRoles": "All Roles",
+    "allStatus": "All Status",
+    "noUsersFound": "No users found. Try adjusting your filters.",
+    "table": {
+      "name": "Name",
+      "email": "Email",
+      "role": "Role",
+      "department": "Department",
+      "manager": "Manager",
+      "status": "Status",
+      "actions": "Actions"
+    },
+    "form": {
+      "name": "Full Name",
+      "nameTh": "Thai Name",
+      "email": "Email Address",
+      "role": "Role",
+      "department": "Department",
+      "manager": "Reporting Manager",
+      "language": "Preferred Language"
+    },
+    "roles": {
+      "SUPER_ADMIN": "Super Admin",
+      "HR_ADMIN": "HR Admin",
+      "HR_STAFF": "HR Staff",
+      "SENIOR_MANAGER": "Senior Manager",
+      "LINE_MANAGER": "Line Manager",
+      "EMPLOYEE": "Employee"
+    },
+    "import": {
+      "title": "Import Users from CSV",
+      "description": "Upload a CSV file to bulk import users",
+      "downloadTemplate": "Download Template",
+      "selectFile": "Select CSV File",
+      "importing": "Importing...",
+      "success": "Successfully imported {count} users",
+      "partialSuccess": "Imported {imported} users, {skipped} skipped",
+      "error": "Failed to import users"
     }
   },
-  "objective": {
-    "title": "Objective",
-    "description": "Description",
-    "category": "Category",
-    "timeline": "Timeline"
+  "departments": {
+    "title": "Departments",
+    "addDepartment": "Add Department",
+    "editDepartment": "Edit Department",
+    "name": "Department Name",
+    "nameTh": "Thai Name",
+    "parent": "Parent Department",
+    "employeeCount": "Employee Count",
+    "noParent": "No parent (top level)"
+  },
+  "orgChart": {
+    "title": "Organization Chart",
+    "viewMode": "View Mode",
+    "expandAll": "Expand All",
+    "collapseAll": "Collapse All",
+    "searchEmployee": "Search employee...",
+    "noOrgData": "No organization data available"
+  },
+  "cycles": {
+    "title": "Review Cycles",
+    "createCycle": "Create Cycle",
+    "editCycle": "Edit Cycle",
+    "activateCycle": "Activate Cycle",
+    "closeCycle": "Close Cycle",
+    "viewCycle": "View Cycle Details",
+    "noCycles": "No review cycles found.",
+    "createFirst": "Create your first cycle",
+    "table": {
+      "name": "Name",
+      "type": "Type",
+      "period": "Period",
+      "status": "Status",
+      "selfEvalProgress": "Self-Eval Progress",
+      "managerProgress": "Manager Review Progress"
+    },
+    "types": {
+      "MID_YEAR": "Mid-Year Review",
+      "YEAR_END": "Year-End Review"
+    },
+    "statuses": {
+      "DRAFT": "Draft",
+      "ACTIVE": "Active",
+      "CLOSED": "Closed"
+    },
+    "form": {
+      "name": "Cycle Name",
+      "type": "Review Type",
+      "startDate": "Start Date",
+      "endDate": "End Date",
+      "selfEvalDeadline": "Self-Evaluation Deadline",
+      "managerDeadline": "Manager Review Deadline",
+      "gracePeriod": "Grace Period (days)",
+      "weightsConfig": "Weights Configuration",
+      "kpiWeight": "KPI Weight (%)",
+      "coreValuesWeight": "Core Values Weight (%)"
+    },
+    "deadline": {
+      "title": "Deadline Configuration",
+      "extendDeadline": "Extend Deadline",
+      "extensionType": "Extension Type",
+      "newDeadline": "New Deadline",
+      "selectUsers": "Select Users",
+      "selfEval": "Self-Evaluation",
+      "managerReview": "Manager Review"
+    }
+  },
+  "objectives": {
+    "title": "Objectives",
+    "createObjective": "Create Objective",
+    "editObjective": "Edit Objective",
+    "deleteObjective": "Delete Objective",
+    "copyObjective": "Copy to...",
+    "bulkAssign": "Bulk Assign",
+    "assignTo": "Assign to",
+    "noObjectives": "No objectives found.",
+    "categories": {
+      "DELIVERY": "Delivery",
+      "INNOVATION": "Innovation",
+      "QUALITY": "Quality",
+      "CULTURE": "Culture"
+    },
+    "categoryDescriptions": {
+      "DELIVERY": "Goals related to project delivery and timely completion",
+      "INNOVATION": "Goals focused on new ideas and creative solutions",
+      "QUALITY": "Goals centered on quality standards and improvements",
+      "CULTURE": "Goals aligned with company values and team culture"
+    },
+    "form": {
+      "title": "Title",
+      "description": "Description",
+      "category": "Category",
+      "timeline": "Timeline",
+      "keyResults": "Key Results (Optional)",
+      "assignedTo": "Assigned To",
+      "cycle": "Review Cycle",
+      "ratingCriteria": "Rating Criteria"
+    },
+    "timelines": {
+      "Q1": "Q1",
+      "Q2": "Q2",
+      "Q3": "Q3",
+      "Q4": "Q4",
+      "H1": "H1",
+      "H2": "H2",
+      "FULL_YEAR": "Full Year"
+    },
+    "statuses": {
+      "not_started": "Not Started",
+      "self_in_progress": "Self Evaluation In Progress",
+      "self_submitted": "Self Evaluation Submitted",
+      "manager_in_progress": "Manager Review In Progress",
+      "completed": "Completed",
+      "returned": "Returned"
+    },
+    "card": {
+      "hasKRs": "Has KRs",
+      "cycle": "Cycle"
+    },
+    "bulkAssign": {
+      "title": "Bulk Assign Objective",
+      "description": "Assign the same objective to multiple employees",
+      "selectEmployees": "Select Employees",
+      "selectedCount": "{count} employees selected",
+      "success": "Successfully created {count} objectives"
+    }
+  },
+  "evaluations": {
+    "title": "Evaluations",
+    "selfEvaluation": "Self Evaluation",
+    "managerReview": "Manager Review",
+    "myEvaluations": "My Evaluations",
+    "teamEvaluations": "Team Evaluations",
+    "startEvaluation": "Start Evaluation",
+    "submitEvaluation": "Submit Evaluation",
+    "submitting": "Submitting...",
+    "returnEvaluation": "Return for Revision",
+    "confirmSubmission": "Confirm Submission",
+    "submissionWarning": "Are you sure you want to submit your self-evaluation? After submission, you won't be able to make changes until your manager completes their review.",
+    "selectRating": "Select a rating to enable submission",
+    "saveBeforeSubmit": "Make sure to save before submitting",
+    "statuses": {
+      "NOT_STARTED": "Not Started",
+      "SELF_IN_PROGRESS": "Self Evaluation In Progress",
+      "SELF_SUBMITTED": "Self Evaluation Submitted",
+      "MANAGER_IN_PROGRESS": "Manager Review In Progress",
+      "COMPLETED": "Completed",
+      "RETURNED": "Returned"
+    },
+    "form": {
+      "yourRating": "Your Self-Rating",
+      "managerRating": "Manager Rating",
+      "comments": "Comments",
+      "feedback": "Feedback",
+      "commentsPlaceholder": "Describe your achievements, challenges, and areas for improvement...",
+      "feedbackPlaceholder": "Provide constructive feedback for the employee..."
+    },
+    "autoSave": {
+      "saving": "Saving...",
+      "saved": "Saved",
+      "error": "Failed to save",
+      "pending": "Pending changes"
+    },
+    "scoring": {
+      "title": "Score Calculation",
+      "kpiScore": "KPI Score",
+      "coreValuesScore": "Core Values Score",
+      "weightedScore": "Weighted Score",
+      "finalScore": "Final Score"
+    },
+    "history": {
+      "title": "Evaluation History",
+      "viewHistory": "View History",
+      "noHistory": "No historical evaluations found",
+      "cycle": "Cycle",
+      "date": "Date",
+      "score": "Score"
+    },
+    "typeLabels": {
+      "KPI": "KPI Objective",
+      "CORE_VALUE": "Core Value"
+    }
+  },
+  "coreValues": {
+    "title": "Core Values",
+    "addValue": "Add Core Value",
+    "editValue": "Edit Core Value",
+    "deleteValue": "Delete Core Value",
+    "form": {
+      "name": "Value Name",
+      "description": "Description",
+      "order": "Display Order"
+    },
+    "assessment": {
+      "title": "Core Values Assessment",
+      "instructions": "Rate the employee on each company core value"
+    },
+    "rating": {
+      "label": "Rating for {value}"
+    }
+  },
+  "notifications": {
+    "title": "Notifications",
+    "markAllRead": "Mark All as Read",
+    "noNotifications": "No notifications",
+    "settings": {
+      "title": "Notification Settings",
+      "description": "Configure how and when you receive notifications.",
+      "channels": "Notification Channels",
+      "types": "Notification Types",
+      "timing": "Reminder Timing",
+      "emailEnabled": "Email notifications",
+      "smsEnabled": "SMS notifications",
+      "teamsEnabled": "Microsoft Teams",
+      "cycleStart": "Review cycle start notifications",
+      "deadlineReminders": "Deadline reminders",
+      "submissionConfirmations": "Submission confirmations",
+      "feedbackNotifications": "Feedback notifications",
+      "sendReminders": "Send deadline reminders",
+      "daysBefore": {
+        "1": "1 day before",
+        "2": "2 days before",
+        "3": "3 days before",
+        "5": "5 days before",
+        "7": "1 week before",
+        "14": "2 weeks before"
+      },
+      "saving": "Saving...",
+      "saveChanges": "Save Changes",
+      "saveSuccess": "Settings saved successfully!",
+      "saveError": "Failed to save notification preferences."
+    },
+    "bell": {
+      "title": "Notifications",
+      "viewAll": "View all notifications",
+      "unread": "{count} unread"
+    }
+  },
+  "reports": {
+    "title": "Reports",
+    "completion": "Completion Report",
+    "ratingDistribution": "Rating Distribution",
+    "export": "Export",
+    "exportCSV": "Export to CSV",
+    "exportPDF": "Export to PDF",
+    "filters": {
+      "title": "Filters",
+      "cycle": "Review Cycle",
+      "department": "Department",
+      "dateRange": "Date Range",
+      "apply": "Apply Filters",
+      "reset": "Reset Filters"
+    },
+    "completion": {
+      "title": "Completion Report",
+      "totalEmployees": "Total Employees",
+      "selfEvalComplete": "Self-Evaluation Complete",
+      "managerReviewComplete": "Manager Review Complete",
+      "statusBreakdown": "Status Breakdown",
+      "byDepartment": "Progress by Department",
+      "notStarted": "Not Started",
+      "selfInProgress": "Self In Progress",
+      "selfSubmitted": "Self Submitted",
+      "managerInProgress": "Manager Review",
+      "completed": "Completed",
+      "employees": "employees",
+      "generated": "Generated"
+    },
+    "distribution": {
+      "title": "Rating Distribution",
+      "byRating": "By Rating",
+      "byDepartment": "By Department",
+      "averageScore": "Average Score"
+    },
+    "dialog": {
+      "title": "Export Report",
+      "format": "Export Format",
+      "includeCharts": "Include Charts",
+      "generating": "Generating report..."
+    }
+  },
+  "auditLogs": {
+    "title": "Audit Logs",
+    "noLogs": "No audit logs found",
+    "noLogsHint": "Try adjusting your filters or check back later",
+    "table": {
+      "timestamp": "Timestamp",
+      "user": "User",
+      "action": "Action",
+      "entity": "Entity",
+      "entityId": "Entity ID",
+      "ipAddress": "IP Address",
+      "actions": "Actions"
+    },
+    "actions": {
+      "create": "Create",
+      "update": "Update",
+      "delete": "Delete",
+      "view": "View"
+    },
+    "entities": {
+      "USER": "User",
+      "DEPARTMENT": "Department",
+      "CYCLE": "Review Cycle",
+      "OBJECTIVE": "Objective",
+      "EVALUATION": "Evaluation",
+      "CORE_VALUE": "Core Value",
+      "DOCUMENT": "Document",
+      "NOTIFICATION": "Notification"
+    },
+    "filters": {
+      "title": "Filter Logs",
+      "dateRange": "Date Range",
+      "user": "User",
+      "action": "Action Type",
+      "entityType": "Entity Type"
+    },
+    "detail": {
+      "title": "Log Details",
+      "changes": "Changes",
+      "before": "Before",
+      "after": "After",
+      "metadata": "Metadata",
+      "system": "System",
+      "notAvailable": "N/A"
+    }
+  },
+  "documents": {
+    "title": "Documents",
+    "upload": "Upload Documents",
+    "uploading": "Uploading...",
+    "noDocuments": "No documents uploaded",
+    "supportedFormats": "PDF, Word, Excel, or images up to {size}",
+    "dragDrop": "Drag and drop files here, or click to browse",
+    "browseFiles": "Browse Files",
+    "fileList": {
+      "name": "File Name",
+      "size": "Size",
+      "uploaded": "Uploaded",
+      "actions": "Actions"
+    },
+    "errors": {
+      "uploadFailed": "Failed to upload file",
+      "invalidType": "Invalid file type",
+      "tooLarge": "File size exceeds limit",
+      "tooMany": "Too many files"
+    }
+  },
+  "settings": {
+    "title": "Settings",
+    "general": "General Settings",
+    "language": "Language",
+    "languageDescription": "Select your preferred language for the interface",
+    "languages": {
+      "en": "English",
+      "th": "Thai (ภาษาไทย)"
+    },
+    "theme": "Theme",
+    "themeDescription": "Choose your preferred theme",
+    "themes": {
+      "light": "Light",
+      "dark": "Dark",
+      "system": "System"
+    },
+    "profile": {
+      "title": "Profile Settings",
+      "name": "Display Name",
+      "email": "Email Address",
+      "language": "Preferred Language"
+    },
+    "saved": "Settings saved successfully",
+    "saveError": "Failed to save settings"
+  },
+  "validation": {
+    "required": "{field} is required",
+    "email": "Invalid email format",
+    "minLength": "{field} must be at least {min} characters",
+    "maxLength": "{field} must be at most {max} characters",
+    "min": "{field} must be at least {min}",
+    "max": "{field} must be at most {max}",
+    "pattern": "{field} format is invalid",
+    "dateRange": "Start date must be before end date",
+    "weightsSum": "Weights must sum to 100%"
+  },
+  "errors": {
+    "generic": "An unexpected error occurred",
+    "notFound": "Page not found",
+    "unauthorized": "You are not authorized to access this page",
+    "forbidden": "You don't have permission to perform this action",
+    "network": "Network error. Please check your connection.",
+    "session": "Your session has expired. Please log in again.",
+    "validation": "Please check your input and try again."
+  },
+  "empty": {
+    "noData": "No data available",
+    "noResults": "No results found",
+    "noRecords": "No records to display"
   }
 }

@@ -221,11 +221,75 @@
 
 ---
 
+---
+
+### 11. Next.js 16.2.0 Upgrade (Framework Upgrade)
+
+**Date**: 2026-03-20
+
+**Decision**: Upgrade from Next.js 14.2.28 to Next.js 16.2.0
+
+**Rationale**:
+- Access to latest performance improvements and features
+- React 19 support with improved concurrent features
+- Better Turbopack stability (now default in dev)
+- Improved caching and partial prerendering
+- Security patches and bug fixes
+- Long-term support alignment
+
+**Breaking Changes to Address**:
+
+1. **Async Request APIs (Next.js 15+)**
+   - `cookies()`, `headers()`, `draftMode()` must be awaited
+   - Route `params` and `searchParams` must be awaited in Server Components
+   - Example: `const { id } = await params` instead of `const { id } = params`
+
+2. **React 19 Compatibility**
+   - Current: React 18.3.1 → Target: React 19.x
+   - `useFormStatus` and `useFormState` moved to `react-dom`
+   - New `use()` hook for promise unwrapping
+   - Ref as prop pattern changes
+
+3. **Turbopack Default**
+   - Development server uses Turbopack by default
+   - May need webpack fallback for some edge cases
+
+4. **Removed APIs**
+   - `router.events` removed (use native events)
+   - Some deprecated `next/image` props removed
+
+**Files Requiring Changes**:
+- `src/app/**/page.tsx` - Server Components with params/searchParams
+- `src/app/api/**/route.ts` - API routes using cookies/headers
+- `src/middleware.ts` - May need updates for new patterns
+- `src/features/**/api/*.ts` - Server actions and handlers
+- `package.json` - Version updates
+
+**Migration Strategy**:
+1. Update package.json versions
+2. Run codemods for async APIs: `npx @next/codemods@latest next-15-async-request-apis .`
+3. Fix remaining TypeScript errors manually
+4. Update tests for async patterns
+5. Run full test suite
+6. Manual QA of critical flows
+
+**Alternatives Considered**:
+- **Stay on Next.js 14.x**: Missing security updates and features, technical debt accumulates
+- **Upgrade to Next.js 15.x first**: Intermediate step not necessary; direct upgrade to 16.x is supported
+- **Gradual migration**: Not feasible; framework upgrade is atomic
+
+**Risk Assessment**:
+- **Risk Level**: Medium-High (2 major version jump)
+- **Estimated Effort**: 4-8 hours for migration + testing
+- **Rollback Plan**: Git revert if critical issues found
+
+---
+
 ## Summary of Technology Decisions
 
 | Concern | Technology | Version |
 |---------|------------|---------|
-| Framework | Next.js | 14.x |
+| Framework | Next.js | 16.2.0 (upgrade from 14.x) |
 | Language | TypeScript | 5.x |
 | Database ORM | Prisma | 5.x |
 | Authentication | NextAuth.js (Auth.js) | 5.x |

@@ -160,8 +160,8 @@ features/[feature-name]/
 
 | Layer | Technology | Version |
 |-------|------------|---------|
-| Frontend | Next.js (React) | 14.x with App Router |
-| Backend | Next.js API Routes | 14.x |
+| Frontend | Next.js (React) | 16.x with App Router |
+| Backend | Next.js API Routes | 16.x |
 | Language | TypeScript | 5.x (strict mode) |
 | Database | PostgreSQL | 15.x |
 | File Storage | Amazon S3 | N/A |

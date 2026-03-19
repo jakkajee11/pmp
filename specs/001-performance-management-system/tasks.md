@@ -14,12 +14,13 @@
 
 ## Summary
 
-- **Total Tasks**: 198
+- **Total Tasks**: 210
 - **P1 Stories (MVP)**: 5 stories, 108 tasks
 - **P2 Stories**: 4 stories, 53 tasks
 - **P3 Stories**: 3 stories, 22 tasks
 - **Setup + Foundational**: 36 tasks
 - **Polish**: 14 tasks
+- **Next.js 16 Upgrade**: 12 tasks
 - **Parallel Opportunities**: High within each user story phase
 - **UI/UX Style**: Professional Corporate (navy blue primary, clean typography, enterprise-grade)
 
@@ -419,6 +420,42 @@
 
 ---
 
+## Phase 16: Next.js 16.2.0 Upgrade (Framework Upgrade)
+
+**Goal**: Upgrade Next.js from 14.2.28 to 16.2.0 and React from 18.3.1 to 19.x.
+
+**Independent Test**: Application starts without errors, all pages load correctly, tests pass.
+
+### Preparation
+
+- [x] T199 Create backup branch `backup-pre-nextjs16` before upgrade
+- [x] T200 Review Next.js 15/16 upgrade guide breaking changes at https://nextjs.org/docs
+
+### Package Updates
+
+- [x] T201 Update package.json: next@16.2.0, react@^19.0.0, react-dom@^19.0.0
+- [x] T202 Run npm install and resolve peer dependency conflicts
+- [x] T203 [P] Update @types/react and @types/react-dom to React 19 compatible versions
+
+### Code Migration - Async Request APIs
+
+- [x] T204 Run Next.js codemod: `npx @next/codemods@latest next-15-async-request-apis .`
+- [x] T205 Fix Server Components with params/searchParams in src/app/(auth)/**/page.tsx
+- [x] T206 Fix API routes using cookies()/headers() in src/app/api/**/route.ts
+- [x] T207 Update src/middleware.ts for any Next.js 16 compatibility issues
+
+### Testing & Validation
+
+- [x] T208 Run unit tests: `npm test` and fix any failures
+- [x] T209 Run E2E tests: `npm run test:e2e` and fix any failures
+- [x] T210 Manual QA: Test authentication, self-evaluation, manager review, file uploads
+
+### Constitution Update
+
+- [x] T211 Update .specify/memory/constitution.md Technology Stack table: Next.js 14.x → 16.x
+
+---
+
 ## Dependencies & Execution Order
 
 ### Phase Dependencies
@@ -456,6 +493,8 @@ Phase 2 (Foundational) ──► Required by all user stories
 └───────────────────────────────────────────────────┘
                     ↓
               Phase 15 (Polish)
+                    ↓
+              Phase 16 (Next.js 16 Upgrade)
 ```
 
 ### User Story Completion Order
@@ -532,7 +571,7 @@ T102, T103, T104, T105, T106, T107, T108
 ## Format Validation
 
 ✅ All tasks follow checklist format: `- [ ] [TaskID] [P?] [Story?] [UI/UX?] Description with file path`
-✅ Task IDs are sequential (T001-T198)
+✅ Task IDs are sequential (T001-T211)
 ✅ [P] markers indicate parallelizable tasks
 ✅ [US#] labels map to user stories from spec.md
 ✅ [UI/UX] markers indicate tasks requiring `ui-ux-pro-max` skill with **Professional Corporate** style

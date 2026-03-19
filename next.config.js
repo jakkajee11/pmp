@@ -61,9 +61,7 @@ const nextConfig = {
   output: 'standalone',
   reactStrictMode: true,
   poweredByHeader: false, // Remove X-Powered-By header
-  experimental: {
-    typedRoutes: true,
-  },
+  typedRoutes: true,
   // Security headers
   async headers() {
     return [

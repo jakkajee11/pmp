@@ -1,19 +1,73 @@
 # Workflow Enforcement Extensions Configuration
-# Version: 1.0
+# Version: 2.0
 # Last Updated: 2026-03-19
 
 extensions:
   workflow-enforcement:
     enabled: true
-    description: Automated Dev -> Reviewer -> QA pipeline enforcement
+    description: Automated Dev -> Reviewer -> QA pipeline enforcement with auto-review and auto-QA
+
     hooks:
       before_implement:
         command: workflow.dev
         description: Invoke developer agent to manage implementation workflow
         optional: false
         prompt: Load workflow state and begin developer workflow for task implementation
+
       after_implement:
-        command: workflow.handoff
-        description: Handoff completed task to review queue
-        optional: false
-        prompt: Move completed task from in_development to in_review queue
+        - command: workflow.handoff
+          description: Handoff completed task to review queue
+          optional: false
+          prompt: Move completed task from in_development to in_review queue
+        - command: workflow.autoReview
+          description: Auto-review code quality and security (Balanced mode)
+          optional: false
+          prompt: Review all tasks in review queue using balanced mode - only errors and security issues fail
+
+      after_review:
+        - command: workflow.autoQA
+          description: Auto-run QA tests for approved tasks (affected tests only)
+          optional: false
+          prompt: Test all tasks in QA queue using affected tests scope
+
+    automation:
+      enabled: true
+      reviewMode: balanced
+      qaScope: affected
+      manualOverride: true
+
+    stages:
+      - name: development
+        role: dev
+        entryHook: workflow.dev
+        exitHook: workflow.handoff
+      - name: review
+        role: reviewer
+        autoProcess: workflow.autoReview
+        onPass: in_qa
+        onFail: in_development
+      - name: qa
+        role: qa
+        autoProcess: workflow.autoQA
+        onPass: completed
+        onFail: in_development
+      - name: completed
+        role: null
+
+    transitions:
+      not_started:
+        next: in_development
+        command: /workflow.dev
+      in_development:
+        next: in_review
+        command: /workflow.handoff
+      in_review:
+        onPass: in_qa
+        onFail: in_development
+        autoCommand: /workflow.autoReview
+      in_qa:
+        onPass: completed
+        onFail: in_development
+        autoCommand: /workflow.autoQA
+      completed:
+        terminal: true

@@ -4,11 +4,11 @@ import { useState } from 'react';
 import { Label } from '@/shared/components/ui/label';
 import { Textarea } from '@/shared/components/ui/textarea';
 import { Badge } from '@/shared/components/ui/badge';
-import { cn } from '@/lib/utils';
-import type { CoreValueRating } from '../types';
+import { cn } from '@/shared/lib/utils';
+import type { CoreValueRating as CoreValueRatingType } from '../types';
 
-interface CoreValueRatingProps {
-  coreValue: CoreValueRating;
+interface CoreValueRatingInputProps {
+  coreValue: CoreValueRatingType;
   onRatingChange: (coreValueId: string, rating: number) => void;
   onCommentsChange: (coreValueId: string, comments: string) => void;
   readOnly?: boolean;
@@ -23,13 +23,13 @@ const ratingLabels = [
   { value: 5, label: '5', color: 'bg-green-500' },
 ];
 
-export function CoreValueRating({
+export function CoreValueRatingInput({
   coreValue,
   onRatingChange,
   onCommentsChange,
   readOnly = false,
   showRatingDescriptions = true,
-}: CoreValueRatingProps) {
+}: CoreValueRatingInputProps) {
   const [hoveredRating, setHoveredRating] = useState<number | null>(null);
 
   const getRatingDescription = (rating: number): string => {
@@ -124,3 +124,6 @@ export function CoreValueRating({
     </div>
   );
 }
+
+// Alias for backward compatibility
+export const CoreValueRating = CoreValueRatingInput;

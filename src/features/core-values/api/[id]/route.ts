@@ -1,9 +1,8 @@
 import { NextRequest } from 'next/server';
-import { db } from '@/shared/lib/db';
-import { auth } from '@/features/auth/api/session';
-import { coreValueSchema, updateCoreValueSchema } from '../types';
+import { prisma } from '@/shared/lib/db';
+import { coreValueSchema, updateCoreValueSchema } from '../../types';
 import { successResponse, errorResponse } from '@/shared/api/response';
-import { requireRole } from '@/shared/api/middleware';
+import { requireAuth, requireAnyRole, Role } from '@/shared/api/middleware';
 
 // GET /api/core-values/[id] - Get single core value
 export async function GET(
@@ -11,24 +10,21 @@ export async function GET(
   { params }: { params: Promise<{ id: string }> }
 ) {
   try {
-    const session = await auth();
-    if (!session?.user) {
-      return errorResponse('Unauthorized', 401);
-    }
+    await requireAuth();
 
     const { id } = await params;
-    const coreValue = await db.coreValue.findUnique({
+    const coreValue = await prisma.coreValue.findUnique({
       where: { id },
     });
 
     if (!coreValue) {
-      return errorResponse('Core value not found', 404);
+      return errorResponse('NOT_FOUND', 'Core value not found', 404);
     }
 
     return successResponse(coreValueSchema.parse(coreValue));
   } catch (error) {
     console.error('Error fetching core value:', error);
-    return errorResponse('Failed to fetch core value', 500);
+    return errorResponse('INTERNAL_ERROR', 'Failed to fetch core value', 500);
   }
 }
 
@@ -38,21 +34,13 @@ export async function PATCH(
   { params }: { params: Promise<{ id: string }> }
 ) {
   try {
-    const session = await auth();
-    if (!session?.user) {
-      return errorResponse('Unauthorized', 401);
-    }
-
-    const roleCheck = requireRole(session.user, ['hr_admin', 'super_admin']);
-    if (!roleCheck.allowed) {
-      return errorResponse('Forbidden: Insufficient permissions', 403);
-    }
+    await requireAnyRole(['HR_ADMIN', 'SUPER_ADMIN'] as Role[]);
 
     const { id } = await params;
     const body = await request.json();
     const data = updateCoreValueSchema.parse(body);
 
-    const coreValue = await db.coreValue.update({
+    const coreValue = await prisma.coreValue.update({
       where: { id },
       data: {
         ...data,
@@ -64,6 +52,7 @@ export async function PATCH(
   } catch (error) {
     console.error('Error updating core value:', error);
     return errorResponse(
+      'VALIDATION_ERROR',
       error instanceof Error ? error.message : 'Failed to update core value',
       400
     );
@@ -76,26 +65,18 @@ export async function DELETE(
   { params }: { params: Promise<{ id: string }> }
 ) {
   try {
-    const session = await auth();
-    if (!session?.user) {
-      return errorResponse('Unauthorized', 401);
-    }
-
-    const roleCheck = requireRole(session.user, ['hr_admin', 'super_admin']);
-    if (!roleCheck.allowed) {
-      return errorResponse('Forbidden: Insufficient permissions', 403);
-    }
+    await requireAnyRole(['HR_ADMIN', 'SUPER_ADMIN'] as Role[]);
 
     const { id } = await params;
 
     // Check if core value is used in any evaluations
-    const evaluationsCount = await db.evaluation.count({
+    const evaluationsCount = await prisma.coreValueRating.count({
       where: { coreValueId: id },
     });
 
     if (evaluationsCount > 0) {
       // Soft delete by deactivating instead
-      await db.coreValue.update({
+      await prisma.coreValue.update({
         where: { id },
         data: { isActive: false, updatedAt: new Date() },
       });
@@ -104,13 +85,13 @@ export async function DELETE(
       });
     }
 
-    await db.coreValue.delete({
+    await prisma.coreValue.delete({
       where: { id },
     });
 
     return successResponse({ message: 'Core value deleted successfully' });
   } catch (error) {
     console.error('Error deleting core value:', error);
-    return errorResponse('Failed to delete core value', 500);
+    return errorResponse('INTERNAL_ERROR', 'Failed to delete core value', 500);
   }
 }

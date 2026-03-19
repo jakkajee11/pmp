@@ -1,6 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { db } from '@/shared/lib/db';
-import { auth } from '@/features/auth/api/session';
+import { prisma } from '@/shared/lib/db';
 import {
   coreValueSchema,
   createCoreValueSchema,
@@ -12,7 +11,7 @@ import {
   type CoreValueListResponse,
 } from '../types';
 import { successResponse, errorResponse } from '@/shared/api/response';
-import { requireRole } from '@/shared/api/middleware';
+import { requireAuth, requireAnyRole, Role } from '@/shared/api/middleware';
 
 // API client for client-side usage
 export const coreValueApi = {
@@ -72,10 +71,7 @@ export const coreValueApi = {
 // GET /api/core-values - List core values
 export async function GET(request: NextRequest) {
   try {
-    const session = await auth();
-    if (!session?.user) {
-      return errorResponse('Unauthorized', 401);
-    }
+    await requireAuth();
 
     const { searchParams } = new URL(request.url);
     const query = coreValueListQuerySchema.parse({
@@ -91,8 +87,8 @@ export async function GET(request: NextRequest) {
     };
 
     const [total, data] = await Promise.all([
-      db.coreValue.count({ where }),
-      db.coreValue.findMany({
+      prisma.coreValue.count({ where }),
+      prisma.coreValue.findMany({
         where,
         orderBy: { [query.sortBy]: query.sortOrder },
         skip: (query.page - 1) * query.limit,
@@ -101,7 +97,7 @@ export async function GET(request: NextRequest) {
     ]);
 
     const response: CoreValueListResponse = {
-      data: data.map((cv) => coreValueSchema.parse(cv)),
+      data: data.map((cv: { id: string; name: string; description: string | null; displayOrder: number; isActive: boolean; createdAt: Date; updatedAt: Date }) => coreValueSchema.parse(cv)),
       pagination: {
         page: query.page,
         limit: query.limit,
@@ -113,23 +109,15 @@ export async function GET(request: NextRequest) {
     return successResponse(response);
   } catch (error) {
     console.error('Error fetching core values:', error);
-    return errorResponse('Failed to fetch core values', 500);
+    return errorResponse('INTERNAL_ERROR', 'Failed to fetch core values', 500);
   }
 }
 
 // POST /api/core-values - Create core value
 export async function POST(request: NextRequest) {
   try {
-    const session = await auth();
-    if (!session?.user) {
-      return errorResponse('Unauthorized', 401);
-    }
-
     // Only HR Admin and Super Admin can create core values
-    const roleCheck = requireRole(session.user, ['hr_admin', 'super_admin']);
-    if (!roleCheck.allowed) {
-      return errorResponse('Forbidden: Insufficient permissions', 403);
-    }
+    await requireAnyRole(['HR_ADMIN', 'SUPER_ADMIN'] as Role[]);
 
     const body = await request.json();
     const data = createCoreValueSchema.parse(body);
@@ -137,15 +125,16 @@ export async function POST(request: NextRequest) {
     // Get the next display order if not specified
     let displayOrder = data.displayOrder;
     if (displayOrder === undefined) {
-      const maxOrder = await db.coreValue.aggregate({
+      const maxOrder = await prisma.coreValue.aggregate({
         _max: { displayOrder: true },
       });
       displayOrder = (maxOrder._max.displayOrder ?? -1) + 1;
     }
 
-    const coreValue = await db.coreValue.create({
+    const coreValue = await prisma.coreValue.create({
       data: {
-        ...data,
+        name: data.name,
+        description: data.description,
         displayOrder,
         isActive: true,
       },
@@ -155,6 +144,7 @@ export async function POST(request: NextRequest) {
   } catch (error) {
     console.error('Error creating core value:', error);
     return errorResponse(
+      'VALIDATION_ERROR',
       error instanceof Error ? error.message : 'Failed to create core value',
       400
     );

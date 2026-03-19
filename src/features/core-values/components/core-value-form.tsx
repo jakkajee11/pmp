@@ -8,7 +8,7 @@ import { Input } from '@/shared/components/ui/input';
 import { Label } from '@/shared/components/ui/label';
 import { Textarea } from '@/shared/components/ui/textarea';
 import { Card, CardContent, CardHeader, CardTitle } from '@/shared/components/ui/card';
-import { Switch } from '@/shared/components/ui/switch';
+import { Checkbox } from '@/shared/components/ui/checkbox';
 import {
   createCoreValueSchema,
   type CreateCoreValueInput,
@@ -57,12 +57,8 @@ export function CoreValueForm({
     },
   });
 
-  const handleFormSubmit = async (data: CreateCoreValueInput) => {
-    await onSubmit(data);
-  };
-
   return (
-    <form onSubmit={handleSubmit(handleFormSubmit)} className="space-y-6">
+    <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
       {/* Basic Information */}
       <Card>
         <CardHeader>
@@ -119,10 +115,10 @@ export function CoreValueForm({
               />
             </div>
             <div className="flex items-center space-x-2 pt-6">
-              <Switch
-                checked={isActive}
-                onCheckedChange={setIsActive}
+              <Checkbox
                 id="isActive"
+                checked={isActive}
+                onCheckedChange={(checked: boolean | 'indeterminate') => setIsActive(checked === true)}
               />
               <Label htmlFor="isActive">Active</Label>
             </div>

@@ -8,7 +8,7 @@ export type {
   UpdateCoreValueInput,
   CoreValueListQuery,
   CoreValueListResponse,
-  CoreValueRating,
+  CoreValueRating as CoreValueRatingType,
   CoreValueWithRatings,
 } from './types';
 
@@ -25,7 +25,7 @@ export { coreValueApi } from './api/handlers';
 
 // Components
 export { CoreValueForm } from './components/core-value-form';
-export { CoreValueRating } from './components/core-value-rating';
+export { CoreValueRatingInput, CoreValueRating } from './components/core-value-rating';
 export { CoreValueList } from './components/core-value-list';
 
 // Hooks

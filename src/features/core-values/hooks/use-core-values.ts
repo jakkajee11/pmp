@@ -1,14 +1,14 @@
 'use client';
 
 import { useState, useCallback, useEffect } from 'react';
-import {
-  coreValueApi,
-  type CoreValue,
-  type CreateCoreValueInput,
-  type UpdateCoreValueInput,
-  type CoreValueListQuery,
-  type CoreValueListResponse,
-} from '../api/handlers';
+import { coreValueApi } from '../api/handlers';
+import type {
+  CoreValue,
+  CreateCoreValueInput,
+  UpdateCoreValueInput,
+  CoreValueListQuery,
+  CoreValueListResponse,
+} from '../types';
 
 interface UseCoreValuesOptions {
   initialQuery?: CoreValueListQuery;

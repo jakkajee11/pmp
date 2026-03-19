@@ -31,10 +31,12 @@ export const createCoreValueSchema = z.object({
   rating3Desc: z.string().min(1, 'Rating 3 description is required'),
   rating4Desc: z.string().min(1, 'Rating 4 description is required'),
   rating5Desc: z.string().min(1, 'Rating 5 description is required'),
-  displayOrder: z.number().int().min(0).optional().default(0),
+  displayOrder: z.number().int().min(0),
 });
 
-export const updateCoreValueSchema = createCoreValueSchema.partial();
+export const updateCoreValueSchema = createCoreValueSchema.partial().extend({
+  isActive: z.boolean().optional(),
+});
 
 export const coreValueListQuerySchema = z.object({
   isActive: z.coerce.boolean().optional(),

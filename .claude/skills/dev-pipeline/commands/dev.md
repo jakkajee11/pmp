@@ -128,7 +128,40 @@ This skill integrates with `/speckit.implement` via the `.specify/extensions.yml
    - Reference task context from tasks.md
    - Run tests frequently
    - Commit small, focused changes
-   - Apply skill-specific patterns from auto-loaded skill
+   - **MANDATORY: Delegate ALL code to resolved skill via Skill tool**
+   - **NEVER write code directly - always use Skill tool**
+
+### ⚠️ SKILL DELEGATION ENFORCEMENT
+
+**CRITICAL: The dev-pipeline agent MUST NOT write code directly.**
+
+Every implementation step MUST use the Skill tool:
+
+```
+✅ CORRECT:
+   → Resolve skill (e.g., ui-ux-pro-max)
+   → Invoke: Skill tool with skill="ui-ux-pro-max:ui-ux-pro-max"
+   → Skill generates all code
+
+❌ FORBIDDEN:
+   → Write code with Write tool
+   → Edit code with Edit tool
+   → Generate any implementation directly
+```
+
+**Task → Skill Mapping (ENFORCED):**
+| Task Marker | Required Skill |
+|-------------|----------------|
+| [UI/UX] | ui-ux-pro-max:ui-ux-pro-max |
+| Backend keywords | nextjs-backend |
+| Tests | webapp-testing |
+| API routes | nextjs-backend |
+| Components | ui-ux-pro-max:ui-ux-pro-max |
+
+**If skill resolution fails:**
+1. STOP implementation
+2. Report missing skill to user
+3. Ask for guidance before proceeding
 
 8. **Completion Actions**
    - Run full test suite: `npm test`

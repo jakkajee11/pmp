@@ -1,6 +1,6 @@
 {
-  "lastScanned": "2026-03-19T15:00:00Z",
-  "skillCount": 10,
+  "lastScanned": "2026-03-19T23:00:00Z",
+  "skillCount": 24,
   "skills": {
     "nextjs-backend": {
       "name": "nextjs-backend",
@@ -8,8 +8,8 @@
       "role": "dev",
       "category": "backend",
       "pattern": "framework-role",
-      "description": "Next.js backend development specialist",
-      "triggers": ["api route", "server action", "middleware", "prisma"]
+      "description": "Next.js backend development specialist. Use this skill for ANY backend-related task in Next.js projects - API routes, server actions, middleware, authentication, database integration, server-side data fetching, and backend architecture.",
+      "triggers": ["api route", "server action", "middleware", "prisma", "backend", "endpoint"]
     },
     "ui-ux-pro-max": {
       "name": "ui-ux-pro-max",
@@ -17,8 +17,8 @@
       "role": "dev",
       "category": "frontend",
       "pattern": "generic",
-      "description": "UI/UX design intelligence for frontend",
-      "triggers": ["component", "page", "styling", "CSS", "tailwind"]
+      "description": "UI/UX design intelligence for frontend development with React, Next.js, Vue, Svelte, Tailwind, and shadcn/ui.",
+      "triggers": ["component", "page", "styling", "CSS", "tailwind", "shadcn"]
     },
     "backend-reviewer": {
       "name": "backend-reviewer",
@@ -26,8 +26,8 @@
       "role": "reviewer",
       "category": "backend",
       "pattern": "role-type",
-      "description": "Backend code reviewer for security, performance",
-      "triggers": ["review code", "check security", "code quality"]
+      "description": "Backend code reviewer for security, performance, and best practices. Use this skill for ANY code review task.",
+      "triggers": ["review code", "check security", "code quality", "audit endpoint"]
     },
     "react-reviewer": {
       "name": "react-reviewer",
@@ -35,8 +35,8 @@
       "role": "reviewer",
       "category": "frontend",
       "pattern": "framework-role",
-      "description": "React.js frontend code reviewer",
-      "triggers": ["review component", "react review"]
+      "description": "React.js frontend code reviewer for components, hooks, performance, and best practices.",
+      "triggers": ["review component", "react review", "hook review", "performance review"]
     },
     "webapp-testing": {
       "name": "webapp-testing",
@@ -44,8 +44,8 @@
       "role": "qa",
       "category": "testing",
       "pattern": "generic",
-      "description": "Toolkit for testing local web applications",
-      "triggers": ["test app", "e2e test", "playwright"]
+      "description": "Toolkit for interacting with and testing local web applications using Playwright.",
+      "triggers": ["test app", "e2e test", "playwright", "browser test"]
     },
     "mcp-builder": {
       "name": "mcp-builder",
@@ -53,8 +53,8 @@
       "role": "dev",
       "category": "tools",
       "pattern": "generic",
-      "description": "Guide for creating MCP servers",
-      "triggers": ["mcp server", "create mcp"]
+      "description": "Guide for creating high-quality MCP (Model Context Protocol) servers in Python or Node.js.",
+      "triggers": ["mcp server", "create mcp", "fastmcp"]
     },
     "claude-api": {
       "name": "claude-api",
@@ -62,8 +62,8 @@
       "role": "dev",
       "category": "api",
       "pattern": "generic",
-      "description": "Build apps with Claude API",
-      "triggers": ["claude api", "anthropic sdk"]
+      "description": "Build apps with the Claude API or Anthropic SDK.",
+      "triggers": ["claude api", "anthropic sdk", "claude_agent_sdk"]
     },
     "pdf": {
       "name": "pdf",
@@ -71,8 +71,8 @@
       "role": "dev",
       "category": "tools",
       "pattern": "generic",
-      "description": "PDF file manipulation",
-      "triggers": ["pdf", "create pdf"]
+      "description": "PDF file manipulation - read, create, merge, split, and modify PDFs.",
+      "triggers": ["pdf", "create pdf", "merge pdf", "extract text"]
     },
     "docx": {
       "name": "docx",
@@ -80,8 +80,8 @@
       "role": "dev",
       "category": "tools",
       "pattern": "generic",
-      "description": "Word document manipulation",
-      "triggers": ["word doc", "docx"]
+      "description": "Word document manipulation - create, read, edit .docx files.",
+      "triggers": ["word doc", "docx", "word document"]
     },
     "skill-creator": {
       "name": "skill-creator",
@@ -89,22 +89,163 @@
       "role": "dev",
       "category": "tools",
       "pattern": "generic",
-      "description": "Create new Claude skills",
-      "triggers": ["create skill", "new skill"]
+      "description": "Create new Claude skills, modify existing skills, and measure skill performance.",
+      "triggers": ["create skill", "new skill", "edit skill"]
+    },
+    "xlsx": {
+      "name": "xlsx",
+      "framework": "any",
+      "role": "dev",
+      "category": "tools",
+      "pattern": "generic",
+      "description": "Spreadsheet file manipulation - read, edit, create .xlsx, .csv, .tsv files.",
+      "triggers": ["spreadsheet", "xlsx", "csv", "excel"]
+    },
+    "pptx": {
+      "name": "pptx",
+      "framework": "any",
+      "role": "dev",
+      "category": "tools",
+      "pattern": "generic",
+      "description": "PowerPoint presentation manipulation - create, read, edit .pptx files.",
+      "triggers": ["pptx", "powerpoint", "slide deck", "presentation"]
+    },
+    "brand-guidelines": {
+      "name": "brand-guidelines",
+      "framework": "any",
+      "role": "dev",
+      "category": "design",
+      "pattern": "generic",
+      "description": "Applies Anthropic's official brand colors and typography to artifacts.",
+      "triggers": ["brand colors", "style guidelines", "anthropic brand"]
+    },
+    "doc-coauthoring": {
+      "name": "doc-coauthoring",
+      "framework": "any",
+      "role": "dev",
+      "category": "documentation",
+      "pattern": "generic",
+      "description": "Guide users through structured workflow for co-authoring documentation.",
+      "triggers": ["write documentation", "technical specs", "proposal"]
+    },
+    "google-play-deploy": {
+      "name": "google-play-deploy",
+      "framework": "react-native",
+      "role": "dev",
+      "category": "deployment",
+      "pattern": "generic",
+      "description": "End-to-end guide for building and deploying Expo/React Native apps to Google Play Store using EAS Build.",
+      "triggers": ["google play", "android deploy", "eas build", "aab", "play console"]
+    },
+    "portfolio-marketing": {
+      "name": "portfolio-marketing",
+      "framework": "any",
+      "role": "dev",
+      "category": "marketing",
+      "pattern": "generic",
+      "description": "Complete marketing toolkit for promoting portfolio websites across social media channels.",
+      "triggers": ["portfolio marketing", "social media", "content strategy", "promote"]
+    },
+    "vercel-react-best-practices": {
+      "name": "vercel-react-best-practices",
+      "framework": "react",
+      "role": "dev",
+      "category": "frontend",
+      "pattern": "framework-role",
+      "description": "React and Next.js performance optimization guidelines from Vercel Engineering.",
+      "triggers": ["vercel", "react performance", "next.js optimization"]
+    },
+    "workflow.dev": {
+      "name": "workflow.dev",
+      "framework": "any",
+      "role": "dev",
+      "category": "workflow",
+      "pattern": "workflow",
+      "description": "Start or continue the developer workflow. Sets current role to developer.",
+      "triggers": ["/workflow.dev"]
+    },
+    "workflow.reviewer": {
+      "name": "workflow.reviewer",
+      "framework": "any",
+      "role": "reviewer",
+      "category": "workflow",
+      "pattern": "workflow",
+      "description": "Start or continue the reviewer workflow. Sets current role to reviewer.",
+      "triggers": ["/workflow.reviewer"]
+    },
+    "workflow.qa": {
+      "name": "workflow.qa",
+      "framework": "any",
+      "role": "qa",
+      "category": "workflow",
+      "pattern": "workflow",
+      "description": "Start or continue the QA workflow. Sets current role to QA.",
+      "triggers": ["/workflow.qa"]
+    },
+    "workflow.status": {
+      "name": "workflow.status",
+      "framework": "any",
+      "role": "any",
+      "category": "workflow",
+      "pattern": "workflow",
+      "description": "Display comprehensive workflow status across all queues.",
+      "triggers": ["/workflow.status"]
+    },
+    "workflow.handoff": {
+      "name": "workflow.handoff",
+      "framework": "any",
+      "role": "any",
+      "category": "workflow",
+      "pattern": "workflow",
+      "description": "Handoff a task from development to review queue.",
+      "triggers": ["/workflow.handoff"]
+    },
+    "workflow.switch": {
+      "name": "workflow.switch",
+      "framework": "any",
+      "role": "any",
+      "category": "workflow",
+      "pattern": "workflow",
+      "description": "Switch between workflow roles (dev, reviewer, qa).",
+      "triggers": ["/workflow.switch"]
+    },
+    "workflow.init": {
+      "name": "workflow.init",
+      "framework": "any",
+      "role": "any",
+      "category": "workflow",
+      "pattern": "workflow",
+      "description": "Initialize the workflow suite in the current project.",
+      "triggers": ["/workflow.init"]
     }
   },
   "byFramework": {
     "nextjs": ["nextjs-backend"],
-    "react": ["react-reviewer"],
+    "react": ["react-reviewer", "vercel-react-best-practices"],
+    "react-native": ["google-play-deploy"],
     "dotnet": [],
     "go": [],
     "python": [],
     "rust": [],
-    "any": ["ui-ux-pro-max", "backend-reviewer", "webapp-testing", "mcp-builder", "claude-api", "pdf", "docx", "skill-creator"]
+    "vue": [],
+    "svelte": [],
+    "any": ["ui-ux-pro-max", "backend-reviewer", "webapp-testing", "mcp-builder", "claude-api", "pdf", "docx", "skill-creator", "xlsx", "pptx", "brand-guidelines", "doc-coauthoring", "portfolio-marketing"]
   },
   "byRole": {
-    "dev": ["nextjs-backend", "ui-ux-pro-max", "mcp-builder", "claude-api", "pdf", "docx", "skill-creator"],
-    "reviewer": ["backend-reviewer", "react-reviewer"],
-    "qa": ["webapp-testing"]
+    "dev": ["nextjs-backend", "ui-ux-pro-max", "mcp-builder", "claude-api", "pdf", "docx", "skill-creator", "xlsx", "pptx", "brand-guidelines", "doc-coauthoring", "google-play-deploy", "portfolio-marketing", "vercel-react-best-practices", "workflow.dev"],
+    "reviewer": ["backend-reviewer", "react-reviewer", "workflow.reviewer"],
+    "qa": ["webapp-testing", "workflow.qa"]
+  },
+  "byCategory": {
+    "backend": ["nextjs-backend", "backend-reviewer"],
+    "frontend": ["ui-ux-pro-max", "react-reviewer", "vercel-react-best-practices"],
+    "testing": ["webapp-testing"],
+    "tools": ["mcp-builder", "pdf", "docx", "skill-creator", "xlsx", "pptx"],
+    "api": ["claude-api"],
+    "design": ["brand-guidelines"],
+    "documentation": ["doc-coauthoring"],
+    "deployment": ["google-play-deploy"],
+    "marketing": ["portfolio-marketing"],
+    "workflow": ["workflow.dev", "workflow.reviewer", "workflow.qa", "workflow.status", "workflow.handoff", "workflow.switch", "workflow.init"]
   }
 }

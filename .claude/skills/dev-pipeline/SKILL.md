@@ -131,6 +131,36 @@ Detection happens during `/workflow.dev` and the task type is stored in workflow
 - Use `/workflow.handoff <taskId>` when complete
 - Skills auto-resolved based on project type
 
+### ⚠️ MANDATORY SKILL DELEGATION
+
+**CRITICAL RULE: All implementation code MUST be delegated to appropriate skills.**
+
+The agent running dev-pipeline is **NOT permitted to write code directly**. Instead:
+
+1. **Skill Resolution is MANDATORY** - Every task must resolve to at least one skill
+2. **Use Skill Tool** - All code generation must come from invoking the Skill tool
+3. **No Direct Edits** - The pipeline agent orchestrates but does not implement
+
+**Correct Pattern:**
+```
+1. Resolve task → Detect type (frontend/backend/fullstack)
+2. Resolve skills → ui-ux-pro-max, nextjs-backend, etc.
+3. Invoke Skill tool → Skill generates code
+4. Review skill output → Apply changes via skill
+```
+
+**Incorrect Pattern (FORBIDDEN):**
+```
+1. Resolve task
+2. Write/Edit code directly with Edit/Write tools
+```
+
+**Enforcement:**
+- If no skill matches, STOP and ask user
+- If skill invocation fails, report error and halt
+- Task markers like [UI/UX] MUST trigger ui-ux-pro-max skill
+- Backend indicators MUST trigger appropriate backend skill
+
 ### Reviewer (reviewer)
 - Check code quality, security, performance
 - Approve: moves task to QA

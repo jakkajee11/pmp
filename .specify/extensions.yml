@@ -1,0 +1,19 @@
+# Workflow Enforcement Extensions Configuration
+# Version: 1.0
+# Last Updated: 2026-03-19
+
+extensions:
+  workflow-enforcement:
+    enabled: true
+    description: Automated Dev -> Reviewer -> QA pipeline enforcement
+    hooks:
+      before_implement:
+        command: workflow.dev
+        description: Invoke developer agent to manage implementation workflow
+        optional: false
+        prompt: Load workflow state and begin developer workflow for task implementation
+      after_implement:
+        command: workflow.handoff
+        description: Handoff completed task to review queue
+        optional: false
+        prompt: Move completed task from in_development to in_review queue

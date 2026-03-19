@@ -10,14 +10,14 @@ description: Developer workflow agent. TRIGGER when: user says "start developmen
 
 ## Integration with speckit.implement
 
-This skill integrates with `/speckit.implement` via the `.specify/extensions.yml` hook system:
+This skill integrates with `/speckit.implement` via the `.claude/skills/dev-pipeline/extensions.yml` hook system:
 - **before_implement**: Syncs tasks from tasks.md to workflow state
 - **after_implement**: Hands off completed task to review queue
 
 ## Workflow
 
 1. **Load State**
-   - Read `.specify/memory/workflow-state.json`
+   - Read `.claude/skills/dev-pipeline/workflow-state.json`
    - Identify current role and tasks in `in_development` queue
    - If called from speckit.implement hook, sync with tasks.md
 

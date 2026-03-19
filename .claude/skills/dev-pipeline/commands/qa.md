@@ -11,7 +11,7 @@ description: QA testing workflow agent. TRIGGER when: user says "run QA", "test 
 ## Workflow
 
 1. **Load State**
-   - Read `.specify/memory/workflow-state.json`
+   - Read `.claude/skills/dev-pipeline/workflow-state.json`
    - Check `in_qa` queue for tasks
 
 2. **Display Status**

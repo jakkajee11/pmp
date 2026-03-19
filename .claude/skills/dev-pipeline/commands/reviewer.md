@@ -11,7 +11,7 @@ description: Code review workflow agent. TRIGGER when: user says "review code", 
 ## Workflow
 
 1. **Load State**
-   - Read `.specify/memory/workflow-state.json`
+   - Read `.claude/skills/dev-pipeline/workflow-state.json`
    - Check `in_review` queue for tasks
 
 2. **Display Status**

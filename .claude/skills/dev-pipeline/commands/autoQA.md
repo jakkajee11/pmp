@@ -10,7 +10,7 @@ description: Automated QA testing agent. TRIGGER when: user says "auto QA", "run
 
 ## Automation Configuration
 
-Loaded from `.specify/memory/workflow-state.json`:
+Loaded from `.claude/skills/dev-pipeline/workflow-state.json`:
 ```json
 {
   "automation": {
@@ -24,7 +24,7 @@ Loaded from `.specify/memory/workflow-state.json`:
 ## Workflow
 
 1. **Load State**
-   - Read `.specify/memory/workflow-state.json`
+   - Read `.claude/skills/dev-pipeline/workflow-state.json`
    - Check `in_qa` queue for tasks
    - Load automation configuration
 
@@ -232,10 +232,10 @@ When `manualOverride: true` in config:
 
 ## Hook Integration
 
-Invoked automatically via `.specify/extensions.yml`:
+Invoked automatically via `.claude/skills/dev-pipeline/extensions.yml`:
 ```yaml
 after_review:
-  - command: workflow.autoQA
+  - command: autoQA
     prompt: Test all tasks in QA queue
 ```
 

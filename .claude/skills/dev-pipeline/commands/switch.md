@@ -75,7 +75,7 @@ Usage: /workflow.switch <role>
 
 ## State Persistence
 
-Role is persisted in `.specify/memory/workflow-state.json`:
+Role is persisted in `.claude/skills/dev-pipeline/workflow-state.json`:
 - Survives session restarts
 - Shared across parallel sessions
 

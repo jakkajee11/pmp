@@ -9,23 +9,23 @@ extensions:
 
     hooks:
       before_implement:
-        command: workflow.dev
+        command: dev
         description: Invoke developer agent to manage implementation workflow
         optional: false
         prompt: Load workflow state and begin developer workflow for task implementation
 
       after_implement:
-        - command: workflow.handoff
+        - command: handoff
           description: Handoff completed task to review queue
           optional: false
           prompt: Move completed task from in_development to in_review queue
-        - command: workflow.autoReview
+        - command: autoReview
           description: Auto-review code quality and security (Balanced mode)
           optional: false
           prompt: Review all tasks in review queue using balanced mode - only errors and security issues fail
 
       after_review:
-        - command: workflow.autoQA
+        - command: autoQA
           description: Auto-run QA tests for approved tasks (affected tests only)
           optional: false
           prompt: Test all tasks in QA queue using affected tests scope
@@ -39,16 +39,16 @@ extensions:
     stages:
       - name: development
         role: dev
-        entryHook: workflow.dev
-        exitHook: workflow.handoff
+        entryHook: dev
+        exitHook: handoff
       - name: review
         role: reviewer
-        autoProcess: workflow.autoReview
+        autoProcess: autoReview
         onPass: in_qa
         onFail: in_development
       - name: qa
         role: qa
-        autoProcess: workflow.autoQA
+        autoProcess: autoQA
         onPass: completed
         onFail: in_development
       - name: completed
@@ -57,17 +57,17 @@ extensions:
     transitions:
       not_started:
         next: in_development
-        command: /workflow.dev
+        command: dev
       in_development:
         next: in_review
-        command: /workflow.handoff
+        command: handoff
       in_review:
         onPass: in_qa
         onFail: in_development
-        autoCommand: /workflow.autoReview
+        autoCommand: autoReview
       in_qa:
         onPass: completed
         onFail: in_development
-        autoCommand: /workflow.autoQA
+        autoCommand: autoQA
       completed:
         terminal: true

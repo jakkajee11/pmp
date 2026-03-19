@@ -63,7 +63,7 @@ Total:          5 tasks
 
 ## Implementation
 
-1. Read `.specify/memory/workflow-state.json`
+1. Read `.claude/skills/dev-pipeline/workflow-state.json`
 2. Parse all queues and tasks
 3. Format output with emoji indicators
 4. Show task counts and summaries

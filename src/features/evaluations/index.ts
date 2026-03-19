@@ -28,6 +28,25 @@ export type { EvaluationStatusProps } from "./components/evaluation-status";
 export { SelfEvalForm, SelfEvalFormSkeleton } from "./components/self-eval-form";
 export type { SelfEvalFormProps } from "./components/self-eval-form";
 
+export {
+  ManagerReviewForm,
+  ManagerReviewFormSkeleton,
+} from "./components/manager-review-form";
+export type { ManagerReviewFormProps } from "./components/manager-review-form";
+
+export {
+  ScoreDisplay,
+  ScoreBar,
+  ScoreComparison,
+  MiniScoreDisplay,
+} from "./components/score-display";
+export type {
+  ScoreDisplayProps,
+  ScoreBarProps,
+  ScoreComparisonProps,
+  MiniScoreDisplayProps,
+} from "./components/score-display";
+
 // Hooks
 export { useAutoSave } from "./hooks/use-auto-save";
 export type { AutoSaveStatus, UseAutoSaveOptions } from "./hooks/use-auto-save";

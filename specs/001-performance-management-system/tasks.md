@@ -238,22 +238,22 @@
 
 ### Tests for User Story 2
 
-- [ ] T112 [P] [US2] Integration test for PUT /api/evaluations/:id/manager endpoint
-- [ ] T113 [P] [US2] Integration test for POST /api/evaluations/:id/manager/submit endpoint
-- [ ] T114 [P] [US2] E2E test for manager review workflow in tests/e2e/manager-review.spec.ts
+- [x] T112 [P] [US2] Integration test for PUT /api/evaluations/:id/manager endpoint
+- [x] T113 [P] [US2] Integration test for POST /api/evaluations/:id/manager/submit endpoint
+- [x] T114 [P] [US2] E2E test for manager review workflow in tests/e2e/manager-review.spec.ts
 
 ### Implementation for User Story 2
 
-- [ ] T115 [US2] Extend evaluation handlers for manager review in src/features/evaluations/api/handlers.ts
-- [ ] T116 [US2] [UI/UX] Create ManagerReviewForm in src/features/evaluations/components/manager-review-form.tsx
-- [ ] T117 [P] [US2] [UI/UX] Create ScoreDisplay component in src/features/evaluations/components/score-display.tsx
-- [ ] T118 [US2] Implement return evaluation logic in src/features/evaluations/api/handlers.ts
-- [ ] T119 [US2] [UI/UX] Create dashboard components in src/features/dashboard/components/
-- [ ] T120 [P] [US2] [UI/UX] Create ManagerDashboard in src/features/dashboard/components/manager-dashboard.tsx
-- [ ] T121 [P] [US2] [UI/UX] Create StatusSummary in src/features/dashboard/components/status-summary.tsx
-- [ ] T122 [P] [US2] Create useDashboardData hook in src/features/dashboard/hooks/use-dashboard-data.ts
-- [ ] T123 [US2] Create src/features/dashboard/index.ts with public exports
-- [ ] T124 [US2] Update src/app/(auth)/page.tsx to show role-based dashboard
+- [x] T115 [US2] Extend evaluation handlers for manager review in src/features/evaluations/api/handlers.ts
+- [x] T116 [US2] [UI/UX] Create ManagerReviewForm in src/features/evaluations/components/manager-review-form.tsx
+- [x] T117 [P] [US2] [UI/UX] Create ScoreDisplay component in src/features/evaluations/components/score-display.tsx
+- [x] T118 [US2] Implement return evaluation logic in src/features/evaluations/api/handlers.ts
+- [x] T119 [US2] [UI/UX] Create dashboard components in src/features/dashboard/components/
+- [x] T120 [P] [US2] [UI/UX] Create ManagerDashboard in src/features/dashboard/components/manager-dashboard.tsx
+- [x] T121 [P] [US2] [UI/UX] Create StatusSummary in src/features/dashboard/components/status-summary.tsx
+- [x] T122 [P] [US2] Create useDashboardData hook in src/features/dashboard/hooks/use-dashboard-data.ts
+- [x] T123 [US2] Create src/features/dashboard/index.ts with public exports
+- [x] T124 [US2] Update src/app/(auth)/page.tsx to show role-based dashboard
 
 **Checkpoint**: User Story 2 complete - managers can complete reviews
 

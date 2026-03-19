@@ -66,7 +66,7 @@ The pipeline supports full automation:
 
 ## Hook Integration
 
-Configured in `extensions.yml`:
+Configured in `.specify/extensions.yml`:
 - `before_implement`: Invokes developer workflow
 - `after_implement`: Hands off and triggers auto-review
 - `after_review`: Triggers auto-QA
@@ -77,7 +77,6 @@ Configured in `extensions.yml`:
 .claude/skills/dev-pipeline/
 ├── SKILL.md              # This file
 ├── workflow-state.json   # State file
-├── extensions.yml        # Hooks config
 └── commands/             # Individual workflow commands
     ├── dev.md
     ├── reviewer.md
@@ -87,6 +86,9 @@ Configured in `extensions.yml`:
     ├── switch.md
     ├── autoReview.md
     └── autoQA.md
+
+.specify/
+└── extensions.yml        # Hooks config (project-level)
 ```
 
 ## Quick Start

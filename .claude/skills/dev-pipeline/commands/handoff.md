@@ -10,7 +10,7 @@ description: Transfer completed development task to review queue. TRIGGER when: 
 
 ## Integration with speckit.implement
 
-This skill is invoked automatically via the `after_implement` hook in `.claude/skills/dev-pipeline/extensions.yml` when `/speckit.implement` completes.
+This skill is invoked automatically via the `after_implement` hook in `.specify/extensions.yml` when `/speckit.implement` completes.
 
 ## Usage
 

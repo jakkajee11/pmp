@@ -163,7 +163,7 @@ When `manualOverride: true` in config:
 
 ## Hook Integration
 
-Invoked automatically via `.claude/skills/dev-pipeline/extensions.yml`:
+Invoked automatically via `.specify/extensions.yml`:
 ```yaml
 after_implement:
   - command: handoff

@@ -96,36 +96,36 @@
 
 ### Tests for User Story 4
 
-- [ ] T037 [P] [US4] Unit test for User entity validation in tests/unit/features/users/
-- [ ] T038 [P] [US4] Unit test for bulk import CSV parsing in tests/unit/features/users/
-- [ ] T039 [P] [US4] Integration test for GET /api/users endpoint
-- [ ] T040 [P] [US4] Integration test for POST /api/users endpoint
-- [ ] T041 [P] [US4] Integration test for CSV bulk import endpoint
+- [x] T037 [P] [US4] Unit test for User entity validation in tests/unit/features/users/
+- [x] T038 [P] [US4] Unit test for bulk import CSV parsing in tests/unit/features/users/
+- [x] T039 [P] [US4] Integration test for GET /api/users endpoint
+- [x] T040 [P] [US4] Integration test for POST /api/users endpoint
+- [x] T041 [P] [US4] Integration test for CSV bulk import endpoint
 
 ### Implementation for User Story 4
 
-- [ ] T042 [P] [US4] Create src/features/users/types.ts with User and Department types and Zod schemas
-- [ ] T043 [US4] Implement user CRUD handlers in src/features/users/api/handlers.ts
-- [ ] T044 [US4] Implement bulk CSV import in src/features/users/api/bulk-import.ts
-- [ ] T045 [US4] Implement request validators in src/features/users/api/validators.ts
-- [ ] T046 [P] [US4] [UI/UX] Create RoleBadge component in src/features/users/components/role-badge.tsx
-- [ ] T047 [P] [US4] [UI/UX] Create UserForm component in src/features/users/components/user-form.tsx
-- [ ] T048 [P] [US4] [UI/UX] Create UserList component with data table in src/features/users/components/user-list.tsx
-- [ ] T049 [P] [US4] [UI/UX] Create UserImportDialog component in src/features/users/components/user-import-dialog.tsx
-- [ ] T050 [P] [US4] Create useUsers hook in src/features/users/hooks/use-users.ts
-- [ ] T051 [P] [US4] Create useUserMutations hook in src/features/users/hooks/use-user-mutations.ts
-- [ ] T052 [US4] Create src/features/users/index.ts with public exports
-- [ ] T053 [US4] Create src/app/(auth)/users/page.tsx re-exporting from users feature
-- [ ] T054 [US4] Create src/app/api/users/route.ts re-exporting from users feature
+- [x] T042 [P] [US4] Create src/features/users/types.ts with User and Department types and Zod schemas
+- [x] T043 [US4] Implement user CRUD handlers in src/features/users/api/handlers.ts
+- [x] T044 [US4] Implement bulk CSV import in src/features/users/api/bulk-import.ts
+- [x] T045 [US4] Implement request validators in src/features/users/api/validators.ts
+- [x] T046 [P] [US4] [UI/UX] Create RoleBadge component in src/features/users/components/role-badge.tsx
+- [x] T047 [P] [US4] [UI/UX] Create UserForm component in src/features/users/components/user-form.tsx
+- [x] T048 [P] [US4] [UI/UX] Create UserList component with data table in src/features/users/components/user-list.tsx
+- [x] T049 [P] [US4] [UI/UX] Create UserImportDialog component in src/features/users/components/user-import-dialog.tsx
+- [x] T050 [P] [US4] Create useUsers hook in src/features/users/hooks/use-users.ts
+- [x] T051 [P] [US4] Create useUserMutations hook in src/features/users/hooks/use-user-mutations.ts
+- [x] T052 [US4] Create src/features/users/index.ts with public exports
+- [x] T053 [US4] Create src/app/(auth)/users/page.tsx re-exporting from users feature
+- [x] T054 [US4] Create src/app/api/users/route.ts re-exporting from users feature
 
 ### Department & Org Chart
 
-- [ ] T055 [P] [US4] Create Department types in src/features/users/types.ts
-- [ ] T056 [US4] Implement department CRUD in src/features/users/api/handlers.ts
-- [ ] T057 [P] [US4] [UI/UX] Create OrgTree component with React Flow in src/features/org-chart/components/org-tree.tsx
-- [ ] T058 [P] [US4] [UI/UX] Create OrgNode component in src/features/org-chart/components/org-node.tsx
-- [ ] T059 [P] [US4] Create useOrgData hook in src/features/org-chart/hooks/use-org-data.ts
-- [ ] T060 [US4] Create src/features/org-chart/index.ts and src/app/(auth)/org-chart/page.tsx
+- [x] T055 [P] [US4] Create Department types in src/features/users/types.ts
+- [x] T056 [US4] Implement department CRUD in src/features/users/api/handlers.ts
+- [x] T057 [P] [US4] [UI/UX] Create OrgTree component with React Flow in src/features/org-chart/components/org-tree.tsx
+- [x] T058 [P] [US4] [UI/UX] Create OrgNode component in src/features/org-chart/components/org-node.tsx
+- [x] T059 [P] [US4] Create useOrgData hook in src/features/org-chart/hooks/use-org-data.ts
+- [x] T060 [US4] Create src/features/org-chart/index.ts and src/app/(auth)/org-chart/page.tsx
 
 **Checkpoint**: User Story 4 complete - can create users, import CSV, view org chart
 

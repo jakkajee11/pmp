@@ -203,28 +203,28 @@
 
 ### Tests for User Story 1
 
-- [ ] T093 [P] [US1] Unit test for scoring calculation in tests/unit/features/evaluations/
-- [ ] T094 [P] [US1] Unit test for auto-save hook in tests/unit/features/evaluations/
-- [ ] T095 [P] [US1] Integration test for PUT /api/evaluations/:id/self endpoint
-- [ ] T096 [P] [US1] Integration test for POST /api/evaluations/:id/self/submit endpoint
-- [ ] T097 [P] [US1] E2E test for self-evaluation workflow in tests/e2e/self-evaluation.spec.ts
+- [x] T093 [P] [US1] Unit test for scoring calculation in tests/unit/features/evaluations/
+- [x] T094 [P] [US1] Unit test for auto-save hook in tests/unit/features/evaluations/
+- [x] T095 [P] [US1] Integration test for PUT /api/evaluations/:id/self endpoint
+- [x] T096 [P] [US1] Integration test for POST /api/evaluations/:id/self/submit endpoint
+- [x] T097 [P] [US1] E2E test for self-evaluation workflow in tests/e2e/self-evaluation.spec.ts
 
 ### Implementation for User Story 1
 
-- [ ] T098 [P] [US1] Create src/features/evaluations/types.ts with Evaluation types and Zod schemas
-- [ ] T099 [US1] Implement evaluation handlers in src/features/evaluations/api/handlers.ts
-- [ ] T100 [US1] Implement evaluation validators in src/features/evaluations/api/validators.ts
-- [ ] T101 [US1] Implement scoring calculation in src/features/evaluations/api/scoring.ts
-- [ ] T102 [P] [US1] [UI/UX] Create SelfEvalForm component in src/features/evaluations/components/self-eval-form.tsx
-- [ ] T103 [P] [US1] [UI/UX] Create RatingSlider component in src/features/evaluations/components/rating-slider.tsx
-- [ ] T104 [P] [US1] [UI/UX] Create AutoSaveIndicator in src/features/evaluations/components/auto-save-indicator.tsx
-- [ ] T105 [P] [US1] [UI/UX] Create EvaluationStatus in src/features/evaluations/components/evaluation-status.tsx
-- [ ] T106 [P] [US1] Create useEvaluation hook in src/features/evaluations/hooks/use-evaluation.ts
-- [ ] T107 [US1] Implement useAutoSave hook with 30s debounce in src/features/evaluations/hooks/use-auto-save.ts
-- [ ] T108 [P] [US1] Create useScoring hook in src/features/evaluations/hooks/use-scoring.ts
-- [ ] T109 [US1] Create src/features/evaluations/index.ts with public exports
-- [ ] T110 [US1] Create src/app/(auth)/evaluations/page.tsx re-exporting from evaluations feature
-- [ ] T111 [US1] Create src/app/api/evaluations/route.ts re-exporting from evaluations feature
+- [x] T098 [P] [US1] Create src/features/evaluations/types.ts with Evaluation types and Zod schemas
+- [x] T099 [US1] Implement evaluation handlers in src/features/evaluations/api/handlers.ts
+- [x] T100 [US1] Implement evaluation validators in src/features/evaluations/api/validators.ts
+- [x] T101 [US1] Implement scoring calculation in src/features/evaluations/api/scoring.ts
+- [x] T102 [P] [US1] [UI/UX] Create SelfEvalForm component in src/features/evaluations/components/self-eval-form.tsx
+- [x] T103 [P] [US1] [UI/UX] Create RatingSlider component in src/features/evaluations/components/rating-slider.tsx
+- [x] T104 [P] [US1] [UI/UX] Create AutoSaveIndicator in src/features/evaluations/components/auto-save-indicator.tsx
+- [x] T105 [P] [US1] [UI/UX] Create EvaluationStatus in src/features/evaluations/components/evaluation-status.tsx
+- [x] T106 [P] [US1] Create useEvaluation hook in src/features/evaluations/hooks/use-evaluation.ts
+- [x] T107 [US1] Implement useAutoSave hook with 30s debounce in src/features/evaluations/hooks/use-auto-save.ts
+- [x] T108 [P] [US1] Create useScoring hook in src/features/evaluations/hooks/use-scoring.ts
+- [x] T109 [US1] Create src/features/evaluations/index.ts with public exports
+- [x] T110 [US1] Create src/app/(auth)/evaluations/page.tsx re-exporting from evaluations feature
+- [x] T111 [US1] Create src/app/api/evaluations/route.ts re-exporting from evaluations feature
 
 **Checkpoint**: User Story 1 complete - employees can submit self-evaluations
 

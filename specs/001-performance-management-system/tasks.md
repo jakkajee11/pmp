@@ -139,25 +139,25 @@
 
 ### Tests for User Story 3
 
-- [ ] T061 [P] [US3] Unit test for ReviewCycle validation in tests/unit/features/cycles/
-- [ ] T062 [P] [US3] Integration test for POST /api/cycles endpoint
-- [ ] T063 [P] [US3] Integration test for POST /api/cycles/:id/activate endpoint
+- [x] T061 [P] [US3] Unit test for ReviewCycle validation in tests/unit/features/cycles/
+- [x] T062 [P] [US3] Integration test for POST /api/cycles endpoint
+- [x] T063 [P] [US3] Integration test for POST /api/cycles/:id/activate endpoint
 
 ### Implementation for User Story 3
 
-- [ ] T064 [P] [US4] Create src/features/cycles/types.ts with ReviewCycle types and Zod schemas
-- [ ] T065 [US3] Implement cycle CRUD handlers in src/features/cycles/api/handlers.ts
-- [ ] T066 [US3] Implement cycle validators in src/features/cycles/api/validators.ts
-- [ ] T067 [US3] Implement deadline extension logic in src/features/cycles/api/handlers.ts
-- [ ] T068 [P] [US3] [UI/UX] Create CycleForm component in src/features/cycles/components/cycle-form.tsx
-- [ ] T069 [P] [US3] [UI/UX] Create CycleList component in src/features/cycles/components/cycle-list.tsx
-- [ ] T070 [P] [US3] [UI/UX] Create DeadlineConfig component in src/features/cycles/components/deadline-config.tsx
-- [ ] T071 [P] [US3] [UI/UX] Create CycleStatusBadge component in src/features/cycles/components/cycle-status-badge.tsx
-- [ ] T072 [P] [US3] Create useCycles hook in src/features/cycles/hooks/use-cycles.ts
-- [ ] T073 [P] [US3] Create useActiveCycle hook in src/features/cycles/hooks/use-active-cycle.ts
-- [ ] T074 [US3] Create src/features/cycles/index.ts with public exports
-- [ ] T075 [US3] Create src/app/(auth)/cycles/page.tsx re-exporting from cycles feature
-- [ ] T076 [US3] Create src/app/api/cycles/route.ts re-exporting from cycles feature
+- [x] T064 [P] [US4] Create src/features/cycles/types.ts with ReviewCycle types and Zod schemas
+- [x] T065 [US3] Implement cycle CRUD handlers in src/features/cycles/api/handlers.ts
+- [x] T066 [US3] Implement cycle validators in src/features/cycles/api/validators.ts
+- [x] T067 [US3] Implement deadline extension logic in src/features/cycles/api/handlers.ts
+- [x] T068 [P] [US3] [UI/UX] Create CycleForm component in src/features/cycles/components/cycle-form.tsx
+- [x] T069 [P] [US3] [UI/UX] Create CycleList component in src/features/cycles/components/cycle-list.tsx
+- [x] T070 [P] [US3] [UI/UX] Create DeadlineConfig component in src/features/cycles/components/deadline-config.tsx
+- [x] T071 [P] [US3] [UI/UX] Create CycleStatusBadge component in src/features/cycles/components/cycle-status-badge.tsx
+- [x] T072 [P] [US3] Create useCycles hook in src/features/cycles/hooks/use-cycles.ts
+- [x] T073 [P] [US3] Create useActiveCycle hook in src/features/cycles/hooks/use-active-cycle.ts
+- [x] T074 [US3] Create src/features/cycles/index.ts with public exports
+- [x] T075 [US3] Create src/app/(auth)/cycles/page.tsx re-exporting from cycles feature
+- [x] T076 [US3] Create src/app/api/cycles/route.ts re-exporting from cycles feature
 
 **Checkpoint**: User Story 3 complete - can create and activate review cycles
 

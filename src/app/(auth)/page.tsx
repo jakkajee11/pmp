@@ -21,7 +21,7 @@ import { Button } from "../../shared/components/ui/button";
 import { cn } from "../../shared/utils/cn";
 
 export default function DashboardPage() {
-  const { session, isLoading: sessionLoading } = useSession();
+  const { user, isLoading: sessionLoading } = useSession();
   const { data, isLoading: dashboardLoading, error, isManager, refresh } = useDashboardData();
 
   const isLoading = sessionLoading || dashboardLoading;

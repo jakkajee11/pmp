@@ -7,8 +7,8 @@
  */
 
 import React from "react";
-import { Label } from "../../../shared/components/ui/label";
-import { Slider } from "../../../shared/components/ui/slider";
+import { Label } from "@/shared/components/ui/label";
+import { Slider } from "@/shared/components/ui/slider";
 import { WeightsConfig } from "../types";
 
 interface WeightedScoreConfigProps {

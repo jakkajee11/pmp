@@ -4,7 +4,7 @@
  * Type definitions for authentication and session management.
  */
 
-import { UserRole } from "../../shared/types/common";
+import { UserRole } from "@/shared/types/common";
 
 /**
  * User session data from OIDC provider

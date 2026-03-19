@@ -8,18 +8,18 @@
 "use client";
 
 import * as React from "react";
-import { Input } from "../../../shared/components/ui/input";
-import { Label } from "../../../shared/components/ui/label";
-import { Button } from "../../../shared/components/ui/button";
+import { Input } from "@/shared/components/ui/input";
+import { Label } from "@/shared/components/ui/label";
+import { Button } from "@/shared/components/ui/button";
 import {
   Select,
   SelectContent,
   SelectItem,
   SelectTrigger,
   SelectValue,
-} from "../../../shared/components/ui/select";
-import { Card, CardContent, CardHeader, CardTitle } from "../../../shared/components/ui/card";
-import { Separator } from "../../../shared/components/ui/separator";
+} from "@/shared/components/ui/select";
+import { Card, CardContent, CardHeader, CardTitle } from "@/shared/components/ui/card";
+import { Separator } from "@/shared/components/ui/separator";
 import {
   UserRole,
   CreateUserRequest,
@@ -27,7 +27,7 @@ import {
   ROLE_LABELS,
   ROLE_LABELS_TH,
 } from "../types";
-import { cn } from "../../../shared/lib/utils";
+import { cn } from "@/shared/lib/utils";
 
 interface UserFormProps {
   mode: "create" | "edit";

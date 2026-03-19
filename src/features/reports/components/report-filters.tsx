@@ -8,16 +8,16 @@
  */
 
 import { useState, useEffect } from "react";
-import { Card, CardContent, CardHeader, CardTitle } from "../../../shared/components/ui/card";
-import { Button } from "../../../shared/components/ui/button";
-import { Label } from "../../../shared/components/ui/label";
+import { Card, CardContent, CardHeader, CardTitle } from "@/shared/components/ui/card";
+import { Button } from "@/shared/components/ui/button";
+import { Label } from "@/shared/components/ui/label";
 import {
   Select,
   SelectContent,
   SelectItem,
   SelectTrigger,
   SelectValue,
-} from "../../../shared/components/ui/select";
+} from "@/shared/components/ui/select";
 import { ReportFilters as ReportFiltersType, FilterOption, ReportType } from "../types";
 
 interface ReportFiltersProps {

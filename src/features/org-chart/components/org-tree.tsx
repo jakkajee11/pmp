@@ -20,19 +20,19 @@ import ReactFlow, {
 } from "reactflow";
 import "reactflow/dist/style.css";
 
-import { Card, CardContent, CardHeader, CardTitle } from "../../../shared/components/ui/card";
-import { Button } from "../../../shared/components/ui/button";
+import { Card, CardContent, CardHeader, CardTitle } from "@/shared/components/ui/card";
+import { Button } from "@/shared/components/ui/button";
 import {
   Select,
   SelectContent,
   SelectItem,
   SelectTrigger,
   SelectValue,
-} from "../../../shared/components/ui/select";
+} from "@/shared/components/ui/select";
 import { OrgNode, OrgNodeCompact } from "./org-node";
 import { useOrgFlatData } from "../hooks/use-org-data";
 import { OrgFlowNode, OrgFlowEdge } from "../types";
-import { cn } from "../../../shared/lib/utils";
+import { cn } from "@/shared/lib/utils";
 
 // Register custom node types
 const nodeTypes: NodeTypes = {

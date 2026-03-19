@@ -9,8 +9,8 @@ import {
   getCycleHandler,
   updateCycleHandler,
   deleteCycleHandler,
-} from "../../../../../features/cycles/api/handlers";
-import { withApiHandler } from "../../../../../shared/api/middleware";
+} from "@/features/cycles/api/handlers";
+import { withApiHandler } from "@/shared/api/middleware";
 
 export const GET = withApiHandler(getCycleHandler);
 export const PUT = withApiHandler(updateCycleHandler);

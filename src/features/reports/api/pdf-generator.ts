@@ -5,7 +5,7 @@
  * Uses a simple HTML-to-PDF approach for serverless compatibility.
  */
 
-import { prisma } from "../../../shared/lib/db";
+import { prisma } from "@/shared/lib/db";
 import { ReportType, CompletionReport, RatingDistributionReport } from "../types";
 
 interface PdfParams {

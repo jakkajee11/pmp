@@ -18,7 +18,7 @@ import {
   UpdateManagerReviewRequest,
   ReturnEvaluationRequest,
 } from "../types";
-import { validationErrorResponse } from "../../../shared/api/response";
+import { validationErrorResponse } from "@/shared/api/response";
 
 /**
  * Validate evaluation ID parameter

@@ -7,9 +7,9 @@
  */
 
 import React from "react";
-import { Input } from "../../../shared/components/ui/input";
-import { Label } from "../../../shared/components/ui/label";
-import { Slider } from "../../../shared/components/ui/slider";
+import { Input } from "@/shared/components/ui/input";
+import { Label } from "@/shared/components/ui/label";
+import { Slider } from "@/shared/components/ui/slider";
 
 interface DeadlineConfigProps {
   selfEvalDeadline: string;

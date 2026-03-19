@@ -4,7 +4,7 @@
  * GET /api/reports/rating-distribution
  */
 
-import { getRatingDistributionHandler } from "../../../../features/reports";
+import { getRatingDistributionHandler } from "@/features/reports";
 
 export const dynamic = "force-dynamic";
 

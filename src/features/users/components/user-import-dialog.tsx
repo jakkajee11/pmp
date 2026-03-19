@@ -9,7 +9,7 @@
 
 import * as React from "react";
 import { Upload, Download, FileText, AlertCircle, CheckCircle, X } from "lucide-react";
-import { Button } from "../../../shared/components/ui/button";
+import { Button } from "@/shared/components/ui/button";
 import {
   Dialog,
   DialogContent,
@@ -17,10 +17,10 @@ import {
   DialogFooter,
   DialogHeader,
   DialogTitle,
-} from "../../../shared/components/ui/dialog";
-import { Separator } from "../../../shared/components/ui/separator";
+} from "@/shared/components/ui/dialog";
+import { Separator } from "@/shared/components/ui/separator";
 import { BulkImportResult } from "../types";
-import { cn } from "../../../shared/lib/utils";
+import { cn } from "@/shared/lib/utils";
 
 interface UserImportDialogProps {
   open: boolean;

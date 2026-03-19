@@ -5,14 +5,14 @@
  */
 
 import { NextRequest } from "next/server";
-import { prisma } from "../../../shared/lib/db";
-import { auditLog, extractClientIp, extractUserAgent } from "../../../shared/lib/audit";
+import { prisma } from "@/shared/lib/db";
+import { auditLog, extractClientIp, extractUserAgent } from "@/shared/lib/audit";
 import {
   successResponse,
   errorResponse,
   notFoundResponse,
-} from "../../../shared/api/response";
-import { requireAuth, requireRole, hasRole, Role } from "../../../shared/api/middleware";
+} from "@/shared/api/response";
+import { requireAuth, requireRole, hasRole, Role } from "@/shared/api/middleware";
 import {
   validateObjectiveId,
   validateObjectiveListQuery,

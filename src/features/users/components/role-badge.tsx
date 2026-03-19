@@ -7,9 +7,9 @@
 
 "use client";
 
-import { Badge } from "../../../shared/components/ui/badge";
+import { Badge } from "@/shared/components/ui/badge";
 import { UserRole, ROLE_LABELS, ROLE_LABELS_TH } from "../types";
-import { cn } from "../../../shared/lib/utils";
+import { cn } from "@/shared/lib/utils";
 
 interface RoleBadgeProps {
   role: UserRole;

@@ -4,7 +4,7 @@
  * Handles CSV-based bulk user import with validation and error reporting.
  */
 
-import { prisma } from "../../../shared/lib/db";
+import { prisma } from "@/shared/lib/db";
 import { UserCsvRow, BulkImportResult } from "../types";
 
 interface ImportContext {

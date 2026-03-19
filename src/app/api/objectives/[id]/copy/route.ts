@@ -5,7 +5,7 @@
  */
 
 import { NextRequest } from "next/server";
-import { copyObjectiveHandler } from "../../../../../features/objectives";
+import { copyObjectiveHandler } from "@/features/objectives";
 
 /**
  * POST /api/objectives/:id/copy

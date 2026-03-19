@@ -49,9 +49,9 @@ export {
 } from "./types";
 
 // Components
-export { CompletionReport } from "./components/completion-report";
+export { CompletionReport as CompletionReportCard } from "./components/completion-report";
 export { RatingDistributionChart } from "./components/rating-distribution-chart";
-export { ReportFilters } from "./components/report-filters";
+export { ReportFilters as ReportFiltersCard } from "./components/report-filters";
 export { ExportDialog } from "./components/export-dialog";
 
 // Hooks

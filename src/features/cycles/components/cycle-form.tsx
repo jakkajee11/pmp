@@ -9,9 +9,9 @@
 import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { Button } from "../../../shared/components/ui/button";
-import { Input } from "../../../shared/components/ui/input";
-import { Label } from "../../../shared/components/ui/label";
+import { Button } from "@/shared/components/ui/button";
+import { Input } from "@/shared/components/ui/input";
+import { Label } from "@/shared/components/ui/label";
 import {
   Card,
   CardContent,
@@ -19,14 +19,14 @@ import {
   CardFooter,
   CardHeader,
   CardTitle,
-} from "../../../shared/components/ui/card";
+} from "@/shared/components/ui/card";
 import {
   Select,
   SelectContent,
   SelectItem,
   SelectTrigger,
   SelectValue,
-} from "../../../shared/components/ui/select";
+} from "@/shared/components/ui/select";
 import { CreateCycleRequest, CycleType, CYCLE_TYPE_LABELS } from "../types";
 import { DeadlineConfig } from "./deadline-config";
 import { WeightedScoreConfig } from "./weighted-score-config";

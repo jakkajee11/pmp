@@ -7,8 +7,8 @@
  */
 
 import React from "react";
-import { Card, CardContent, CardHeader, CardTitle } from "../../../shared/components/ui/card";
-import { Button } from "../../../shared/components/ui/button";
+import { Card, CardContent, CardHeader, CardTitle } from "@/shared/components/ui/card";
+import { Button } from "@/shared/components/ui/button";
 import {
   Table,
   TableBody,
@@ -16,14 +16,14 @@ import {
   TableHead,
   TableHeader,
   TableRow,
-} from "../../../shared/components/ui/table";
+} from "@/shared/components/ui/table";
 import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuSeparator,
   DropdownMenuTrigger,
-} from "../../../shared/components/ui/dropdown-menu";
+} from "@/shared/components/ui/dropdown-menu";
 import { CycleStatusBadge } from "./cycle-status-badge";
 import {
   ReviewCycleListItem,

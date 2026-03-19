@@ -9,7 +9,7 @@ import {
   getObjectiveHandler,
   updateObjectiveHandler,
   deleteObjectiveHandler,
-} from "../../../../features/objectives";
+} from "@/features/objectives";
 
 /**
  * GET /api/objectives/:id

@@ -4,7 +4,7 @@
  * GET /api/reports/export/pdf
  */
 
-import { exportPdfHandler } from "../../../../../features/reports";
+import { exportPdfHandler } from "@/features/reports";
 
 export const dynamic = "force-dynamic";
 

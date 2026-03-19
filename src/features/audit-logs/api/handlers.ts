@@ -10,14 +10,14 @@
  */
 
 import { NextRequest } from "next/server";
-import { prisma } from "../../../shared/lib/db";
-import { auditLog, extractClientIp, extractUserAgent } from "../../../shared/lib/audit";
+import { prisma } from "@/shared/lib/db";
+import { auditLog, extractClientIp, extractUserAgent } from "@/shared/lib/audit";
 import {
   successResponse,
   errorResponse,
   forbiddenResponse,
-} from "../../../shared/api/response";
-import { hasRole, Role, getSessionUser } from "../../../shared/api/middleware";
+} from "@/shared/api/response";
+import { hasRole, Role, getSessionUser } from "@/shared/api/middleware";
 import {
   AuditLog,
   AuditLogQueryParams,

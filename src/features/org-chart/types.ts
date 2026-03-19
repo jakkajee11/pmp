@@ -5,7 +5,7 @@
  */
 
 import { z } from "zod";
-import { UserRole } from "../../shared/types/common";
+import { UserRole } from "@/shared/types/common";
 
 /**
  * Org chart node for visualization

@@ -4,7 +4,7 @@
  * GET /api/reports/completion
  */
 
-import { getCompletionReportHandler } from "../../../../features/reports";
+import { getCompletionReportHandler } from "@/features/reports";
 
 export const dynamic = "force-dynamic";
 

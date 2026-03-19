@@ -7,7 +7,7 @@
  */
 
 import React from "react";
-import { Badge } from "../../../shared/components/ui/badge";
+import { Badge } from "@/shared/components/ui/badge";
 import { CycleStatus, CYCLE_STATUS_LABELS, CYCLE_STATUS_COLORS } from "../types";
 
 interface CycleStatusBadgeProps {

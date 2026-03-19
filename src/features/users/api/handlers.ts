@@ -5,8 +5,8 @@
  */
 
 import { NextRequest } from "next/server";
-import { prisma } from "../../../shared/lib/db";
-import { auditLog, extractClientIp, extractUserAgent } from "../../../shared/lib/audit";
+import { prisma } from "@/shared/lib/db";
+import { auditLog, extractClientIp, extractUserAgent } from "@/shared/lib/audit";
 
 /**
  * Helper to log audit entries from request context
@@ -36,9 +36,9 @@ import {
   errorResponse,
   paginatedResponse,
   notFoundResponse,
-} from "../../../shared/api/response";
-import { requireAuth, requireRole, hasRole, Role } from "../../../shared/api/middleware";
-import { DEFAULT_PAGE_SIZE, MAX_PAGE_SIZE } from "../../../shared/utils/constants";
+} from "@/shared/api/response";
+import { requireAuth, requireRole, hasRole, Role } from "@/shared/api/middleware";
+import { DEFAULT_PAGE_SIZE, MAX_PAGE_SIZE } from "@/shared/utils/constants";
 import {
   validateCreateUser,
   validateUpdateUser,

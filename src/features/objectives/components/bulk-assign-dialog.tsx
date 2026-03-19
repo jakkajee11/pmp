@@ -8,7 +8,7 @@
 "use client";
 
 import * as React from "react";
-import { Button } from "../../../shared/components/ui/button";
+import { Button } from "@/shared/components/ui/button";
 import {
   Dialog,
   DialogContent,
@@ -16,10 +16,10 @@ import {
   DialogFooter,
   DialogHeader,
   DialogTitle,
-} from "../../../shared/components/ui/dialog";
-import { Checkbox } from "../../../shared/components/ui/checkbox";
-import { ScrollArea } from "../../../shared/components/ui/scroll-area";
-import { Badge } from "../../../shared/components/ui/badge";
+} from "@/shared/components/ui/dialog";
+import { Checkbox } from "@/shared/components/ui/checkbox";
+import { ScrollArea } from "@/shared/components/ui/scroll-area";
+import { Badge } from "@/shared/components/ui/badge";
 import {
   BulkAssignRequest,
   ObjectiveCategory,
@@ -27,18 +27,18 @@ import {
   CATEGORY_LABELS,
   TIMELINE_OPTIONS,
 } from "../types";
-import { Input } from "../../../shared/components/ui/input";
-import { Label } from "../../../shared/components/ui/label";
-import { Textarea } from "../../../shared/components/ui/textarea";
+import { Input } from "@/shared/components/ui/input";
+import { Label } from "@/shared/components/ui/label";
+import { Textarea } from "@/shared/components/ui/textarea";
 import {
   Select,
   SelectContent,
   SelectItem,
   SelectTrigger,
   SelectValue,
-} from "../../../shared/components/ui/select";
+} from "@/shared/components/ui/select";
 import { RatingCriteriaEditor } from "./rating-criteria-editor";
-import { cn } from "../../../shared/lib/utils";
+import { cn } from "@/shared/lib/utils";
 import { Search, User, Check } from "lucide-react";
 
 interface Employee {

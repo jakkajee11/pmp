@@ -9,21 +9,21 @@
 
 import * as React from "react";
 import { Search, Filter, ChevronLeft, ChevronRight, UserPlus } from "lucide-react";
-import { Input } from "../../../shared/components/ui/input";
-import { Button } from "../../../shared/components/ui/button";
-import { Badge } from "../../../shared/components/ui/badge";
-import { Card, CardContent, CardHeader, CardTitle } from "../../../shared/components/ui/card";
+import { Input } from "@/shared/components/ui/input";
+import { Button } from "@/shared/components/ui/button";
+import { Badge } from "@/shared/components/ui/badge";
+import { Card, CardContent, CardHeader, CardTitle } from "@/shared/components/ui/card";
 import {
   Select,
   SelectContent,
   SelectItem,
   SelectTrigger,
   SelectValue,
-} from "../../../shared/components/ui/select";
-import { Separator } from "../../../shared/components/ui/separator";
+} from "@/shared/components/ui/select";
+import { Separator } from "@/shared/components/ui/separator";
 import { RoleBadge } from "./role-badge";
 import { UserListItem, UserRole, USER_ROLES, ROLE_LABELS } from "../types";
-import { cn } from "../../../shared/lib/utils";
+import { cn } from "@/shared/lib/utils";
 
 interface UserListProps {
   users: UserListItem[];

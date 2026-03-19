@@ -7,7 +7,7 @@
 "use client";
 
 import * as React from "react";
-import { cn } from "../../../shared/utils/cn";
+import { cn } from "@/shared/utils/cn";
 import { RATING_LABELS, MIN_RATING, MAX_RATING } from "../types";
 
 export interface RatingSliderProps {

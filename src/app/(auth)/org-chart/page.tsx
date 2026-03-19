@@ -7,16 +7,16 @@
 "use client";
 
 import * as React from "react";
-import { OrgTree } from "../../../features/org-chart/components/org-tree";
-import { useOrgData } from "../../../features/org-chart/hooks/use-org-data";
-import { Card, CardContent, CardHeader, CardTitle } from "../../../shared/components/ui/card";
+import { OrgTree } from "@/features/org-chart/components/org-tree";
+import { useOrgData } from "@/features/org-chart/hooks/use-org-data";
+import { Card, CardContent, CardHeader, CardTitle } from "@/shared/components/ui/card";
 import {
   Select,
   SelectContent,
   SelectItem,
   SelectTrigger,
   SelectValue,
-} from "../../../shared/components/ui/select";
+} from "@/shared/components/ui/select";
 
 export default function OrgChartPage() {
   const [selectedDepartment, setSelectedDepartment] = React.useState<string>("all");

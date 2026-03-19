@@ -112,6 +112,35 @@ export async function requireAnyRole(
 }
 
 /**
+ * Wrapper that provides authentication to API handlers
+ * Returns 401 if not authenticated
+ */
+export function withAuth(
+  request: NextRequest,
+  handler: (session: { user: { id: string; role: Role } }) => Promise<NextResponse>
+): Promise<NextResponse> {
+  return withApiHandler(async () => {
+    const auth = await requireAuth();
+    return handler({ user: { id: auth.userId, role: auth.role } });
+  })(request, {});
+}
+
+/**
+ * Wrapper that provides RBAC to API handlers
+ * Returns 401 if not authenticated, 403 if not authorized
+ */
+export function withRBAC(
+  request: NextRequest,
+  requiredRole: Role,
+  handler: (session: { user: { id: string; role: Role } }) => Promise<NextResponse>
+): Promise<NextResponse> {
+  return withApiHandler(async () => {
+    const auth = await requireRole(requiredRole);
+    return handler({ user: { id: auth.userId, role: auth.role } });
+  })(request, {});
+}
+
+/**
  * API route wrapper with error handling and logging
  */
 export function withApiHandler<T>(

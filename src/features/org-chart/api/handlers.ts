@@ -5,9 +5,9 @@
  */
 
 import { NextRequest } from "next/server";
-import { prisma } from "../../../shared/lib/db";
-import { successResponse, errorResponse } from "../../../shared/api/response";
-import { requireAuth } from "../../../shared/api/middleware";
+import { prisma } from "@/shared/lib/db";
+import { successResponse, errorResponse } from "@/shared/api/response";
+import { requireAuth } from "@/shared/api/middleware";
 import { OrgChartNode, OrgChartQuerySchema, OrgFlowNode, OrgFlowEdge } from "../types";
 
 /**

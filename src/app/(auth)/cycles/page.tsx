@@ -7,16 +7,16 @@
  */
 
 import React, { useState } from "react";
-import { useCycles } from "../../../features/cycles/hooks/use-cycles";
-import { CycleList } from "../../../features/cycles/components/cycle-list";
-import { CycleForm } from "../../../features/cycles/components/cycle-form";
-import { CreateCycleRequest, ReviewCycleListItem } from "../../../features/cycles/types";
+import { useCycles } from "@/features/cycles/hooks/use-cycles";
+import { CycleList } from "@/features/cycles/components/cycle-list";
+import { CycleForm } from "@/features/cycles/components/cycle-form";
+import { CreateCycleRequest, ReviewCycleListItem } from "@/features/cycles/types";
 import {
   Dialog,
   DialogContent,
   DialogHeader,
   DialogTitle,
-} from "../../../shared/components/ui/dialog";
+} from "@/shared/components/ui/dialog";
 import {
   AlertDialog,
   AlertDialogAction,
@@ -26,7 +26,7 @@ import {
   AlertDialogFooter,
   AlertDialogHeader,
   AlertDialogTitle,
-} from "../../../shared/components/ui/alert-dialog";
+} from "@/shared/components/ui/alert-dialog";
 import { toast } from "sonner";
 
 export default function CyclesPage() {

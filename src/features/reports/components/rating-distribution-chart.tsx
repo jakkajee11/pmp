@@ -8,7 +8,7 @@
  */
 
 import { useMemo } from "react";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "../../../shared/components/ui/card";
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/shared/components/ui/card";
 import { RatingDistributionReport, RatingDistribution } from "../types";
 
 interface RatingDistributionChartProps {

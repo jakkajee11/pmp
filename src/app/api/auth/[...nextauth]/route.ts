@@ -5,7 +5,7 @@
  */
 
 import NextAuth from "next-auth";
-import { authOptions } from "../../../../features/auth/api/session";
+import { authOptions } from "@/features/auth/api/session";
 
 const handler = NextAuth(authOptions);
 

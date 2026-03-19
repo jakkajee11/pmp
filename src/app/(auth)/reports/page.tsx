@@ -8,16 +8,16 @@
  */
 
 import { useEffect, useState } from "react";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "../../../shared/components/ui/card";
-import { Button } from "../../../shared/components/ui/button";
-import { Label } from "../../../shared/components/ui/label";
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/shared/components/ui/card";
+import { Button } from "@/shared/components/ui/button";
+import { Label } from "@/shared/components/ui/label";
 import {
   Select,
   SelectContent,
   SelectItem,
   SelectTrigger,
   SelectValue,
-} from "../../../shared/components/ui/select";
+} from "@/shared/components/ui/select";
 import {
   Dialog,
   DialogContent,
@@ -25,8 +25,8 @@ import {
   DialogFooter,
   DialogHeader,
   DialogTitle,
-} from "../../../shared/components/ui/dialog";
-import { Badge } from "../../../shared/components/ui/badge";
+} from "@/shared/components/ui/dialog";
+import { Badge } from "@/shared/components/ui/badge";
 import {
   useReports,
   CompletionReport as CompletionReportType,
@@ -37,7 +37,7 @@ import {
   ReportType,
   STATUS_COLORS,
   RATING_COLORS,
-} from "../../../features/reports";
+} from "@/features/reports";
 
 export default function ReportsPage() {
   const [showExportDialog, setShowExportDialog] = useState(false);

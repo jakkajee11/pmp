@@ -8,7 +8,7 @@ import { NextRequest } from "next/server";
 import {
   getEvaluationsHandler,
   getDashboardHandler,
-} from "../../../../features/evaluations/api/handlers";
+} from "@/features/evaluations/api/handlers";
 
 /**
  * GET /api/evaluations

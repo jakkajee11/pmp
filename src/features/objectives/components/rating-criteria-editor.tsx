@@ -8,9 +8,9 @@
 "use client";
 
 import * as React from "react";
-import { Label } from "../../../shared/components/ui/label";
-import { Textarea } from "../../../shared/components/ui/textarea";
-import { cn } from "../../../shared/lib/utils";
+import { Label } from "@/shared/components/ui/label";
+import { Textarea } from "@/shared/components/ui/textarea";
+import { cn } from "@/shared/lib/utils";
 
 interface RatingCriteriaEditorProps {
   values: {

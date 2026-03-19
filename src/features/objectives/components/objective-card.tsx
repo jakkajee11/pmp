@@ -8,16 +8,16 @@
 "use client";
 
 import * as React from "react";
-import { Card, CardContent, CardHeader, CardTitle } from "../../../shared/components/ui/card";
-import { Badge } from "../../../shared/components/ui/badge";
-import { Button } from "../../../shared/components/ui/button";
+import { Card, CardContent, CardHeader, CardTitle } from "@/shared/components/ui/card";
+import { Badge } from "@/shared/components/ui/badge";
+import { Button } from "@/shared/components/ui/button";
 import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuSeparator,
   DropdownMenuTrigger,
-} from "../../../shared/components/ui/dropdown-menu";
+} from "@/shared/components/ui/dropdown-menu";
 import {
   ObjectiveCategory,
   ObjectiveListItem,
@@ -27,7 +27,7 @@ import {
   EVALUATION_STATUS_LABELS,
 } from "../types";
 import { MoreHorizontal, Edit, Copy, Trash2, FileText, Calendar, User } from "lucide-react";
-import { cn } from "../../../shared/lib/utils";
+import { cn } from "@/shared/lib/utils";
 
 interface ObjectiveCardProps {
   objective: ObjectiveListItem;

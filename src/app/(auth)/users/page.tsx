@@ -7,11 +7,11 @@
 "use client";
 
 import * as React from "react";
-import { UserList } from "../../../features/users/components/user-list";
-import { UserForm } from "../../../features/users/components/user-form";
-import { UserImportDialog } from "../../../features/users/components/user-import-dialog";
-import { useUsers, useUserMutations, UserListItem } from "../../../features/users";
-import { UserRole } from "../../../shared/types/common";
+import { UserList } from "@/features/users/components/user-list";
+import { UserForm } from "@/features/users/components/user-form";
+import { UserImportDialog } from "@/features/users/components/user-import-dialog";
+import { useUsers, useUserMutations, UserListItem } from "@/features/users";
+import { UserRole } from "@/shared/types/common";
 
 export default function UsersPage() {
   const [showForm, setShowForm] = React.useState(false);

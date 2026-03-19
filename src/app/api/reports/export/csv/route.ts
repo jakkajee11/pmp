@@ -4,7 +4,7 @@
  * GET /api/reports/export/csv
  */
 
-import { exportCsvHandler } from "../../../../../features/reports";
+import { exportCsvHandler } from "@/features/reports";
 
 export const dynamic = "force-dynamic";
 

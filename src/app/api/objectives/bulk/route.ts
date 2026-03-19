@@ -5,7 +5,7 @@
  */
 
 import { NextRequest } from "next/server";
-import { bulkAssignObjectivesHandler } from "../../../../features/objectives";
+import { bulkAssignObjectivesHandler } from "@/features/objectives";
 
 /**
  * POST /api/objectives/bulk

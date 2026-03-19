@@ -8,9 +8,9 @@
 "use client";
 
 import * as React from "react";
-import { cn } from "../../../shared/utils/cn";
-import { Button } from "../../../shared/components/ui/button";
-import { Textarea } from "../../../shared/components/ui/textarea";
+import { cn } from "@/shared/utils/cn";
+import { Button } from "@/shared/components/ui/button";
+import { Textarea } from "@/shared/components/ui/textarea";
 import { RatingSlider } from "./rating-slider";
 import { AutoSaveIndicator, AutoSaveBadge } from "./auto-save-indicator";
 import { EvaluationStatusProgress, EvaluationStatusBadge } from "./evaluation-status";

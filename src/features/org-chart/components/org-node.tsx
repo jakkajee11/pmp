@@ -10,11 +10,11 @@
 import * as React from "react";
 import { Handle, Position, NodeProps } from "reactflow";
 import { Mail, Users } from "lucide-react";
-import { Card } from "../../../shared/components/ui/card";
-import { Badge } from "../../../shared/components/ui/badge";
+import { Card } from "@/shared/components/ui/card";
+import { Badge } from "@/shared/components/ui/badge";
 import { RoleBadgeCompact } from "../../users/components/role-badge";
 import { OrgFlowNode } from "../types";
-import { cn } from "../../../shared/lib/utils";
+import { cn } from "@/shared/lib/utils";
 
 export function OrgNode({ data }: NodeProps<OrgFlowNode["data"]>) {
   const { name, nameTh, role, department, email, directReportsCount } = data;

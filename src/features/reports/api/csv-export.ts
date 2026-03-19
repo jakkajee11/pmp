@@ -4,7 +4,7 @@
  * Generates CSV exports for reports.
  */
 
-import { prisma } from "../../../shared/lib/db";
+import { prisma } from "@/shared/lib/db";
 import { ReportType } from "../types";
 
 interface ExportParams {

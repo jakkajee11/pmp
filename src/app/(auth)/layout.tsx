@@ -30,17 +30,17 @@ import {
   ChevronLeft,
   ChevronRight,
 } from "lucide-react";
-import { cn } from "../../shared/lib/utils";
-import { Button } from "../../shared/components/ui/button";
-import { Separator } from "../../shared/components/ui/separator";
+import { cn } from "@/shared/lib/utils";
+import { Button } from "@/shared/components/ui/button";
+import { Separator } from "@/shared/components/ui/separator";
 import {
   Tooltip,
   TooltipContent,
   TooltipProvider,
   TooltipTrigger,
-} from "../../shared/components/ui/tooltip";
-import { useSession, useHasAnyRole } from "../../features/auth/hooks/use-session";
-import { LanguageSelector } from "../../features/settings/components/language-selector";
+} from "@/shared/components/ui/tooltip";
+import { useSession, useHasAnyRole } from "@/features/auth/hooks/use-session";
+import { LanguageSelector } from "@/features/settings/components/language-selector";
 
 type NavItem = {
   href: string;
@@ -51,7 +51,7 @@ type NavItem = {
 };
 
 const navItems: NavItem[] = [
-  { href: "/", label: "Dashboard", labelTh: "หน้าหลัก", icon: LayoutDashboard },
+  { href: "/dashboard", label: "Dashboard", labelTh: "หน้าหลัก", icon: LayoutDashboard },
   { href: "/users", label: "Users", labelTh: "ผู้ใช้งาน", icon: Users, roles: ["HR_ADMIN", "HR_STAFF", "SUPER_ADMIN"] },
   { href: "/org-chart", label: "Org Chart", labelTh: "แผนผลองค์กร", icon: Building2, roles: ["HR_ADMIN", "HR_STAFF", "SUPER_ADMIN"] },
   { href: "/cycles", label: "Cycles", labelTh: "รอบการประเมิน", icon: Calendar, roles: ["HR_ADMIN", "HR_STAFF", "SUPER_ADMIN"] },
@@ -112,7 +112,7 @@ export default function AuthLayout({
           >
             <Menu className="h-6 w-6 text-slate-700" />
           </button>
-          <Link href="/" className="flex items-center gap-2">
+          <Link href="/dashboard" className="flex items-center gap-2">
             <div className="h-8 w-8 rounded-lg bg-[#1e3a5f] flex items-center justify-center">
               <span className="text-white font-bold text-sm">PMP</span>
             </div>
@@ -150,7 +150,7 @@ export default function AuthLayout({
         >
           {/* Logo */}
           <div className="flex h-16 items-center border-b border-slate-200 px-4 lg:px-6">
-            <Link href="/" className="flex items-center gap-2">
+            <Link href="/dashboard" className="flex items-center gap-2">
               <div className="h-8 w-8 rounded-lg bg-[#1e3a5f] flex items-center justify-center flex-shrink-0">
                 <span className="text-white font-bold text-sm">PMP</span>
               </div>

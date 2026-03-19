@@ -8,8 +8,8 @@
  */
 
 import { useMemo } from "react";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "../../../shared/components/ui/card";
-import { Badge } from "../../../shared/components/ui/badge";
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/shared/components/ui/card";
+import { Badge } from "@/shared/components/ui/badge";
 import { CompletionReport as CompletionReportType } from "../types";
 
 interface CompletionReportProps {

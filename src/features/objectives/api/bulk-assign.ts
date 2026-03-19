@@ -4,7 +4,7 @@
  * Handles bulk objective assignment to multiple employees.
  */
 
-import { prisma } from "../../../shared/lib/db";
+import { prisma } from "@/shared/lib/db";
 import { BulkAssignRequest, BulkAssignResult } from "../types";
 
 /**

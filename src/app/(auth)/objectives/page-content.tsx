@@ -8,23 +8,23 @@
 "use client";
 
 import * as React from "react";
-import { Button } from "../../../shared/components/ui/button";
-import { Card, CardContent, CardHeader, CardTitle } from "../../../shared/components/ui/card";
+import { Button } from "@/shared/components/ui/button";
+import { Card, CardContent, CardHeader, CardTitle } from "@/shared/components/ui/card";
 import {
   Select,
   SelectContent,
   SelectItem,
   SelectTrigger,
   SelectValue,
-} from "../../../shared/components/ui/select";
-import { Skeleton } from "../../../shared/components/ui/skeleton";
+} from "@/shared/components/ui/select";
+import { Skeleton } from "@/shared/components/ui/skeleton";
 import { Plus, Filter } from "lucide-react";
 import {
   useObjectives,
   useObjectiveMutations,
   OBJECTIVE_CATEGORIES,
   CATEGORY_LABELS,
-} from "../../../features/objectives";
+} from "@/features/objectives";
 
 export function ObjectivesPageContent() {
   const [selectedCategory, setSelectedCategory] = React.useState<string>("");

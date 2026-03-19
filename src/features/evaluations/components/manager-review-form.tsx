@@ -7,8 +7,8 @@
 "use client";
 
 import * as React from "react";
-import { cn } from "../../../shared/utils/cn";
-import { Button } from "../../../shared/components/ui/button";
+import { cn } from "@/shared/utils/cn";
+import { Button } from "@/shared/components/ui/button";
 import {
   EvaluationWithRelations,
   EvaluationStatus,

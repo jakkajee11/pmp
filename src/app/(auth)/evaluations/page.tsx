@@ -16,9 +16,9 @@ import {
   EvaluationStatusBadge,
   RatingBadge,
   AutoSaveIndicator,
-} from "../../../features/evaluations";
-import { Button } from "../../../shared/components/ui/button";
-import { cn } from "../../../shared/utils/cn";
+} from "@/features/evaluations";
+import { Button } from "@/shared/components/ui/button";
+import { cn } from "@/shared/utils/cn";
 
 interface EvaluationsPageProps {
   searchParams?: Promise<{

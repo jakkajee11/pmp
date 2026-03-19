@@ -8,7 +8,7 @@ import { NextRequest } from "next/server";
 import {
   getObjectivesHandler,
   createObjectiveHandler,
-} from "../../../features/objectives";
+} from "@/features/objectives";
 
 /**
  * GET /api/objectives

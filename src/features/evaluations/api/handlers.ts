@@ -920,3 +920,520 @@ function getOverallStatus(evaluations: { status: string }[]): EvaluationStatus {
   if (statuses.some((s) => s === "SELF_IN_PROGRESS")) return "SELF_IN_PROGRESS";
   return "NOT_STARTED";
 }
+
+// ============================================================================
+// Historical Records Handlers (US10)
+// ============================================================================
+
+/**
+ * Historical evaluation record with cycle information
+ */
+export interface HistoricalEvaluation {
+  cycle: {
+    id: string;
+    name: string;
+    type: string;
+    startDate: Date;
+    endDate: Date;
+  };
+  employee: {
+    id: string;
+    name: string;
+    email: string;
+    department: string | null;
+  };
+  evaluations: Array<{
+    id: string;
+    evaluationType: "KPI" | "CORE_VALUE";
+    objective?: { id: string; title: string; category: string };
+    coreValue?: { id: string; name: string };
+    selfRating: number | null;
+    managerRating: number | null;
+    status: string;
+    selfSubmittedAt: Date | null;
+    managerReviewedAt: Date | null;
+  }>;
+  scores: {
+    kpiScore: number | null;
+    coreValuesScore: number | null;
+    finalScore: number | null;
+  };
+  overallComments?: string | null;
+  bonusRecommendation?: string | null;
+  salaryAdjustment?: string | null;
+}
+
+/**
+ * GET /api/evaluations/history/:employeeId - Get historical evaluations for an employee
+ */
+export async function getEvaluationHistoryHandler(
+  request: NextRequest,
+  { params }: { params: { employeeId: string } }
+) {
+  const auth = await requireAuth();
+  const { employeeId } = params;
+
+  // Check access - HR Admin, the employee themselves, or their manager
+  const isHrAdmin = hasRole(auth.role, "HR_ADMIN" as Role);
+  const isSelf = auth.userId === employeeId;
+
+  let isManager = false;
+  if (!isHrAdmin && !isSelf) {
+    const employee = await prisma.user.findUnique({
+      where: { id: employeeId },
+      select: { managerId: true },
+    });
+    isManager = employee?.managerId === auth.userId;
+  }
+
+  if (!isHrAdmin && !isSelf && !isManager) {
+    return errorResponse("FORBIDDEN", "Access denied", 403);
+  }
+
+  // Get all completed cycles with evaluations for this employee
+  const completedCycles = await prisma.reviewCycle.findMany({
+    where: { status: "CLOSED" },
+    orderBy: { endDate: "desc" },
+    select: {
+      id: true,
+      name: true,
+      type: true,
+      startDate: true,
+      endDate: true,
+      weightsConfig: true,
+    },
+  });
+
+  const history: HistoricalEvaluation[] = [];
+
+  for (const cycle of completedCycles) {
+    // Get evaluations for this employee/cycle
+    const evaluations = await prisma.evaluation.findMany({
+      where: {
+        employeeId,
+        cycleId: cycle.id,
+        status: "COMPLETED",
+      },
+      include: {
+        objective: { select: { id: true, title: true, category: true } },
+        coreValue: { select: { id: true, name: true } },
+      },
+    });
+
+    // Skip cycles with no completed evaluations
+    if (evaluations.length === 0) continue;
+
+    // Get employee info
+    const employee = await prisma.user.findUnique({
+      where: { id: employeeId },
+      select: {
+        id: true,
+        name: true,
+        email: true,
+        department: { select: { name: true } },
+      },
+    });
+
+    // Get evaluation summary if exists
+    const summary = await prisma.evaluationSummary.findUnique({
+      where: {
+        employeeId_cycleId: { employeeId, cycleId: cycle.id },
+      },
+    });
+
+    // Calculate scores
+    const kpiEvals = evaluations.filter((e) => e.evaluationType === "KPI");
+    const coreValueEvals = evaluations.filter((e) => e.evaluationType === "CORE_VALUE");
+
+    const kpiRatings = kpiEvals
+      .map((e) => e.managerRating)
+      .filter((r): r is number => r !== null);
+    const coreValueRatings = coreValueEvals
+      .map((e) => e.managerRating)
+      .filter((r): r is number => r !== null);
+
+    const weights = cycle.weightsConfig as { kpi: number; coreValues: number };
+    const kpiScore = kpiRatings.length > 0
+      ? kpiRatings.reduce((a, b) => a + b, 0) / kpiRatings.length
+      : null;
+    const coreValuesScore = coreValueRatings.length > 0
+      ? coreValueRatings.reduce((a, b) => a + b, 0) / coreValueRatings.length
+      : null;
+
+    let finalScore: number | null = null;
+    if (kpiScore !== null && coreValuesScore !== null) {
+      finalScore = kpiScore * weights.kpi + coreValuesScore * weights.coreValues;
+    } else if (kpiScore !== null) {
+      finalScore = kpiScore;
+    } else if (coreValuesScore !== null) {
+      finalScore = coreValuesScore;
+    }
+
+    history.push({
+      cycle: {
+        id: cycle.id,
+        name: cycle.name,
+        type: cycle.type,
+        startDate: cycle.startDate,
+        endDate: cycle.endDate,
+      },
+      employee: {
+        id: employee!.id,
+        name: employee!.name,
+        email: employee!.email,
+        department: employee!.department?.name ?? null,
+      },
+      evaluations: evaluations.map((e) => ({
+        id: e.id,
+        evaluationType: e.evaluationType as "KPI" | "CORE_VALUE",
+        objective: e.objective
+          ? {
+              id: e.objective.id,
+              title: e.objective.title,
+              category: e.objective.category,
+            }
+          : undefined,
+        coreValue: e.coreValue
+          ? { id: e.coreValue.id, name: e.coreValue.name }
+          : undefined,
+        selfRating: e.selfRating,
+        managerRating: e.managerRating,
+        status: e.status,
+        selfSubmittedAt: e.selfSubmittedAt,
+        managerReviewedAt: e.managerReviewedAt,
+      })),
+      scores: {
+        kpiScore: kpiScore ? Math.round(kpiScore * 100) / 100 : null,
+        coreValuesScore: coreValuesScore
+          ? Math.round(coreValuesScore * 100) / 100
+          : null,
+        finalScore: finalScore ? Math.round(finalScore * 100) / 100 : null,
+      },
+      overallComments: summary?.overallComments,
+      bonusRecommendation: summary?.bonusRecommendation,
+      salaryAdjustment: summary?.salaryAdjustment,
+    });
+  }
+
+  // Audit log
+  await logAudit({
+    userId: auth.userId,
+    action: "view",
+    entityType: "Evaluation",
+    entityId: `history_${employeeId}`,
+    newValues: { employeeId, cyclesReturned: history.length },
+    request,
+  });
+
+  return successResponse({
+    employee: {
+      id: employeeId,
+      name: history[0]?.employee.name,
+      email: history[0]?.employee.email,
+      department: history[0]?.employee.department,
+    },
+    history,
+    totalCycles: history.length,
+  });
+}
+
+/**
+ * GET /api/evaluations/history/:employeeId/:cycleId - Get historical evaluation detail
+ */
+export async function getHistoricalEvaluationDetailHandler(
+  request: NextRequest,
+  { params }: { params: { employeeId: string; cycleId: string } }
+) {
+  const auth = await requireAuth();
+  const { employeeId, cycleId } = params;
+
+  // Check access
+  const isHrAdmin = hasRole(auth.role, "HR_ADMIN" as Role);
+  const isSelf = auth.userId === employeeId;
+
+  let isManager = false;
+  if (!isHrAdmin && !isSelf) {
+    const employee = await prisma.user.findUnique({
+      where: { id: employeeId },
+      select: { managerId: true },
+    });
+    isManager = employee?.managerId === auth.userId;
+  }
+
+  if (!isHrAdmin && !isSelf && !isManager) {
+    return errorResponse("FORBIDDEN", "Access denied", 403);
+  }
+
+  // Verify cycle is closed
+  const cycle = await prisma.reviewCycle.findUnique({
+    where: { id: cycleId },
+    select: {
+      id: true,
+      name: true,
+      type: true,
+      startDate: true,
+      endDate: true,
+      status: true,
+      weightsConfig: true,
+    },
+  });
+
+  if (!cycle) {
+    return notFoundResponse("Cycle");
+  }
+
+  // Get all completed evaluations for this employee/cycle
+  const evaluations = await prisma.evaluation.findMany({
+    where: {
+      employeeId,
+      cycleId,
+      status: "COMPLETED",
+    },
+    include: {
+      objective: {
+        select: {
+          id: true,
+          title: true,
+          description: true,
+          category: true,
+          rating1Desc: true,
+          rating2Desc: true,
+          rating3Desc: true,
+          rating4Desc: true,
+          rating5Desc: true,
+        },
+      },
+      coreValue: {
+        select: {
+          id: true,
+          name: true,
+          description: true,
+          rating1Desc: true,
+          rating2Desc: true,
+          rating3Desc: true,
+          rating4Desc: true,
+          rating5Desc: true,
+        },
+      },
+    },
+  });
+
+  // Get employee and manager info
+  const employee = await prisma.user.findUnique({
+    where: { id: employeeId },
+    select: {
+      id: true,
+      name: true,
+      email: true,
+      department: { select: { name: true } },
+      manager: { select: { id: true, name: true } },
+    },
+  });
+
+  // Get evaluation summary
+  const summary = await prisma.evaluationSummary.findUnique({
+    where: {
+      employeeId_cycleId: { employeeId, cycleId },
+    },
+  });
+
+  // Calculate scores
+  const kpiEvals = evaluations.filter((e) => e.evaluationType === "KPI");
+  const coreValueEvals = evaluations.filter(
+    (e) => e.evaluationType === "CORE_VALUE"
+  );
+
+  const kpiRatings = kpiEvals
+    .map((e) => e.managerRating)
+    .filter((r): r is number => r !== null);
+  const coreValueRatings = coreValueEvals
+    .map((e) => e.managerRating)
+    .filter((r): r is number => r !== null);
+
+  const weights = cycle.weightsConfig as { kpi: number; coreValues: number };
+  const kpiScore = kpiRatings.length > 0
+    ? kpiRatings.reduce((a, b) => a + b, 0) / kpiRatings.length
+    : null;
+  const coreValuesScore = coreValueRatings.length > 0
+    ? coreValueRatings.reduce((a, b) => a + b, 0) / coreValueRatings.length
+    : null;
+
+  let finalScore: number | null = null;
+  if (kpiScore !== null && coreValuesScore !== null) {
+    finalScore = kpiScore * weights.kpi + coreValuesScore * weights.coreValues;
+  } else if (kpiScore !== null) {
+    finalScore = kpiScore;
+  } else if (coreValuesScore !== null) {
+    finalScore = coreValuesScore;
+  }
+
+  // Audit log
+  await logAudit({
+    userId: auth.userId,
+    action: "view",
+    entityType: "Evaluation",
+    entityId: `history_${employeeId}_${cycleId}`,
+    newValues: { employeeId, cycleId },
+    request,
+  });
+
+  return successResponse({
+    cycle: {
+      id: cycle.id,
+      name: cycle.name,
+      type: cycle.type,
+      startDate: cycle.startDate,
+      endDate: cycle.endDate,
+      status: cycle.status,
+    },
+    employee: {
+      id: employee!.id,
+      name: employee!.name,
+      email: employee!.email,
+      department: employee!.department?.name ?? null,
+    },
+    manager: employee!.manager,
+    evaluations: evaluations.map((e) => ({
+      id: e.id,
+      evaluationType: e.evaluationType as "KPI" | "CORE_VALUE",
+      objective: e.objective
+        ? {
+            id: e.objective.id,
+            title: e.objective.title,
+            description: e.objective.description,
+            category: e.objective.category,
+            ratingCriteria: {
+              1: e.objective.rating1Desc,
+              2: e.objective.rating2Desc,
+              3: e.objective.rating3Desc,
+              4: e.objective.rating4Desc,
+              5: e.objective.rating5Desc,
+            },
+          }
+        : undefined,
+      coreValue: e.coreValue
+        ? {
+            id: e.coreValue.id,
+            name: e.coreValue.name,
+            description: e.coreValue.description,
+            ratingCriteria: {
+              1: e.coreValue.rating1Desc,
+              2: e.coreValue.rating2Desc,
+              3: e.coreValue.rating3Desc,
+              4: e.coreValue.rating4Desc,
+              5: e.coreValue.rating5Desc,
+            },
+          }
+        : undefined,
+      selfRating: e.selfRating,
+      selfComments: e.selfComments,
+      managerRating: e.managerRating,
+      managerFeedback: e.managerFeedback,
+      selfSubmittedAt: e.selfSubmittedAt,
+      managerReviewedAt: e.managerReviewedAt,
+    })),
+    scores: {
+      kpiScore: kpiScore ? Math.round(kpiScore * 100) / 100 : null,
+      coreValuesScore: coreValuesScore
+        ? Math.round(coreValuesScore * 100) / 100
+        : null,
+      finalScore: finalScore ? Math.round(finalScore * 100) / 100 : null,
+      weights,
+    },
+    summary: summary
+      ? {
+          overallComments: summary.overallComments,
+          bonusRecommendation: summary.bonusRecommendation,
+          salaryAdjustment: summary.salaryAdjustment,
+          finalizedAt: summary.finalizedAt,
+        }
+      : null,
+  });
+}
+
+/**
+ * GET /api/evaluations/history/compare/:employeeId - Compare scores across cycles
+ */
+export async function compareEvaluationHistoryHandler(
+  request: NextRequest,
+  { params }: { params: { employeeId: string } }
+) {
+  const auth = await requireAuth();
+  const { employeeId } = params;
+
+  // Check access
+  const isHrAdmin = hasRole(auth.role, "HR_ADMIN" as Role);
+  const isSelf = auth.userId === employeeId;
+
+  let isManager = false;
+  if (!isHrAdmin && !isSelf) {
+    const employee = await prisma.user.findUnique({
+      where: { id: employeeId },
+      select: { managerId: true },
+    });
+    isManager = employee?.managerId === auth.userId;
+  }
+
+  if (!isHrAdmin && !isSelf && !isManager) {
+    return errorResponse("FORBIDDEN", "Access denied", 403);
+  }
+
+  // Get all evaluation summaries for this employee
+  const summaries = await prisma.evaluationSummary.findMany({
+    where: { employeeId },
+    include: {
+      cycle: {
+        select: {
+          id: true,
+          name: true,
+          type: true,
+          startDate: true,
+          endDate: true,
+        },
+      },
+    },
+    orderBy: { cycle: { endDate: "desc" } },
+  });
+
+  const comparison = summaries.map((s) => ({
+    cycle: {
+      id: s.cycle.id,
+      name: s.cycle.name,
+      type: s.cycle.type,
+      endDate: s.cycle.endDate,
+    },
+    scores: {
+      kpiScore: s.kpiScore ? Number(s.kpiScore) : null,
+      coreValuesScore: s.coreValuesScore ? Number(s.coreValuesScore) : null,
+      finalScore: s.finalScore ? Number(s.finalScore) : null,
+    },
+  }));
+
+  // Calculate trends
+  const finalScores = comparison
+    .map((c) => c.scores.finalScore)
+    .filter((s): s is number => s !== null);
+
+  let trend: "improving" | "declining" | "stable" | "insufficient_data" =
+    "insufficient_data";
+  if (finalScores.length >= 2) {
+    const latest = finalScores[0];
+    const previous = finalScores[1];
+    const diff = latest - previous;
+    if (diff > 0.2) trend = "improving";
+    else if (diff < -0.2) trend = "declining";
+    else trend = "stable";
+  }
+
+  return successResponse({
+    employeeId,
+    comparison,
+    trend,
+    averageScore:
+      finalScores.length > 0
+        ? Math.round(
+            (finalScores.reduce((a, b) => a + b, 0) / finalScores.length) * 100
+          ) / 100
+        : null,
+  });
+}

@@ -69,6 +69,21 @@ export async function requireAuth(): Promise<{ userId: string; role: Role }> {
 }
 
 /**
+ * Get session user from request (for use in API handlers)
+ * Returns null if not authenticated
+ */
+export async function getSessionUser(
+  request: NextRequest
+): Promise<{ userId: string; role: string } | null> {
+  try {
+    const auth = await requireAuth();
+    return auth;
+  } catch {
+    return null;
+  }
+}
+
+/**
  * Require specific role or higher
  */
 export async function requireRole(requiredRole: Role): Promise<{ userId: string; role: Role }> {

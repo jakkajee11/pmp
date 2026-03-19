@@ -313,17 +313,17 @@
 
 ### Implementation for User Story 8
 
-- [ ] T145 [P] [US8] Create src/features/reports/types.ts with Report types
-- [ ] T146 [US8] Implement report handlers in src/features/reports/api/handlers.ts
-- [ ] T147 [US8] Implement CSV export in src/features/reports/api/csv-export.ts
-- [ ] T148 [US8] Implement PDF generation in src/features/reports/api/pdf-generator.ts
-- [ ] T149 [P] [US8] [UI/UX] Create CompletionReport in src/features/reports/components/completion-report.tsx
-- [ ] T150 [P] [US8] [UI/UX] Create RatingDistributionChart in src/features/reports/components/rating-distribution-chart.tsx
-- [ ] T151 [P] [US8] [UI/UX] Create ReportFilters in src/features/reports/components/report-filters.tsx
-- [ ] T152 [P] [US8] [UI/UX] Create ExportDialog in src/features/reports/components/export-dialog.tsx
-- [ ] T153 [P] [US8] Create useReports hook in src/features/reports/hooks/use-reports.ts
-- [ ] T154 [US8] Create src/features/reports/index.ts with public exports
-- [ ] T155 [US8] Create src/app/(auth)/reports/page.tsx and src/app/api/reports/route.ts
+- [x] T145 [P] [US8] Create src/features/reports/types.ts with Report types
+- [x] T146 [US8] Implement report handlers in src/features/reports/api/handlers.ts
+- [x] T147 [US8] Implement CSV export in src/features/reports/api/csv-export.ts
+- [x] T148 [US8] Implement PDF generation in src/features/reports/api/pdf-generator.ts
+- [x] T149 [P] [US8] [UI/UX] Create CompletionReport in src/features/reports/components/completion-report.tsx
+- [x] T150 [P] [US8] [UI/UX] Create RatingDistributionChart in src/features/reports/components/rating-distribution-chart.tsx
+- [x] T151 [P] [US8] [UI/UX] Create ReportFilters in src/features/reports/components/report-filters.tsx
+- [x] T152 [P] [US8] [UI/UX] Create ExportDialog in src/features/reports/components/export-dialog.tsx
+- [x] T153 [P] [US8] Create useReports hook in src/features/reports/hooks/use-reports.ts
+- [x] T154 [US8] Create src/features/reports/index.ts with public exports
+- [x] T155 [US8] Create src/app/(auth)/reports/page.tsx and src/app/api/reports/route.ts
 
 **Checkpoint**: User Story 8 complete - reports functional
 
@@ -337,15 +337,15 @@
 
 ### Implementation for User Story 9
 
-- [ ] T156 [P] [US9] Create src/features/audit-logs/types.ts with AuditLog types
-- [ ] T157 [US9] Implement audit log handlers in src/features/audit-logs/api/handlers.ts
-- [ ] T158 [P] [US9] [UI/UX] Create AuditLogTable in src/features/audit-logs/components/audit-log-table.tsx
-- [ ] T159 [P] [US9] [UI/UX] Create AuditLogFilters in src/features/audit-logs/components/audit-log-filters.tsx
-- [ ] T160 [P] [US9] [UI/UX] Create ChangeDiff in src/features/audit-logs/components/change-diff.tsx
-- [ ] T161 [P] [US9] Create useAuditLogs hook in src/features/audit-logs/hooks/use-audit-logs.ts
-- [ ] T162 [US9] Create src/features/audit-logs/index.ts with public exports
-- [ ] T163 [US9] Create src/app/(auth)/audit-logs/page.tsx and src/app/api/audit-logs/route.ts
-- [ ] T164 [US9] Integrate audit logging into all CRUD operations using shared/lib/audit.ts
+- [x] T156 [P] [US9] Create src/features/audit-logs/types.ts with AuditLog types
+- [x] T157 [US9] Implement audit log handlers in src/features/audit-logs/api/handlers.ts
+- [x] T158 [P] [US9] [UI/UX] Create AuditLogTable in src/features/audit-logs/components/audit-log-table.tsx
+- [x] T159 [P] [US9] [UI/UX] Create AuditLogFilters in src/features/audit-logs/components/audit-log-filters.tsx
+- [x] T160 [P] [US9] [UI/UX] Create ChangeDiff in src/features/audit-logs/components/change-diff.tsx
+- [x] T161 [P] [US9] Create useAuditLogs hook in src/features/audit-logs/hooks/use-audit-logs.ts
+- [x] T162 [US9] Create src/features/audit-logs/index.ts with public exports
+- [x] T163 [US9] Create src/app/(auth)/audit-logs/page.tsx and src/app/api/audit-logs/route.ts
+- [x] T164 [US9] Integrate audit logging into all CRUD operations using shared/lib/audit.ts
 
 **Checkpoint**: User Story 9 complete - audit logs functional
 
@@ -357,10 +357,10 @@
 
 ### Implementation for User Story 10
 
-- [ ] T165 [P] [US10] Add historical queries to src/features/evaluations/api/handlers.ts
-- [ ] T166 [P] [US10] [UI/UX] Create HistoryList component in src/features/evaluations/components/history-list.tsx
-- [ ] T167 [P] [US10] [UI/UX] Create HistoryDetail component in src/features/evaluations/components/history-detail.tsx
-- [ ] T168 [US10] Add PDF export for historical evaluations in src/features/reports/api/pdf-generator.ts
+- [X] T165 [P] [US10] Add historical queries to src/features/evaluations/api/handlers.ts
+- [X] T166 [P] [US10] [UI/UX] Create HistoryList component in src/features/evaluations/components/history-list.tsx
+- [X] T167 [P] [US10] [UI/UX] Create HistoryDetail component in src/features/evaluations/components/history-detail.tsx
+- [X] T168 [US10] Add PDF export for historical evaluations in src/features/reports/api/pdf-generator.ts
 
 ---
 

@@ -1,5 +1,5 @@
 ---
-description: Start or continue the developer workflow. Sets current role to developer, displays development queue, syncs with task files, and shows what needs to be worked on. Use when beginning development work.
+description: Developer workflow agent. TRIGGER when: user says "start development", "begin work", "implement task", or invokes /speckit.implement. DO NOT TRIGGER when: user is reviewing code, running QA tests, or checking workflow status. Use when beginning development work on tasks from tasks.md.
 ---
 
 # Developer Workflow Agent

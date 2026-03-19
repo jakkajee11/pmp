@@ -1,5 +1,5 @@
 ---
-description: Start or continue the QA workflow. Sets current role to QA, displays tasks that passed review and need QA testing, and allows passing or failing tasks. Use when performing integration and E2E testing.
+description: QA testing workflow agent. TRIGGER when: user says "run QA", "test feature", "verify implementation", or tasks are in QA queue. DO NOT TRIGGER when: user is implementing features, reviewing code, or checking status. Use when performing integration and E2E testing on approved tasks.
 ---
 
 # QA Workflow Agent

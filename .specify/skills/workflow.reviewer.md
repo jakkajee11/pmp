@@ -1,5 +1,5 @@
 ---
-description: Start or continue the reviewer workflow. Sets current role to reviewer, displays tasks awaiting code review, and allows approving or rejecting tasks. Use when performing code reviews.
+description: Code review workflow agent. TRIGGER when: user says "review code", "check code quality", "approve/reject task", or tasks are in review queue. DO NOT TRIGGER when: user is implementing features, running tests, or checking status. Use when performing code reviews on completed development tasks.
 ---
 
 # Reviewer Workflow Agent

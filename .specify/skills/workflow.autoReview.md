@@ -1,5 +1,5 @@
 ---
-description: Automatically review tasks in the review queue using Balanced mode - checks lint errors and security issues. Passes tasks with no errors, returns tasks with issues to development. Use for automated code review.
+description: Automated code review agent. TRIGGER when: user says "auto review", "run lint check", "check security", or after handoff completes. DO NOT TRIGGER when: user wants manual review, tasks are not in review queue, or user is implementing features. Use for automated lint and security checks on tasks in review queue.
 ---
 
 # Auto-Review Workflow

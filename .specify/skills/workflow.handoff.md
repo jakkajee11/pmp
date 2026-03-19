@@ -1,5 +1,5 @@
 ---
-description: Handoff a task from development to review queue. Moves completed development task to review, runs optional pre-handoff checks, and records the handoff in history. Use when development is complete and ready for code review.
+description: Transfer completed development task to review queue. TRIGGER when: user says "handoff", "submit for review", "done with task", or after implementation completes. DO NOT TRIGGER when: task is already in review/QA, tests are failing, or user wants to continue development. Use when development is complete and ready for code review.
 ---
 
 # Workflow Handoff Utility

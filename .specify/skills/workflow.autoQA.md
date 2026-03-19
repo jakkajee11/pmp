@@ -1,5 +1,5 @@
 ---
-description: Automatically test tasks in the QA queue by running affected tests only. Verifies test existence for changed files, runs tests, and passes/fails tasks accordingly. Use for automated QA testing.
+description: Automated QA testing agent. TRIGGER when: user says "auto QA", "run tests", "test affected files", or after review approves tasks. DO NOT TRIGGER when: user wants manual QA, tasks are not in QA queue, or user is implementing features. Use for automated testing of tasks in QA queue.
 ---
 
 # Auto-QA Workflow

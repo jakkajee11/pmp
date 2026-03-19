@@ -1,3 +1,7 @@
+---
+description: Start or continue the developer workflow. Sets current role to developer, displays development queue, syncs with task files, and shows what needs to be worked on. Use when beginning development work.
+---
+
 # Developer Workflow Agent
 
 **Trigger:** `/workflow.dev`

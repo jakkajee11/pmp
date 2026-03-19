@@ -1,3 +1,7 @@
+---
+description: Automatically test tasks in the QA queue by running affected tests only. Verifies test existence for changed files, runs tests, and passes/fails tasks accordingly. Use for automated QA testing.
+---
+
 # Auto-QA Workflow
 
 **Trigger:** `/workflow.autoQA`

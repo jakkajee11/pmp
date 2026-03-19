@@ -1,3 +1,7 @@
+---
+description: Start or continue the QA workflow. Sets current role to QA, displays tasks that passed review and need QA testing, and allows passing or failing tasks. Use when performing integration and E2E testing.
+---
+
 # QA Workflow Agent
 
 **Trigger:** `/workflow.qa`

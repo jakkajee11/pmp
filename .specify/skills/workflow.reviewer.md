@@ -1,3 +1,7 @@
+---
+description: Start or continue the reviewer workflow. Sets current role to reviewer, displays tasks awaiting code review, and allows approving or rejecting tasks. Use when performing code reviews.
+---
+
 # Reviewer Workflow Agent
 
 **Trigger:** `/workflow.reviewer`

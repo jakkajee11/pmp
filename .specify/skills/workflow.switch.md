@@ -1,3 +1,7 @@
+---
+description: Switch between workflow roles (dev, reviewer, qa). Updates current role in workflow state and displays relevant queue for the new role. Use when changing between developer, reviewer, and QA responsibilities.
+---
+
 # Workflow Role Switch Utility
 
 **Trigger:** `/workflow.switch <role>`

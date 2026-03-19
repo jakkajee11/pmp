@@ -1,3 +1,7 @@
+---
+description: Handoff a task from development to review queue. Moves completed development task to review, runs optional pre-handoff checks, and records the handoff in history. Use when development is complete and ready for code review.
+---
+
 # Workflow Handoff Utility
 
 **Trigger:** `/workflow.handoff [taskId]`

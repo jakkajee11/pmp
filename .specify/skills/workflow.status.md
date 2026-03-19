@@ -1,3 +1,7 @@
+---
+description: Display comprehensive workflow status across all queues. Shows current role, all task queues (development, review, qa, completed), statistics, and recent activity. Use to get an overview of project workflow state.
+---
+
 # Workflow Status Utility
 
 **Trigger:** `/workflow.status`

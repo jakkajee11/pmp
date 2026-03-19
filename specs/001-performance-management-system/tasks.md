@@ -171,25 +171,25 @@
 
 ### Tests for User Story 5
 
-- [ ] T077 [P] [US5] Unit test for Objective validation in tests/unit/features/objectives/
-- [ ] T078 [P] [US5] Integration test for POST /api/objectives endpoint
-- [ ] T079 [P] [US5] Integration test for POST /api/objectives/bulk endpoint
+- [x] T077 [P] [US5] Unit test for Objective validation in tests/unit/features/objectives/
+- [x] T078 [P] [US5] Integration test for POST /api/objectives endpoint
+- [x] T079 [P] [US5] Integration test for POST /api/objectives/bulk endpoint
 
 ### Implementation for User Story 5
 
-- [ ] T080 [P] [US5] Create src/features/objectives/types.ts with Objective types and Zod schemas
-- [ ] T081 [US5] Implement objective CRUD handlers in src/features/objectives/api/handlers.ts
-- [ ] T082 [US5] Implement bulk assignment in src/features/objectives/api/bulk-assign.ts
-- [ ] T083 [US5] Implement objective validators in src/features/objectives/api/validators.ts
-- [ ] T084 [P] [US5] [UI/UX] Create ObjectiveForm component in src/features/objectives/components/objective-form.tsx
-- [ ] T085 [P] [US5] [UI/UX] Create ObjectiveCard component in src/features/objectives/components/objective-card.tsx
-- [ ] T086 [P] [US5] [UI/UX] Create RatingCriteriaEditor in src/features/objectives/components/rating-criteria-editor.tsx
-- [ ] T087 [P] [US5] [UI/UX] Create BulkAssignDialog in src/features/objectives/components/bulk-assign-dialog.tsx
-- [ ] T088 [P] [US5] Create useObjectives hook in src/features/objectives/hooks/use-objectives.ts
-- [ ] T089 [P] [US5] Create useObjectiveMutations in src/features/objectives/hooks/use-objective-mutations.ts
-- [ ] T090 [US5] Create src/features/objectives/index.ts with public exports
-- [ ] T091 [US5] Create src/app/(auth)/objectives/page.tsx re-exporting from objectives feature
-- [ ] T092 [US5] Create src/app/api/objectives/route.ts re-exporting from objectives feature
+- [x] T080 [P] [US5] Create src/features/objectives/types.ts with Objective types and Zod schemas
+- [x] T081 [US5] Implement objective CRUD handlers in src/features/objectives/api/handlers.ts
+- [x] T082 [US5] Implement bulk assignment in src/features/objectives/api/bulk-assign.ts
+- [x] T083 [US5] Implement objective validators in src/features/objectives/api/validators.ts
+- [x] T084 [P] [US5] [UI/UX] Create ObjectiveForm component in src/features/objectives/components/objective-form.tsx
+- [x] T085 [P] [US5] [UI/UX] Create ObjectiveCard component in src/features/objectives/components/objective-card.tsx
+- [x] T086 [P] [US5] [UI/UX] Create RatingCriteriaEditor in src/features/objectives/components/rating-criteria-editor.tsx
+- [x] T087 [P] [US5] [UI/UX] Create BulkAssignDialog in src/features/objectives/components/bulk-assign-dialog.tsx
+- [x] T088 [P] [US5] Create useObjectives hook in src/features/objectives/hooks/use-objectives.ts
+- [x] T089 [P] [US5] Create useObjectiveMutations in src/features/objectives/hooks/use-objective-mutations.ts
+- [x] T090 [US5] Create src/features/objectives/index.ts with public exports
+- [x] T091 [US5] Create src/app/(auth)/objectives/page.tsx re-exporting from objectives feature
+- [x] T092 [US5] Create src/app/api/objectives/route.ts re-exporting from objectives feature
 
 **Checkpoint**: User Story 5 complete - managers can assign objectives to employees
 

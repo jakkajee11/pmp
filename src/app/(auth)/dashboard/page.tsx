@@ -9,16 +9,16 @@
 
 import * as React from "react";
 import Link from "next/link";
-import { useSession } from "../../features/auth/hooks/use-session";
+import { useSession } from "@/features/auth/hooks/use-session";
 import {
   useDashboardData,
   ManagerDashboard,
   ManagerDashboardSkeleton,
   StatusSummary,
-} from "../../features/dashboard";
-import { EvaluationStatusBadge } from "../../features/evaluations";
-import { Button } from "../../shared/components/ui/button";
-import { cn } from "../../shared/utils/cn";
+} from "@/features/dashboard";
+import { EvaluationStatusBadge } from "@/features/evaluations";
+import { Button } from "@/shared/components/ui/button";
+import { cn } from "@/shared/utils/cn";
 
 export default function DashboardPage() {
   const { user, isLoading: sessionLoading } = useSession();

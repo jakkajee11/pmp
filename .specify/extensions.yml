@@ -1,0 +1,139 @@
+# Workflow Enforcement Extensions Configuration
+# Version: 3.0
+# Last Updated: 2026-03-19
+
+extensions:
+  workflow-enforcement:
+    enabled: true
+    description: Automated Dev -> Reviewer -> QA pipeline enforcement with dynamic skill resolution
+
+    hooks:
+      before_implement:
+        command: /workflow.dev
+        description: Invoke developer agent to manage implementation workflow with dynamic skill resolution
+        optional: false
+        prompt: Load workflow state, detect project type, resolve skills, and begin developer workflow
+
+      after_implement:
+        - command: /workflow.handoff
+          description: Handoff completed task to review queue
+          optional: false
+          prompt: Move completed task from in_development to in_review queue
+        - command: /workflow.autoReview
+          description: Auto-review code quality and security (Balanced mode)
+          optional: false
+          prompt: Review all tasks in review queue using balanced mode - only errors and security issues fail
+
+      after_review:
+        - command: /workflow.autoQA
+          description: Auto-run QA tests for approved tasks (affected tests only)
+          optional: false
+          prompt: Test all tasks in QA queue using affected tests scope
+
+    automation:
+      enabled: true
+      reviewMode: balanced
+      qaScope: affected
+      manualOverride: true
+
+    skillResolution:
+      enabled: true
+      description: Dynamically resolve skills based on detected project type
+      cacheDuration: 24h
+
+      detectionSources:
+        - source: claudeMd
+          weight: 0.4
+          patterns:
+            - "Next.js \\d+\\.x"
+            - "React \\d+\\.x"
+            - "\\.NET|ASP\\.NET"
+            - "Go \\d+"
+            - "Python \\d+"
+        - source: packageJson
+          weight: 0.4
+          priority:
+            - next: nextjs
+            - nuxt: nuxt
+            - svelte: sveltekit
+            - react: react
+            - vue: vue
+        - source: projectFiles
+          weight: 0.2
+          files:
+            - "*.csproj: dotnet"
+            - "go.mod: go"
+            - "Cargo.toml: rust"
+            - "requirements.txt: python"
+
+      resolution:
+        default: hardcoded
+        priority:
+          - frameworkMapping
+          - defaultMapping
+          - fallbackMapping
+
+    stages:
+      - name: development
+        role: dev
+        entryHook: /workflow.dev
+        exitHook: /workflow.handoff
+        skillResolution:
+          enabled: true
+          taskTypeDetection:
+            enabled: true
+            backendIndicators:
+              - "api/"
+              - "route.ts"
+              - "server action"
+              - "actions.ts"
+              - "prisma"
+              - "db.ts"
+              - "middleware"
+              - "endpoint"
+              - "CRUD"
+            frontendIndicators:
+              - "[UI/UX]"
+              - "component"
+              - "page.tsx"
+              - "styling"
+              - "CSS"
+              - "tailwind"
+      - name: review
+        role: reviewer
+        autoProcess: /workflow.autoReview
+        onPass: in_qa
+        onFail: in_development
+        skillResolution:
+          enabled: true
+      - name: qa
+        role: qa
+        autoProcess: /workflow.autoQA
+        onPass: completed
+        onFail: in_development
+        skillResolution:
+          enabled: true
+      - name: completed
+        role: null
+
+    transitions:
+      not_started:
+        next: in_development
+        command: /workflow.dev
+      in_development:
+        next: in_review
+        command: /workflow.handoff
+      in_review:
+        onPass: in_qa
+        onFail: in_development
+        autoCommand: /workflow.autoReview
+      in_qa:
+        onPass: completed
+        onFail: in_development
+        autoCommand: /workflow.autoQA
+      completed:
+        terminal: true
+
+    discoveryCommands:
+      - /workflow.discoverSkills
+      - /workflow.detectProject

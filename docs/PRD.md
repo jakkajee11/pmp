@@ -1,5 +1,5 @@
 # Product Requirements Document (PRD)
-# Performance Management System (PMS)
+# Performance Metrics Portal (PMP)
 
 **Version:** 1.0
 **Status:** Draft
@@ -12,7 +12,7 @@
 
 ### Overview
 
-The Performance Management System (PMS) is a web-based application designed to modernize the company's annual performance review process. It replaces the current manual, Excel-based workflow with a centralized, transparent, and efficient digital platform.
+The Performance Metrics Portal (PMP) is a web-based application designed to modernize the company's annual performance review process. It replaces the current manual, Excel-based workflow with a centralized, transparent, and efficient digital platform.
 
 ### Problem
 
@@ -92,7 +92,7 @@ This manual approach creates significant challenges:
 
 ### 2.3 Why Now
 
-Several factors make this the right time to invest in a Performance Management System:
+Several factors make this the right time to invest in a Performance Metrics Portal:
 
 - **New HR initiative** — The company is modernizing people operations as a strategic priority
 - **Scale challenge** — With thousands of employees, the manual process has become unsustainable
@@ -850,7 +850,7 @@ Pipeline Stages:
 
 ### 10.1 Time Savings
 
-| Stakeholder | Current State | With PMS | Savings |
+| Stakeholder | Current State | With PMP | Savings |
 |-------------|---------------|----------|---------|
 | **HR Team** | 200 hours/cycle on administration (consolidation, calculations, chasing managers) | 60 hours/cycle (configuration, support) | **70% reduction** (140 hours saved) |
 | **Managers** | 3 hours/employee (spreadsheet distribution, review, feedback, submission) | 1.5 hours/employee (streamlined workflow) | **50% reduction** |
@@ -858,7 +858,7 @@ Pipeline Stages:
 
 ### 10.2 Error Reduction
 
-| Error Type | Current Impact | With PMS |
+| Error Type | Current Impact | With PMP |
 |------------|----------------|----------|
 | Calculation errors | ~5% of evaluations have formula errors | Zero errors (automated calculations) |
 | Incomplete evaluations | ~10% of evaluations incomplete per cycle | Automated tracking, deadline enforcement |
@@ -867,7 +867,7 @@ Pipeline Stages:
 
 ### 10.3 Cost Savings (Quantifiable)
 
-| Cost Category | Current Cost | With PMS | Savings |
+| Cost Category | Current Cost | With PMP | Savings |
 |---------------|--------------|----------|---------|
 | HR labor (140 hrs saved) | 140 hrs × avg hourly rate | Automated processes | Significant |
 | Manager time (thousands of employees × 1.5 hrs) | Manual review overhead | Streamlined interface | High |
@@ -877,7 +877,7 @@ Pipeline Stages:
 
 ### 10.4 Compliance & Risk Mitigation
 
-| Area | Current Risk | With PMS |
+| Area | Current Risk | With PMP |
 |------|--------------|----------|
 | Audit trail | No tracking of changes; compliance risk | Full audit logs (5-year retention) |
 | Dispute resolution | No clear records for bonus/salary disagreements | Complete history of ratings, feedback, approvals |
@@ -896,7 +896,7 @@ Pipeline Stages:
 
 ### 10.6 Business Enablement
 
-| Capability | Before PMS | With PMS |
+| Capability | Before PMP | With PMP |
 |------------|------------|----------|
 | Promotion decisions | Gut feel, limited data | Historical performance data, trends |
 | Training needs | Anecdotal, reactive | Aggregate data identifies skill gaps proactively |

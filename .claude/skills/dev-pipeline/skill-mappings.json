@@ -1,0 +1,149 @@
+{
+  "version": "1.0.0",
+  "lastUpdated": "2026-03-19T15:00:00Z",
+  "description": "Framework-to-skill mapping configuration for dynamic skill resolution",
+  "frameworkMappings": {
+    "nextjs": {
+      "dev": {
+        "backend": ["nextjs-backend"],
+        "frontend": ["ui-ux-pro-max"],
+        "fullstack": ["nextjs-backend", "ui-ux-pro-max"]
+      },
+      "reviewer": {
+        "backend": ["backend-reviewer"],
+        "frontend": ["react-reviewer"],
+        "fullstack": ["backend-reviewer", "react-reviewer"]
+      },
+      "qa": {
+        "backend": [],
+        "frontend": [],
+        "fullstack": []
+      }
+    },
+    "react": {
+      "dev": {
+        "backend": [],
+        "frontend": ["ui-ux-pro-max"],
+        "fullstack": []
+      },
+      "reviewer": {
+        "backend": [],
+        "frontend": ["react-reviewer"],
+        "fullstack": []
+      },
+      "qa": {}
+    },
+    "dotnet": {
+      "dev": {
+        "backend": ["dotnet-backend"],
+        "frontend": ["dotnet-frontend"],
+        "fullstack": ["dotnet-backend", "dotnet-frontend"]
+      },
+      "reviewer": {
+        "backend": ["dotnet-reviewer"],
+        "frontend": ["dotnet-reviewer"],
+        "fullstack": ["dotnet-reviewer"]
+      },
+      "qa": {
+        "backend": ["dotnet-qa"],
+        "frontend": ["dotnet-qa"],
+        "fullstack": ["dotnet-qa"]
+      }
+    },
+    "go": {
+      "dev": {
+        "backend": ["go-backend"],
+        "frontend": [],
+        "fullstack": ["go-backend"]
+      },
+      "reviewer": {
+        "backend": ["go-reviewer"],
+        "frontend": [],
+        "fullstack": ["go-reviewer"]
+      },
+      "qa": {
+        "backend": ["go-qa"],
+        "frontend": [],
+        "fullstack": ["go-qa"]
+      }
+    },
+    "python": {
+      "dev": {
+        "backend": ["python-backend"],
+        "frontend": [],
+        "fullstack": ["python-backend"]
+      },
+      "reviewer": {
+        "backend": ["python-reviewer"],
+        "frontend": [],
+        "fullstack": ["python-reviewer"]
+      },
+      "qa": {}
+    },
+    "django": {
+      "dev": {
+        "backend": ["django-backend"],
+        "frontend": [],
+        "fullstack": ["django-backend"]
+      },
+      "reviewer": {
+        "backend": ["python-reviewer"],
+        "frontend": [],
+        "fullstack": ["python-reviewer"]
+      },
+      "qa": {}
+    },
+    "fastapi": {
+      "dev": {
+        "backend": ["fastapi-backend"],
+        "frontend": [],
+        "fullstack": ["fastapi-backend"]
+      },
+      "reviewer": {
+        "backend": ["python-reviewer"],
+        "frontend": [],
+        "fullstack": ["python-reviewer"]
+      },
+      "qa": {}
+    },
+    "rust": {
+      "dev": {
+        "backend": ["rust-backend"],
+        "frontend": [],
+        "fullstack": ["rust-backend"]
+      },
+      "reviewer": {
+        "backend": ["rust-reviewer"],
+        "frontend": [],
+        "fullstack": ["rust-reviewer"]
+      },
+      "qa": {}
+    }
+  },
+  "defaultMapping": {
+    "dev": {
+      "backend": ["backend-reviewer"],
+      "frontend": ["ui-ux-pro-max"],
+      "fullstack": ["backend-reviewer", "ui-ux-pro-max"]
+    },
+    "reviewer": {
+      "backend": ["backend-reviewer"],
+      "frontend": ["react-reviewer"],
+      "fullstack": ["backend-reviewer", "react-reviewer"]
+    },
+    "qa": {}
+  },
+  "fallbackMapping": {
+    "dev": {
+      "backend": ["nextjs-backend"],
+      "frontend": ["ui-ux-pro-max"],
+      "fullstack": ["nextjs-backend", "ui-ux-pro-max"]
+    },
+    "reviewer": {
+      "backend": ["backend-reviewer"],
+      "frontend": ["react-reviewer"],
+      "fullstack": ["backend-reviewer", "react-reviewer"]
+    },
+    "qa": {}
+  }
+}

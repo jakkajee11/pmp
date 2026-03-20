@@ -1,0 +1,534 @@
+{
+  "common": {
+    "appName": "ระบบประเมินผลการปฏิบัติงาน",
+    "loading": "กำลังโหลด...",
+    "save": "บันทึก",
+    "cancel": "ยกเลิก",
+    "submit": "ส่ง",
+    "delete": "ลบ",
+    "edit": "แก้ไข",
+    "create": "สร้าง",
+    "search": "ค้นหา",
+    "filter": "กรอง",
+    "noResults": "ไม่พบข้อมูล",
+    "error": "เกิดข้อผิดพลาด",
+    "success": "ดำเนินการสำเร็จ",
+    "confirm": "ยืนยัน",
+    "dismiss": "ปิด",
+    "close": "ปิด",
+    "back": "ย้อนกลับ",
+    "next": "ถัดไป",
+    "previous": "ก่อนหน้า",
+    "view": "ดู",
+    "viewAll": "ดูทั้งหมด",
+    "viewDetails": "ดูรายละเอียด",
+    "actions": "การดำเนินการ",
+    "status": "สถานะ",
+    "active": "ใช้งาน",
+    "inactive": "ไม่ใช้งาน",
+    "all": "ทั้งหมด",
+    "yes": "ใช่",
+    "no": "ไม่",
+    "required": "จำเป็น",
+    "optional": "ไม่จำเป็น",
+    "showing": "แสดง {from} ถึง {to} จาก {total}",
+    "page": "หน้า {current} จาก {total}",
+    "characters": "{count} ตัวอักษร",
+    "maxFiles": "จำกัด {count} ไฟล์"
+  },
+  "auth": {
+    "login": "เข้าสู่ระบบ",
+    "logout": "ออกจากระบบ",
+    "profile": "โปรไฟล์",
+    "signIn": "เข้าสู่ระบบ",
+    "signOut": "ออกจากระบบ",
+    "welcomeBack": "ยินดีต้อนรับกลับมา"
+  },
+  "navigation": {
+    "dashboard": "แดชบอร์ด",
+    "evaluations": "การประเมินของฉัน",
+    "objectives": "เป้าหมาย",
+    "team": "ทีมของฉัน",
+    "cycles": "รอบการประเมิน",
+    "users": "ผู้ใช้งาน",
+    "reports": "รายงาน",
+    "settings": "การตั้งค่า",
+    "auditLogs": "ประวัติการใช้งาน",
+    "orgChart": "แผนผู้งาน",
+    "notifications": "การแจ้งเตือน",
+    "coreValues": "ค่านิยมองค์กร"
+  },
+  "dashboard": {
+    "title": "แดชบอร์ด",
+    "welcome": "ยินดีต้อนรับ, {name}",
+    "overview": "ภาพรวม",
+    "myEvaluations": "การประเมินของฉัน",
+    "teamReviews": "การประเมินทีม",
+    "pendingReviews": "รอการประเมิน",
+    "completedReviews": "ประเมินเสร็จสิ้น",
+    "totalEmployees": "จำนวนพนักงานทั้งหมด",
+    "selfEvalComplete": "ประเมินตนเองเสร็จสิ้น",
+    "managerReviewComplete": "ผู้จัดการประเมินเสร็จสิ้น",
+    "completionRate": "อัตราความสำเร็จ",
+    "statusSummary": "สรุปสถานะ",
+    "recentActivity": "กิจกรรมล่าสุด",
+    "quickActions": "การดำเนินการด่วน",
+    "startSelfEval": "เริ่มประเมินตนเอง",
+    "reviewTeam": "ประเมินทีม",
+    "viewReports": "ดูรายงาน",
+    "employeeDashboard": "แดชบอร์ดพนักงาน",
+    "managerDashboard": "แดชบอร์ดผู้จัดการ",
+    "hrDashboard": "แดชบอร์ด HR"
+  },
+  "users": {
+    "title": "จัดการผู้ใช้งาน",
+    "addUser": "เพิ่มผู้ใช้",
+    "editUser": "แก้ไขผู้ใช้",
+    "createUser": "สร้างผู้ใช้",
+    "updateUser": "อัปเดตผู้ใช้",
+    "deactivateUser": "ปิดการใช้งาน",
+    "reactivateUser": "เปิดการใช้งาน",
+    "deactivateConfirm": "คุณแน่ใจหรือไม่ที่จะปิดการใช้งานผู้ใช้นี้?",
+    "importUsers": "นำเข้าผู้ใช้",
+    "exportUsers": "ส่งออกผู้ใช้",
+    "searchPlaceholder": "ค้นหาตามชื่อหรืออีเมล...",
+    "filterByRole": "กรองตามบทบาท",
+    "filterByStatus": "กรองตามสถานะ",
+    "allRoles": "บทบาททั้งหมด",
+    "allStatus": "สถานะทั้งหมด",
+    "noUsersFound": "ไม่พบผู้ใช้ ลองปรับตัวกรองของคุณ",
+    "table": {
+      "name": "ชื่อ",
+      "email": "อีเมล",
+      "role": "บทบาท",
+      "department": "แผนก",
+      "manager": "ผู้บังคับบัญชา",
+      "status": "สถานะ",
+      "actions": "การดำเนินการ"
+    },
+    "form": {
+      "name": "ชื่อ-นามสกุล",
+      "nameTh": "ชื่อภาษาไทย",
+      "email": "อีเมล",
+      "role": "บทบาท",
+      "department": "แผนก",
+      "manager": "ผู้บังคับบัญชา",
+      "language": "ภาษาที่ต้องการ"
+    },
+    "roles": {
+      "SUPER_ADMIN": "ผู้ดูแลระบบสูงสุด",
+      "HR_ADMIN": "ผู้ดูแลทรัพยากรบุคคล",
+      "HR_STAFF": "เจ้าหน้าที่ทรัพยากรบุคคล",
+      "SENIOR_MANAGER": "ผู้จัดการอาวุโส",
+      "LINE_MANAGER": "ผู้จัดการ",
+      "EMPLOYEE": "พนักงาน"
+    },
+    "import": {
+      "title": "นำเข้าผู้ใช้จาก CSV",
+      "description": "อัปโหลดไฟล์ CSV เพื่อนำเข้าผู้ใช้หลายคน",
+      "downloadTemplate": "ดาวน์โหลดเทมเพลต",
+      "selectFile": "เลือกไฟล์ CSV",
+      "importing": "กำลังนำเข้า...",
+      "success": "นำเข้า {count} ผู้ใช้สำเร็จ",
+      "partialSuccess": "นำเข้า {imported} ผู้ใช้, ข้าม {skipped} ราย",
+      "error": "ไม่สามารถนำเข้าผู้ใช้ได้"
+    }
+  },
+  "departments": {
+    "title": "แผนก",
+    "addDepartment": "เพิ่มแผนก",
+    "editDepartment": "แก้ไขแผนก",
+    "name": "ชื่อแผนก",
+    "nameTh": "ชื่อภาษาไทย",
+    "parent": "แผนกแม่",
+    "employeeCount": "จำนวนพนักงาน",
+    "noParent": "ไม่มีแผนกแม่ (ระดับบนสุด)"
+  },
+  "orgChart": {
+    "title": "แผนผังองค์กร",
+    "viewMode": "โหมดแสดงผล",
+    "expandAll": "ขยายทั้งหมด",
+    "collapseAll": "ยุบทั้งหมด",
+    "searchEmployee": "ค้นหาพนักงาน...",
+    "noOrgData": "ไม่มีข้อมูลองค์กร"
+  },
+  "cycles": {
+    "title": "รอบการประเมิน",
+    "createCycle": "สร้างรอบการประเมิน",
+    "editCycle": "แก้ไขรอบการประเมิน",
+    "activateCycle": "เปิดใช้งานรอบ",
+    "closeCycle": "ปิดรอบการประเมิน",
+    "viewCycle": "ดูรายละเอียดรอบ",
+    "noCycles": "ไม่พบรอบการประเมิน",
+    "createFirst": "สร้างรอบการประเมินแรกของคุณ",
+    "table": {
+      "name": "ชื่อ",
+      "type": "ประเภท",
+      "period": "ระยะเวลา",
+      "status": "สถานะ",
+      "selfEvalProgress": "ความคืบหน้าประเมินตนเอง",
+      "managerProgress": "ความคืบหน้าผู้จัดการประเมิน"
+    },
+    "types": {
+      "MID_YEAR": "ประเมินกลางปี",
+      "YEAR_END": "ประเมินสิ้นปี"
+    },
+    "statuses": {
+      "DRAFT": "ร่าง",
+      "ACTIVE": "ใช้งาน",
+      "CLOSED": "ปิดแล้ว"
+    },
+    "form": {
+      "name": "ชื่อรอบการประเมิน",
+      "type": "ประเภทการประเมิน",
+      "startDate": "วันที่เริ่มต้น",
+      "endDate": "วันที่สิ้นสุด",
+      "selfEvalDeadline": "กำหนดส่งประเมินตนเอง",
+      "managerDeadline": "กำหนดส่งผู้จัดการประเมิน",
+      "gracePeriod": "ระยะเวลาผ่อนผัน (วัน)",
+      "weightsConfig": "การตั้งค่าน้ำหนัก",
+      "kpiWeight": "น้ำหนัก KPI (%)",
+      "coreValuesWeight": "น้ำหนักค่านิยม (%)"
+    },
+    "deadline": {
+      "title": "การตั้งค่ากำหนดเวลา",
+      "extendDeadline": "ขยายกำหนดเวลา",
+      "extensionType": "ประเภทการขยาย",
+      "newDeadline": "กำหนดเวลาใหม่",
+      "selectUsers": "เลือกผู้ใช้",
+      "selfEval": "ประเมินตนเอง",
+      "managerReview": "ผู้จัดการประเมิน"
+    }
+  },
+  "objectives": {
+    "title": "เป้าหมาย",
+    "createObjective": "สร้างเป้าหมาย",
+    "editObjective": "แก้ไขเป้าหมาย",
+    "deleteObjective": "ลบเป้าหมาย",
+    "copyObjective": "คัดลอกไปยัง...",
+    "bulkAssign": "กำหนดหลายคน",
+    "assignTo": "มอบหมายให้",
+    "noObjectives": "ไม่พบเป้าหมาย",
+    "categories": {
+      "DELIVERY": "การส่งมอบ",
+      "INNOVATION": "นวัตกรรม",
+      "QUALITY": "คุณภาพ",
+      "CULTURE": "วัฒนธรรม"
+    },
+    "categoryDescriptions": {
+      "DELIVERY": "เป้าหมายที่เกี่ยวข้องกับการส่งมอบโครงการและความทันเวลา",
+      "INNOVATION": "เป้าหมายที่มุ่งเน้นแนวคิดใหม่และการแก้ปัญหาอย่างสร้างสรรค์",
+      "QUALITY": "เป้าหมายที่เน้นมาตรฐานและการปรับปรุงคุณภาพ",
+      "CULTURE": "เป้าหมายที่สอดคล้องกับค่านิยมองค์กรและวัฒนธรรมทีม"
+    },
+    "form": {
+      "title": "ชื่อเป้าหมาย",
+      "description": "รายละเอียด",
+      "category": "หมวดหมู่",
+      "timeline": "ไทม์ไลน์",
+      "keyResults": "ผลลัพธ์หลัก (ไม่จำเป็น)",
+      "assignedTo": "มอบหมายให้",
+      "cycle": "รอบการประเมิน",
+      "ratingCriteria": "เกณฑ์การให้คะแนน"
+    },
+    "timelines": {
+      "Q1": "ไตรมาส 1",
+      "Q2": "ไตรมาส 2",
+      "Q3": "ไตรมาส 3",
+      "Q4": "ไตรมาส 4",
+      "H1": "ครึ่งปีแรก",
+      "H2": "ครึ่งปีหลัง",
+      "FULL_YEAR": "ตลอดปี"
+    },
+    "statuses": {
+      "not_started": "ยังไม่เริ่ม",
+      "self_in_progress": "กำลังประเมินตนเอง",
+      "self_submitted": "ส่งประเมินตนเองแล้ว",
+      "manager_in_progress": "กำลังรอผู้จัดการประเมิน",
+      "completed": "เสร็จสิ้น",
+      "returned": "ส่งกลับแก้ไข"
+    },
+    "card": {
+      "hasKRs": "มี KR",
+      "cycle": "รอบ"
+    },
+    "bulkAssign": {
+      "title": "กำหนดเป้าหมายหลายคน",
+      "description": "กำหนดเป้าหมายเดียวกันให้พนักงานหลายคน",
+      "selectEmployees": "เลือกพนักงาน",
+      "selectedCount": "เลือก {count} พนักงาน",
+      "success": "สร้าง {count} เป้าหมายสำเร็จ"
+    }
+  },
+  "evaluations": {
+    "title": "การประเมิน",
+    "selfEvaluation": "การประเมินตนเอง",
+    "managerReview": "การประเมินโดยผู้จัดการ",
+    "myEvaluations": "การประเมินของฉัน",
+    "teamEvaluations": "การประเมินทีม",
+    "startEvaluation": "เริ่มการประเมิน",
+    "submitEvaluation": "ส่งการประเมิน",
+    "submitting": "กำลังส่ง...",
+    "returnEvaluation": "ส่งกลับแก้ไข",
+    "confirmSubmission": "ยืนยันการส่ง",
+    "submissionWarning": "คุณแน่ใจหรือไม่ที่จะส่งการประเมินตนเอง? หลังจากส่งแล้ว คุณจะไม่สามารถแก้ไขได้จนกว่าผู้จัดการจะประเมินเสร็จ",
+    "selectRating": "เลือกคะแนนเพื่อเปิดใช้งานการส่ง",
+    "saveBeforeSubmit": "ตรวจสอบให้แน่ใจว่าบันทึกแล้วก่อนส่ง",
+    "statuses": {
+      "NOT_STARTED": "ยังไม่เริ่ม",
+      "SELF_IN_PROGRESS": "กำลังประเมินตนเอง",
+      "SELF_SUBMITTED": "ส่งประเมินตนเองแล้ว",
+      "MANAGER_IN_PROGRESS": "กำลังรอผู้จัดการประเมิน",
+      "COMPLETED": "เสร็จสิ้น",
+      "RETURNED": "ส่งกลับแก้ไข"
+    },
+    "form": {
+      "yourRating": "คะแนนประเมินตนเอง",
+      "managerRating": "คะแนนผู้จัดการ",
+      "comments": "ความคิดเห็น",
+      "feedback": "ข้อเสนอแนะ",
+      "commentsPlaceholder": "อธิบายความสำเร็จ อุปสรรค และจุดที่ต้องปรับปรุง...",
+      "feedbackPlaceholder": "ให้ข้อเสนอแนะที่เป็นประโยชน์สำหรับพนักงาน..."
+    },
+    "autoSave": {
+      "saving": "กำลังบันทึก...",
+      "saved": "บันทึกแล้ว",
+      "error": "บันทึกไม่สำเร็จ",
+      "pending": "มีการเปลี่ยนแปลงรอบันทึก"
+    },
+    "scoring": {
+      "title": "การคำนวณคะแนน",
+      "kpiScore": "คะแนน KPI",
+      "coreValuesScore": "คะแนนค่านิยม",
+      "weightedScore": "คะแนนถัวเฉลี่ย",
+      "finalScore": "คะแนนรวม"
+    },
+    "history": {
+      "title": "ประวัติการประเมิน",
+      "viewHistory": "ดูประวัติ",
+      "noHistory": "ไม่พบประวัติการประเมิน",
+      "cycle": "รอบ",
+      "date": "วันที่",
+      "score": "คะแนน"
+    },
+    "typeLabels": {
+      "KPI": "เป้าหมาย KPI",
+      "CORE_VALUE": "ค่านิยมองค์กร"
+    }
+  },
+  "coreValues": {
+    "title": "ค่านิยมองค์กร",
+    "addValue": "เพิ่มค่านิยม",
+    "editValue": "แก้ไขค่านิยม",
+    "deleteValue": "ลบค่านิยม",
+    "form": {
+      "name": "ชื่อค่านิยม",
+      "description": "รายละเอียด",
+      "order": "ลำดับการแสดง"
+    },
+    "assessment": {
+      "title": "การประเมินค่านิยม",
+      "instructions": "ประเมินพนักงานในแต่ละค่านิยมขององค์กร"
+    },
+    "rating": {
+      "label": "คะแนนสำหรับ {value}"
+    }
+  },
+  "notifications": {
+    "title": "การแจ้งเตือน",
+    "markAllRead": "อ่านทั้งหมดแล้ว",
+    "noNotifications": "ไม่มีการแจ้งเตือน",
+    "settings": {
+      "title": "การตั้งค่าการแจ้งเตือน",
+      "description": "กำหนดวิธีและเวลาที่คุณต้องการรับการแจ้งเตือน",
+      "channels": "ช่องทางการแจ้งเตือน",
+      "types": "ประเภทการแจ้งเตือน",
+      "timing": "เวลาเตือนความจำ",
+      "emailEnabled": "การแจ้งเตือนทางอีเมล",
+      "smsEnabled": "การแจ้งเตือนทาง SMS",
+      "teamsEnabled": "Microsoft Teams",
+      "cycleStart": "แจ้งเตือนเมื่อเริ่มรอบการประเมิน",
+      "deadlineReminders": "เตือนก่อนถึงกำหนดเวลา",
+      "submissionConfirmations": "ยืนยันการส่ง",
+      "feedbackNotifications": "แจ้งเตือนข้อเสนอแนะ",
+      "sendReminders": "ส่งการเตือนความจำ",
+      "daysBefore": {
+        "1": "1 วันก่อน",
+        "2": "2 วันก่อน",
+        "3": "3 วันก่อน",
+        "5": "5 วันก่อน",
+        "7": "1 สัปดาห์ก่อน",
+        "14": "2 สัปดาห์ก่อน"
+      },
+      "saving": "กำลังบันทึก...",
+      "saveChanges": "บันทึกการเปลี่ยนแปลง",
+      "saveSuccess": "บันทึกการตั้งค่าสำเร็จ!",
+      "saveError": "ไม่สามารถบันทึกการตั้งค่าได้"
+    },
+    "bell": {
+      "title": "การแจ้งเตือน",
+      "viewAll": "ดูการแจ้งเตือนทั้งหมด",
+      "unread": "{count} รายการใหม่"
+    }
+  },
+  "reports": {
+    "title": "รายงาน",
+    "completion": "รายงานความคืบหน้า",
+    "ratingDistribution": "การกระจายคะแนน",
+    "export": "ส่งออก",
+    "exportCSV": "ส่งออกเป็น CSV",
+    "exportPDF": "ส่งออกเป็น PDF",
+    "filters": {
+      "title": "ตัวกรอง",
+      "cycle": "รอบการประเมิน",
+      "department": "แผนก",
+      "dateRange": "ช่วงวันที่",
+      "apply": "ใช้ตัวกรอง",
+      "reset": "รีเซ็ตตัวกรอง"
+    },
+    "completion": {
+      "title": "รายงานความคืบหน้า",
+      "totalEmployees": "พนักงานทั้งหมด",
+      "selfEvalComplete": "ประเมินตนเองเสร็จสิ้น",
+      "managerReviewComplete": "ผู้จัดการประเมินเสร็จสิ้น",
+      "statusBreakdown": "การกระจายตามสถานะ",
+      "byDepartment": "ความคืบหน้าตามแผนก",
+      "notStarted": "ยังไม่เริ่ม",
+      "selfInProgress": "กำลังประเมินตนเอง",
+      "selfSubmitted": "ส่งประเมินตนเองแล้ว",
+      "managerInProgress": "ผู้จัดการประเมิน",
+      "completed": "เสร็จสิ้น",
+      "employees": "คน",
+      "generated": "สร้างเมื่อ"
+    },
+    "distribution": {
+      "title": "การกระจายคะแนน",
+      "byRating": "ตามคะแนน",
+      "byDepartment": "ตามแผนก",
+      "averageScore": "คะแนนเฉลี่ย"
+    },
+    "dialog": {
+      "title": "ส่งออกรายงาน",
+      "format": "รูปแบบไฟล์",
+      "includeCharts": "รวมกราฟ",
+      "generating": "กำลังสร้างรายงาน..."
+    }
+  },
+  "auditLogs": {
+    "title": "ประวัติการใช้งาน",
+    "noLogs": "ไม่พบประวัติการใช้งาน",
+    "noLogsHint": "ลองปรับตัวกรองหรือตรวจสอบใหม่ในภายหลัง",
+    "table": {
+      "timestamp": "วันที่เวลา",
+      "user": "ผู้ใช้",
+      "action": "การดำเนินการ",
+      "entity": "ประเภท",
+      "entityId": "ID",
+      "ipAddress": "IP Address",
+      "actions": "การดำเนินการ"
+    },
+    "actions": {
+      "create": "สร้าง",
+      "update": "แก้ไข",
+      "delete": "ลบ",
+      "view": "ดู"
+    },
+    "entities": {
+      "USER": "ผู้ใช้",
+      "DEPARTMENT": "แผนก",
+      "CYCLE": "รอบการประเมิน",
+      "OBJECTIVE": "เป้าหมาย",
+      "EVALUATION": "การประเมิน",
+      "CORE_VALUE": "ค่านิยม",
+      "DOCUMENT": "เอกสาร",
+      "NOTIFICATION": "การแจ้งเตือน"
+    },
+    "filters": {
+      "title": "กรองประวัติ",
+      "dateRange": "ช่วงวันที่",
+      "user": "ผู้ใช้",
+      "action": "ประเภทการดำเนินการ",
+      "entityType": "ประเภทข้อมูล"
+    },
+    "detail": {
+      "title": "รายละเอียด",
+      "changes": "การเปลี่ยนแปลง",
+      "before": "ก่อน",
+      "after": "หลัง",
+      "metadata": "ข้อมูลเพิ่มเติม",
+      "system": "ระบบ",
+      "notAvailable": "ไม่มีข้อมูล"
+    }
+  },
+  "documents": {
+    "title": "เอกสาร",
+    "upload": "อัปโหลดเอกสาร",
+    "uploading": "กำลังอัปโหลด...",
+    "noDocuments": "ยังไม่มีเอกสาร",
+    "supportedFormats": "PDF, Word, Excel หรือรูปภาพ ขนาดไม่เกิน {size}",
+    "dragDrop": "ลากและวางไฟล์ที่นี่ หรือคลิกเพื่อเลือกไฟล์",
+    "browseFiles": "เลือกไฟล์",
+    "fileList": {
+      "name": "ชื่อไฟล์",
+      "size": "ขนาด",
+      "uploaded": "อัปโหลดเมื่อ",
+      "actions": "การดำเนินการ"
+    },
+    "errors": {
+      "uploadFailed": "อัปโหลดไฟล์ไม่สำเร็จ",
+      "invalidType": "ประเภทไฟล์ไม่ถูกต้อง",
+      "tooLarge": "ไฟล์มีขนาดใหญ่เกินไป",
+      "tooMany": "ไฟล์มากเกินไป"
+    }
+  },
+  "settings": {
+    "title": "การตั้งค่า",
+    "general": "การตั้งค่าทั่วไป",
+    "language": "ภาษา",
+    "languageDescription": "เลือกภาษาที่คุณต้องการสำหรับหน้าจอ",
+    "languages": {
+      "en": "English (อังกฤษ)",
+      "th": "ไทย"
+    },
+    "theme": "ธีม",
+    "themeDescription": "เลือกธีมที่คุณต้องการ",
+    "themes": {
+      "light": "สว่าง",
+      "dark": "มืด",
+      "system": "ตามระบบ"
+    },
+    "profile": {
+      "title": "การตั้งค่าโปรไฟล์",
+      "name": "ชื่อที่แสดง",
+      "email": "อีเมล",
+      "language": "ภาษาที่ต้องการ"
+    },
+    "saved": "บันทึกการตั้งค่าสำเร็จ",
+    "saveError": "ไม่สามารถบันทึกการตั้งค่าได้"
+  },
+  "validation": {
+    "required": "กรุณากรอก {field}",
+    "email": "รูปแบบอีเมลไม่ถูกต้อง",
+    "minLength": "{field} ต้องมีอย่างน้อย {min} ตัวอักษร",
+    "maxLength": "{field} ต้องไม่เกิน {max} ตัวอักษร",
+    "min": "{field} ต้องมีค่าอย่างน้อย {min}",
+    "max": "{field} ต้องมีค่าไม่เกิน {max}",
+    "pattern": "รูปแบบ {field} ไม่ถูกต้อง",
+    "dateRange": "วันที่เริ่มต้นต้องก่อนวันที่สิ้นสุด",
+    "weightsSum": "น้ำหนักรวมต้องเท่ากับ 100%"
+  },
+  "errors": {
+    "generic": "เกิดข้อผิดพลาดที่ไม่คาดคิด",
+    "notFound": "ไม่พบหน้าที่ต้องการ",
+    "unauthorized": "คุณไม่ได้รับอนุญาตให้เข้าถึงหน้านี้",
+    "forbidden": "คุณไม่มีสิทธิ์ในการดำเนินการนี้",
+    "network": "ข้อผิดพลาดของเครือข่าย กรุณาตรวจสอบการเชื่อมต่อ",
+    "session": "เซสชันของคุณหมดอายุแล้ว กรุณาเข้าสู่ระบบอีกครั้ง",
+    "validation": "กรุณาตรวจสอบข้อมูลที่กรอกและลองอีกครั้ง"
+  },
+  "empty": {
+    "noData": "ไม่มีข้อมูล",
+    "noResults": "ไม่พบผลลัพธ์",
+    "noRecords": "ไม่มีข้อมูลที่จะแสดง"
+  }
+}

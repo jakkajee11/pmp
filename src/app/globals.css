@@ -1,0 +1,642 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/**
+ * Professional Corporate Theme
+ * Version: 2.0 - Enhanced with comprehensive design tokens
+ *
+ * Design Philosophy:
+ * - Primary: Navy Blue (#1e3a5f) - Trustworthy, professional, enterprise-grade
+ * - Accents: Slate Gray - Clean, modern, sophisticated
+ * - Background: Clean whites with subtle warmth for readability
+ * - Typography: Inter font family for clarity and professionalism
+ */
+
+@layer base {
+  :root {
+    /* === Background Colors === */
+    /* Clean white with subtle warmth */
+    --background: 0 0% 100%;
+    --foreground: 215 25% 15%;
+
+    /* Card - Pure white for content areas */
+    --card: 0 0% 100%;
+    --card-foreground: 215 25% 15%;
+
+    /* Popover - Match card for consistency */
+    --popover: 0 0% 100%;
+    --popover-foreground: 215 25% 15%;
+
+    /* === Brand Colors === */
+    /* Primary - Navy Blue (#1e3a5f → HSL 213 52% 24%) */
+    --primary: 213 52% 28%;
+    --primary-foreground: 0 0% 100%;
+
+    /* Primary hover state */
+    --primary-hover: 213 52% 24%;
+
+    /* Secondary - Slate Gray */
+    --secondary: 215 16% 94%;
+    --secondary-foreground: 215 25% 25%;
+
+    /* === Neutral Colors === */
+    /* Muted - Subtle gray for backgrounds */
+    --muted: 215 16% 96%;
+    --muted-foreground: 215 14% 45%;
+
+    /* Accent - Slate with more depth */
+    --accent: 215 20% 92%;
+    --accent-foreground: 215 25% 20%;
+
+    /* === Semantic Colors === */
+    /* Destructive - Professional red for errors */
+    --destructive: 0 72% 51%;
+    --destructive-foreground: 0 0% 100%;
+
+    /* Success - Professional green for confirmations */
+    --success: 142 64% 38%;
+    --success-foreground: 0 0% 100%;
+
+    /* Warning - Professional amber for alerts */
+    --warning: 38 92% 50%;
+    --warning-foreground: 0 0% 100%;
+
+    /* Info - Professional blue for information */
+    --info: 205 89% 48%;
+    --info-foreground: 0 0% 100%;
+
+    /* === Borders & Inputs === */
+    --border: 215 16% 88%;
+    --input: 215 16% 88%;
+    --ring: 213 52% 28%;
+
+    /* === Spacing & Radius === */
+    /* Subtle rounding for professional look */
+    --radius: 0.375rem;
+
+    /* === Sidebar (for dashboard layouts) === */
+    --sidebar-width: 280px;
+    --sidebar-collapsed-width: 64px;
+    --sidebar-background: 213 52% 28%;
+    --sidebar-foreground: 0 0% 100%;
+    --sidebar-muted: 213 40% 35%;
+    --sidebar-muted-foreground: 0 0% 85%;
+    --sidebar-border: 213 40% 22%;
+  }
+
+  .dark {
+    /* === Dark Mode Background Colors === */
+    /* Deep navy for professional dark mode */
+    --background: 215 35% 12%;
+    --foreground: 215 10% 92%;
+
+    /* Card - Slightly lighter than background */
+    --card: 215 30% 16%;
+    --card-foreground: 215 10% 92%;
+
+    /* Popover */
+    --popover: 215 30% 16%;
+    --popover-foreground: 215 10% 92%;
+
+    /* === Dark Mode Brand Colors === */
+    /* Primary - Lighter navy for contrast */
+    --primary: 213 60% 45%;
+    --primary-foreground: 0 0% 100%;
+    --primary-hover: 213 60% 50%;
+
+    /* Secondary - Muted slate */
+    --secondary: 215 20% 22%;
+    --secondary-foreground: 215 10% 88%;
+
+    /* === Dark Mode Neutral Colors === */
+    --muted: 215 20% 20%;
+    --muted-foreground: 215 10% 60%;
+
+    --accent: 215 20% 24%;
+    --accent-foreground: 215 10% 88%;
+
+    /* === Dark Mode Semantic Colors === */
+    --destructive: 0 62% 45%;
+    --destructive-foreground: 0 0% 100%;
+
+    --success: 142 55% 45%;
+    --success-foreground: 0 0% 100%;
+
+    --warning: 38 85% 55%;
+    --warning-foreground: 0 0% 0%;
+
+    --info: 205 80% 55%;
+    --info-foreground: 0 0% 100%;
+
+    /* === Dark Mode Borders === */
+    --border: 215 20% 24%;
+    --input: 215 20% 24%;
+    --ring: 213 60% 45%;
+
+    /* === Dark Mode Sidebar === */
+    --sidebar-background: 215 35% 10%;
+    --sidebar-foreground: 215 10% 90%;
+    --sidebar-muted: 215 25% 18%;
+    --sidebar-muted-foreground: 215 10% 60%;
+    --sidebar-border: 215 25% 18%;
+  }
+}
+
+@layer base {
+  /* Apply border color globally */
+  * {
+    @apply border-border;
+  }
+
+  /* Body base styles */
+  body {
+    @apply bg-background text-foreground;
+    font-feature-settings: "rlig" 1, "calt" 1;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  /* === Typography Scale === */
+  /* Professional heading styles */
+  h1 {
+    @apply text-3xl font-semibold tracking-tight text-foreground;
+    line-height: 1.2;
+  }
+
+  h2 {
+    @apply text-2xl font-semibold tracking-tight text-foreground;
+    line-height: 1.25;
+  }
+
+  h3 {
+    @apply text-xl font-semibold tracking-tight text-foreground;
+    line-height: 1.3;
+  }
+
+  h4 {
+    @apply text-lg font-semibold text-foreground;
+    line-height: 1.35;
+  }
+
+  h5 {
+    @apply text-base font-semibold text-foreground;
+    line-height: 1.4;
+  }
+
+  h6 {
+    @apply text-sm font-semibold text-foreground;
+    line-height: 1.45;
+  }
+
+  /* Paragraph styles */
+  p {
+    @apply text-base text-foreground;
+    line-height: 1.6;
+  }
+
+  /* Small text */
+  small {
+    @apply text-sm text-muted-foreground;
+  }
+
+  /* === Accessibility === */
+  /* Smooth scrolling */
+  html {
+    scroll-behavior: smooth;
+  }
+
+  /* Respect user preference for reduced motion */
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
+
+  /* Focus styles for accessibility */
+  :focus-visible {
+    @apply outline-none ring-2 ring-ring ring-offset-2 ring-offset-background;
+  }
+
+  /* Selection styling */
+  ::selection {
+    @apply bg-primary/20 text-foreground;
+  }
+
+  /* === Form Elements === */
+  /* Consistent input styling */
+  input,
+  textarea,
+  select {
+    @apply rounded-md border border-input bg-background px-3 py-2 text-sm;
+    @apply placeholder:text-muted-foreground;
+    @apply focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2;
+    @apply disabled:cursor-not-allowed disabled:opacity-50;
+  }
+
+  /* Checkbox and radio styling */
+  input[type="checkbox"],
+  input[type="radio"] {
+    @apply h-4 w-4 rounded border-input text-primary;
+    @apply focus:ring-2 focus:ring-ring focus:ring-offset-2;
+  }
+
+  /* === Links === */
+  a {
+    @apply text-primary underline-offset-4 transition-colors duration-200;
+  }
+
+  a:hover {
+    @apply underline;
+  }
+
+  /* === Tables === */
+  table {
+    @apply w-full border-collapse;
+  }
+
+  th {
+    @apply text-left text-sm font-semibold text-foreground;
+  }
+
+  td {
+    @apply text-sm text-foreground;
+  }
+
+  /* === Code === */
+  code {
+    @apply rounded bg-muted px-1.5 py-0.5 font-mono text-sm;
+  }
+
+  pre {
+    @apply overflow-x-auto rounded-lg bg-muted p-4;
+  }
+
+  pre code {
+    @apply bg-transparent p-0;
+  }
+
+  /* === Horizontal Rule === */
+  hr {
+    @apply border-t border-border;
+  }
+}
+
+@layer components {
+  /* === Card Styles === */
+  /* Professional card shadow */
+  .card-shadow {
+    box-shadow:
+      0 1px 3px 0 rgb(0 0 0 / 0.08),
+      0 1px 2px -1px rgb(0 0 0 / 0.08);
+  }
+
+  .card-shadow-hover {
+    box-shadow:
+      0 4px 6px -1px rgb(0 0 0 / 0.08),
+      0 2px 4px -2px rgb(0 0 0 / 0.08);
+  }
+
+  .card-shadow-lg {
+    box-shadow:
+      0 10px 15px -3px rgb(0 0 0 / 0.08),
+      0 4px 6px -4px rgb(0 0 0 / 0.08);
+  }
+
+  /* === Status Colors === */
+  .status-success {
+    @apply rounded-md border bg-success/10 text-success;
+    border-color: hsl(var(--success) / 0.3);
+  }
+
+  .status-warning {
+    @apply rounded-md border bg-warning/10 text-warning;
+    border-color: hsl(var(--warning) / 0.3);
+  }
+
+  .status-error {
+    @apply rounded-md border bg-destructive/10 text-destructive;
+    border-color: hsl(var(--destructive) / 0.3);
+  }
+
+  .status-info {
+    @apply rounded-md border bg-info/10 text-info;
+    border-color: hsl(var(--info) / 0.3);
+  }
+
+  /* Status dot indicators */
+  .status-dot {
+    @apply h-2 w-2 rounded-full;
+  }
+
+  .status-dot-success {
+    @apply bg-success;
+  }
+
+  .status-dot-warning {
+    @apply bg-warning;
+  }
+
+  .status-dot-error {
+    @apply bg-destructive;
+  }
+
+  .status-dot-info {
+    @apply bg-info;
+  }
+
+  /* === Gradients === */
+  /* Corporate gradient for headers */
+  .corporate-gradient {
+    background: linear-gradient(
+      135deg,
+      hsl(var(--primary)) 0%,
+      hsl(213 45% 35%) 100%
+    );
+  }
+
+  /* Subtle gradient for cards */
+  .card-gradient {
+    background: linear-gradient(
+      180deg,
+      hsl(var(--card)) 0%,
+      hsl(var(--muted)) 100%
+    );
+  }
+
+  /* === Background Patterns === */
+  /* Subtle dot pattern */
+  .bg-pattern-dots {
+    background-image: radial-gradient(
+      circle at 1px 1px,
+      hsl(var(--muted-foreground) / 0.1) 1px,
+      transparent 0
+    );
+    background-size: 24px 24px;
+  }
+
+  /* Grid pattern */
+  .bg-pattern-grid {
+    background-image: linear-gradient(
+        hsl(var(--muted-foreground) / 0.05) 1px,
+        transparent 1px
+      ),
+      linear-gradient(
+        90deg,
+        hsl(var(--muted-foreground) / 0.05) 1px,
+        transparent 1px
+      );
+    background-size: 40px 40px;
+  }
+
+  /* === Interactive States === */
+  /* Hover card effect */
+  .hover-lift {
+    @apply transition-all duration-200;
+  }
+
+  .hover-lift:hover {
+    @apply -translate-y-0.5 shadow-card-hover;
+  }
+
+  /* Press effect */
+  .press-effect {
+    @apply transition-transform duration-100;
+  }
+
+  .press-effect:active {
+    @apply scale-[0.98];
+  }
+
+  /* === Sidebar Styles === */
+  .sidebar {
+    @apply fixed inset-y-0 left-0 z-40 flex flex-col;
+    width: var(--sidebar-width);
+    background-color: hsl(var(--sidebar-background));
+    color: hsl(var(--sidebar-foreground));
+  }
+
+  .sidebar-collapsed {
+    width: var(--sidebar-collapsed-width);
+  }
+
+  .sidebar-item {
+    @apply flex items-center gap-3 rounded-md px-3 py-2 text-sm transition-colors;
+    color: hsl(var(--sidebar-muted-foreground));
+  }
+
+  .sidebar-item:hover {
+    background-color: hsl(var(--sidebar-muted));
+    color: hsl(var(--sidebar-foreground));
+  }
+
+  .sidebar-item-active {
+    background-color: hsl(var(--primary));
+    color: hsl(var(--primary-foreground));
+  }
+
+  /* === Navigation === */
+  .nav-link {
+    @apply flex items-center gap-2 rounded-md px-3 py-2 text-sm font-medium transition-colors;
+  }
+
+  .nav-link:hover {
+    @apply bg-accent text-accent-foreground;
+  }
+
+  .nav-link-active {
+    @apply bg-primary text-primary-foreground;
+  }
+
+  /* === Data Display === */
+  /* Metric card for dashboards */
+  .metric-card {
+    @apply rounded-lg border border-border bg-card p-6;
+  }
+
+  .metric-value {
+    @apply text-3xl font-bold tracking-tight text-foreground;
+  }
+
+  .metric-label {
+    @apply text-sm font-medium text-muted-foreground;
+  }
+
+  .metric-change {
+    @apply text-sm font-medium;
+  }
+
+  .metric-change-positive {
+    @apply text-success;
+  }
+
+  .metric-change-negative {
+    @apply text-destructive;
+  }
+
+  /* === Loading States === */
+  .skeleton {
+    @apply animate-pulse rounded-md bg-muted;
+  }
+
+  /* === Empty States === */
+  .empty-state {
+    @apply flex flex-col items-center justify-center py-12 text-center;
+  }
+
+  .empty-state-icon {
+    @apply mb-4 h-12 w-12 text-muted-foreground/50;
+  }
+
+  .empty-state-title {
+    @apply mb-2 text-lg font-semibold text-foreground;
+  }
+
+  .empty-state-description {
+    @apply mb-4 text-sm text-muted-foreground;
+  }
+}
+
+@layer utilities {
+  /* === Transitions === */
+  .transition-smooth {
+    @apply transition-all duration-200 ease-in-out;
+  }
+
+  .transition-fast {
+    @apply transition-all duration-150 ease-in-out;
+  }
+
+  .transition-slow {
+    @apply transition-all duration-300 ease-in-out;
+  }
+
+  /* === Text Utilities === */
+  .text-muted {
+    @apply text-muted-foreground;
+  }
+
+  .text-primary-corporate {
+    @apply text-primary;
+  }
+
+  .text-balance {
+    text-wrap: balance;
+  }
+
+  .text-pretty {
+    text-wrap: pretty;
+  }
+
+  /* === Container Utilities === */
+  .surface {
+    @apply rounded-lg border border-border bg-card p-6;
+  }
+
+  .surface-elevated {
+    @apply rounded-lg border border-border bg-card p-6 shadow-card;
+  }
+
+  /* === Spacing Utilities === */
+  .section-gap {
+    @apply gap-8;
+  }
+
+  .card-gap {
+    @apply gap-6;
+  }
+
+  .element-gap {
+    @apply gap-4;
+  }
+
+  /* === Scrollbar Styling === */
+  .scrollbar-thin {
+    scrollbar-width: thin;
+    scrollbar-color: hsl(var(--muted-foreground) / 0.3) transparent;
+  }
+
+  .scrollbar-thin::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+
+  .scrollbar-thin::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  .scrollbar-thin::-webkit-scrollbar-thumb {
+    background-color: hsl(var(--muted-foreground) / 0.3);
+    border-radius: 3px;
+  }
+
+  .scrollbar-thin::-webkit-scrollbar-thumb:hover {
+    background-color: hsl(var(--muted-foreground) / 0.5);
+  }
+
+  /* === Focus Ring Utilities === */
+  .ring-focus {
+    @apply ring-2 ring-ring ring-offset-2 ring-offset-background;
+  }
+
+  .ring-focus-primary {
+    @apply ring-2 ring-primary ring-offset-2 ring-offset-background;
+  }
+
+  /* === Animation Utilities === */
+  .animate-in {
+    animation: fade-in 0.2s ease-out;
+  }
+
+  .animate-out {
+    animation: fade-out 0.2s ease-out;
+  }
+
+  /* === Z-Index Scale === */
+  .z-dropdown {
+    z-index: 50;
+  }
+
+  .z-modal {
+    z-index: 100;
+  }
+
+  .z-popover {
+    z-index: 80;
+  }
+
+  .z-tooltip {
+    z-index: 90;
+  }
+
+  .z-toast {
+    z-index: 110;
+  }
+
+  /* === Print Utilities === */
+  @media print {
+    .print-hidden {
+      display: none !important;
+    }
+
+    .print-break-before {
+      break-before: page;
+    }
+
+    .print-break-after {
+      break-after: page;
+    }
+
+    .print-break-inside-avoid {
+      break-inside: avoid;
+    }
+  }
+}

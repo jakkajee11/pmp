@@ -1,4 +1,4 @@
-Performance Management System
+Performance Metrics Portal
 เป็นระบบสำหรับประเมินผลงานของพนักงาน เพื่อวัดคุณภาพการทำงานประจำปี และคำนวนการจ่ายโบนัส และการขึ้นเงินเดือน
 
 features:

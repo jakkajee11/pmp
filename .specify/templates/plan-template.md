@@ -89,10 +89,35 @@ api/
 
 ios/ or android/
 └── [platform-specific structure: feature modules, UI flows, platform tests]
+
+# [REMOVE IF UNUSED] Option 4: Feature-based / Vertical Slice (when constitution specifies)
+src/
+├── app/                    # Routing layer (thin)
+│   ├── (auth)/             # Protected routes
+│   └── api/                # API routes
+├── features/               # Feature modules
+│   ├── [feature]/
+│   │   ├── api/            # Handlers, services, validators
+│   │   ├── components/     # UI components
+│   │   ├── hooks/          # Custom hooks
+│   │   ├── types.ts        # Types & schemas
+│   │   └── index.ts        # Public exports
+│   └── ...                 # Other features
+├── shared/                 # Shared utilities (no business logic)
+│   ├── api/
+│   ├── components/
+│   ├── lib/
+│   └── utils/
+└── middleware.ts
+
+tests/
+├── unit/features/
+├── integration/features/
+└── e2e/
 ```
 
 **Structure Decision**: [Document the selected structure and reference the real
-directories captured above]
+directories captured above. If using feature-based structure, list all features.]
 
 ## Complexity Tracking
 

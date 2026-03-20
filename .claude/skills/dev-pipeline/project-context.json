@@ -1,0 +1,36 @@
+{
+  "type": "nextjs-app",
+  "frameworks": ["nextjs", "react"],
+  "languages": ["typescript"],
+  "databases": ["prisma", "postgresql"],
+  "packageManager": "npm",
+  "detectedAt": "2026-03-19T15:00:00Z",
+  "confidence": 0.98,
+  "sources": {
+    "claudeMd": {
+      "found": true,
+      "confidence": 0.95,
+      "technologies": [
+        "TypeScript 5.x (strict mode enabled)",
+        "Next.js 14.x (App Router)",
+        "React 18.x",
+        "Prisma 5.x",
+        "PostgreSQL 15.x",
+        "Amazon S3"
+      ]
+    },
+    "packageJson": {
+      "found": true,
+      "confidence": 0.99,
+      "dependencies": {
+        "next": "14.x",
+        "react": "18.x",
+        "@prisma/client": "5.x"
+      }
+    },
+    "projectFiles": {
+      "found": false,
+      "checked": ["*.csproj", "go.mod", "Cargo.toml", "requirements.txt"]
+    }
+  }
+}

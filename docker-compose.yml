@@ -1,0 +1,43 @@
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "13300:13300"
+    environment:
+      - DATABASE_URL=postgresql://pmp:pmp_password@db:5432/pmp?schema=public
+      - NEXTAUTH_URL=http://localhost:13300
+      - NEXTAUTH_SECRET=your-secret-key-change-in-production-min-32-chars
+    depends_on:
+      db:
+        condition: service_healthy
+    restart: unless-stopped
+    networks:
+      - pmp-network
+
+  db:
+    image: postgres:18-alpine
+    ports:
+      - "5433:5432"
+    environment:
+      - POSTGRES_USER=pmp
+      - POSTGRES_PASSWORD=pmp_password
+      - POSTGRES_DB=pmp
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U pmp -d pmp"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+    restart: unless-stopped
+    networks:
+      - pmp-network
+
+volumes:
+  postgres_data:
+
+networks:
+  pmp-network:
+    driver: bridge
